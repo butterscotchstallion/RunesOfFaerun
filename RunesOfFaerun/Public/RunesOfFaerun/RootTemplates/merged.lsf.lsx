@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+    <version major="4" minor="0" revision="6" build="5" />
+    <region id="Templates">
+        <node id="Templates">
+            <children>
+                <!-- Template Rune -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h339303faca4d483f970a0f16c082aef5869b" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h027eef5bddf04810ab3453b01c1aba1a51fa" version="1" />
+                    <attribute id="DropSound" type="FixedString" value="1137349e-191e-cf1b-a977-dfec58897122" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="ImpactSound" type="FixedString" value="ba06bceb-c096-05cd-5be1-b9dfb08e55bd" />
+                    <attribute id="InventoryMoveSound" type="FixedString" value="1137349e-191e-cf1b-a977-dfec58897122" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Name" type="LSString" value="ROF_Rune_Template" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="6ce06d40-aef0-405d-9860-98c0df7cbe1b" />
+                    <attribute id="PhysicsTemplate" type="FixedString" value="9a69e7bf-c84d-1cc2-aae5-772a8988bbbc" />
+                    <attribute id="PickupSound" type="FixedString" value="45a0a7d3-318a-8bf9-bfb9-5c0c1215f761" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="108ef904-2f9a-f7f3-f313-c2679fcddedf" />
+                    <attribute id="maxStackAmount" type="int32" value="100" />
+                </node>
+
+                <!-- Rune of Bone Armor -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h50c615750ee344f6bb28c3fcbb6adac2786c" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4b89ac99578d49218d3bc273f15a0bdf5065" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="e5e39521-2b95-4b18-b07a-dbe5f1356576" />
+                    <attribute id="Name" type="LSString" value="ROF_Rune_of_Bone_Armor" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_RUNE_ROF_BONE_ARMOR" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Shout_ROF_Bone_Armor" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!--
+                <node id="GameObjects">
+	<attribute id="DisplayName" type="TranslatedString" handle="hdb0df56dga3d1g4422ga77eg5a5e78d1acb8" version="1" />
+	<attribute id="Icon" type="FixedString" value="Item_LOOT_SCROLL_SpeakWithDead" />
+	<attribute id="LevelName" type="FixedString" value="" />
+	<attribute id="MapKey" type="FixedString" value="36d01b98-1702-4d00-81a9-1b8469dd67a5" />
+	<attribute id="Name" type="LSString" value="LOOT_SCROLL_SpeakWithDead" />
+	<attribute id="ParentTemplateId" type="FixedString" value="4ffd5c4b-4c56-4f05-a228-a33754bb1806" />
+	<attribute id="PhysicsTemplate" type="FixedString" value="94a7c400-b2df-c54c-1675-1937920b7714" />
+	<attribute id="ReadinessFlags" type="uint32" value="8" />
+	<attribute id="Stats" type="FixedString" value="OBJ_Scroll_SpeakWithDead" />
+	<attribute id="Type" type="FixedString" value="item" />
+	<attribute id="VisualTemplate" type="FixedString" value="916f78a4-779b-3e43-28eb-eefc26d9683d" />
+	<attribute id="_OriginalFileVersion_" type="int64" value="144115207403209013" />
+	<children>
+		<node id="OnUsePeaceActions">
+			<children>
+				<node id="Action">
+					<attribute id="ActionType" type="int32" value="12" />
+					<children>
+						<node id="Attributes">
+							<attribute id="Animation" type="FixedString" value="" />
+							<attribute id="ClassId" type="guid" value="a865965f-501b-46e9-9eaa-7748e8c04d09" />
+							<attribute id="Conditions" type="LSString" value="CanUseSpellScroll(&quot;Target_SpeakWithDead&quot;)" />
+							<attribute id="Consume" type="bool" value="True" />
+							<attribute id="SkillID" type="FixedString" value="Target_SpeakWithDead" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</children>
+</node>
+                
+                -->
+                <!-- End of nodes -->
+            </children>
+        </node>
+    </region>
+</save>

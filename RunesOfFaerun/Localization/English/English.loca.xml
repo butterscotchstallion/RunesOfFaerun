@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <!-- Template rune -->
+    <content contentuid="h027eef5bddf04810ab3453b01c1aba1a51fa" version="1">Ancient Rune</content>
+    <content contentuid="h339303faca4d483f970a0f16c082aef5869b" version="1">A stone rune, intricately carved and humming with magical energy</content>
+
+    <!-- Rune of Bone Armor object -->
+    <content contentuid="h4b89ac99578d49218d3bc273f15a0bdf5065" version="1">Rune of Bone Armor</content>
+    <content contentuid="h50c615750ee344f6bb28c3fcbb6adac2786c" version="1">The inscribed rune details a ritual to bolster the defenses of undead allies</content>
+
+    <!-- Rune of Bone Armor status buff -->
+    <content contentuid="h74d4758600c749d98b9c36b4b30c09401f01" version="1">Increases the AC of Undead summons by 1 when they are not incapacitated</content>
+</contentList>

@@ -1,0 +1,17 @@
+// All runes inherit from this template
+new entry "OBJ_RUNE_ROF_TPL_RUNE"
+	type "Object"
+	using "OBJ_GenericLootItem"
+		data "ObjectCategory" "ROF_RUNE"
+		data "Weight" "0.5"
+		data "InventoryTab" "Magical"
+		data "UseCosts" "ActionPoint:1"
+		data "ItemUseType" "Scroll"
+		data "Vitality" "-1"
+		data "ValueOverride" "100"
+		data "RootTemplate" "2874eaa0-dcc7-48c0-9d96-dc50c5149aa2"
+
+new entry "OBJ_RUNE_ROF_BONE_ARMOR"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "e5e39521-2b95-4b18-b07a-dbe5f1356576"
