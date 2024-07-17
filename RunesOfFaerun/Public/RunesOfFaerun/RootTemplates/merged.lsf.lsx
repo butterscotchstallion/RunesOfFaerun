@@ -51,41 +51,117 @@
                     </children>
                 </node>
 
-                <!--
+                <!-- Rune of Slimy Companionship -->
                 <node id="GameObjects">
-	<attribute id="DisplayName" type="TranslatedString" handle="hdb0df56dga3d1g4422ga77eg5a5e78d1acb8" version="1" />
-	<attribute id="Icon" type="FixedString" value="Item_LOOT_SCROLL_SpeakWithDead" />
-	<attribute id="LevelName" type="FixedString" value="" />
-	<attribute id="MapKey" type="FixedString" value="36d01b98-1702-4d00-81a9-1b8469dd67a5" />
-	<attribute id="Name" type="LSString" value="LOOT_SCROLL_SpeakWithDead" />
-	<attribute id="ParentTemplateId" type="FixedString" value="4ffd5c4b-4c56-4f05-a228-a33754bb1806" />
-	<attribute id="PhysicsTemplate" type="FixedString" value="94a7c400-b2df-c54c-1675-1937920b7714" />
-	<attribute id="ReadinessFlags" type="uint32" value="8" />
-	<attribute id="Stats" type="FixedString" value="OBJ_Scroll_SpeakWithDead" />
-	<attribute id="Type" type="FixedString" value="item" />
-	<attribute id="VisualTemplate" type="FixedString" value="916f78a4-779b-3e43-28eb-eefc26d9683d" />
-	<attribute id="_OriginalFileVersion_" type="int64" value="144115207403209013" />
-	<children>
-		<node id="OnUsePeaceActions">
-			<children>
-				<node id="Action">
-					<attribute id="ActionType" type="int32" value="12" />
-					<children>
-						<node id="Attributes">
-							<attribute id="Animation" type="FixedString" value="" />
-							<attribute id="ClassId" type="guid" value="a865965f-501b-46e9-9eaa-7748e8c04d09" />
-							<attribute id="Conditions" type="LSString" value="CanUseSpellScroll(&quot;Target_SpeakWithDead&quot;)" />
-							<attribute id="Consume" type="bool" value="True" />
-							<attribute id="SkillID" type="FixedString" value="Target_SpeakWithDead" />
-						</node>
-					</children>
-				</node>
-			</children>
-		</node>
-	</children>
-</node>
-                
+                    <attribute id="Description" type="TranslatedString" handle="h8c39eb22a79249b098d82edb0269df6fa498" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h734eec9431f24026adeca0836a4e3f85fe56" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="06fa8fd2-deb6-430e-8a47-6a73b487bbd6" />
+                    <attribute id="Name" type="LSString" value="ROF_Rune_of_Slimy_Companionship" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_RUNE_OF_SLIMY_COMPANIONSHIP" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Shout_ROF_Summon_Slime_Companion" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!-- Ooze friend  (crashes)
+                <node id="GameObjects">
+                    <attribute id="Archetype" type="FixedString" value="beast" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h9346bc2ee24745aca6324263d72ec7b4f17f" version="1" />
+                    <attribute id="Icon" type="FixedString" value="1328bac4-118d-bcf2-2bf5-068b37efdc6f-_(Icon_Ooze)" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="e9ea3fe3-0cad-4549-9758-755023bdcec6" />
+                    <attribute id="Name" type="LSString" value="ROF_Slimy_Companion" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="e9ea3fe3-0cad-4549-9758-755023bdcec6" />
+                    <attribute id="Stats" type="FixedString" value="TWN_Ooze_Putrid" />
+                    <attribute id="Type" type="FixedString" value="character" />
+                    <children>
+                        <node id="LocomotionParams" />
+                        <node id="SkillList">
+                            <children>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Projectile_ToxicSpit_Ooze" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_Pseudopod_Ooze_Gray" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
                 -->
+
                 <!-- End of nodes -->
             </children>
         </node>

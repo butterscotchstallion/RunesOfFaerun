@@ -15,3 +15,8 @@ new entry "OBJ_RUNE_ROF_BONE_ARMOR"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "e5e39521-2b95-4b18-b07a-dbe5f1356576"
+
+new entry "OBJ_RUNE_OF_SLIMY_COMPANIONSHIP"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "06fa8fd2-deb6-430e-8a47-6a73b487bbd6"

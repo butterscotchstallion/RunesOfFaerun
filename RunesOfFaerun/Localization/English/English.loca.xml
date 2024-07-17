@@ -10,4 +10,15 @@
 
     <!-- Rune of Bone Armor status buff -->
     <content contentuid="h74d4758600c749d98b9c36b4b30c09401f01" version="1">Increases the AC of Undead summons by 1 when they are not incapacitated</content>
+
+    <!-- Slimy Companion -->
+    <content contentuid="h9346bc2ee24745aca6324263d72ec7b4f17f" version="1">Slimy Companion</content>
+    <content contentuid="hf14ed597340d408899dd611007e8487685da" version="1">Summon Slimy Companion</content>
+
+    <!-- Spell -->
+    <content contentuid="he59464dd806e4135bb096f0b87b735fda04c" version="1">Spawns a slimy cube, loyal to you alone</content>
+
+    <!-- Rune of SLimy Companionship -->
+    <content contentuid="h734eec9431f24026adeca0836a4e3f85fe56" version="1">Rune of Slimy Companionship</content>
+    <content contentuid="h8c39eb22a79249b098d82edb0269df6fa498" version="1">The rune feels slick and slimy to the touch</content>
 </contentList>
