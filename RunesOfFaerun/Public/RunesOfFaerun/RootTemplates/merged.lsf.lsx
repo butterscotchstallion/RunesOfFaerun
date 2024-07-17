@@ -42,7 +42,7 @@
                                     <children>
                                         <node id="Attributes">
                                             <attribute id="Consume" type="bool" value="False" />
-                                            <attribute id="SkillID" type="FixedString" value="Shout_ROF_Bone_Armor" />
+                                            <attribute id="SkillID" type="FixedString" value="Shout_ROF_Aura_Bone_Armor" />
                                         </node>
                                     </children>
                                 </node>
