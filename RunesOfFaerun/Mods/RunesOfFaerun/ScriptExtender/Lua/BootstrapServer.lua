@@ -11,3 +11,4 @@ RunesOfFaerun = {
 Ext.Require('Server/MuffinLogger.lua')
 Ext.Require('Server/Utils.lua')
 Ext.Require('Server/EventHandler.lua')
+Ext.Require('Server/EntityHandler.lua')

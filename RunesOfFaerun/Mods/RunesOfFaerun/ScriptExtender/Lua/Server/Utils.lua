@@ -22,6 +22,12 @@ local function PrintVersionMessage()
     end
 end
 
+---@param tplId string Root Template string
+local function GetGUIDFromTpl(tplId)
+    return string.sub(tplId, -36)
+end
+
 utils.SaveEntityToFile = SaveEntityToFile
 utils.PrintVersionMessage = PrintVersionMessage
+utils.GetGUIDFromTpl = GetGUIDFromTpl
 RunesOfFaerun.Utils = utils

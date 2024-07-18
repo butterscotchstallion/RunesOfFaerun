@@ -12,6 +12,7 @@ new entry "STATUS_ROF_BONE_ARMOR_BUFF"
 		data "StatusPropertyFlags" ""
 		data "SoundStop" "Spell_Status_MageArmor_MO_Stop"
 		data "StatusEffect" "b605de22-7474-4f7b-9eeb-287ef6a94dce"
+		data "AuraRadius" "20"
 
 // Aura applies this spell
 new entry "STATUS_ROF_BONE_ARMOR"
@@ -27,3 +28,10 @@ new entry "STATUS_ROF_BONE_ARMOR"
 		data "RemoveEvents" "OnStatusApplied"
 		data "StatusGroups" "SG_RemoveOnRespec"
 		data "AuraRadius" "20"
+
+new entry "STATUS_ROF_AI_CONTROLLED"
+	type "StatusData"
+		data "DisplayName" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
+		data "Description" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
+		data "Icon" "statIcons_Madness"
+		data "StatusPropertyFlags" "LoseControl;LoseControlFriendly"

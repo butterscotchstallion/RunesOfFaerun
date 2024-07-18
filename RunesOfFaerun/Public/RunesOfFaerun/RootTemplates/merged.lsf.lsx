@@ -79,18 +79,32 @@
                     </children>
                 </node>
 
-                <!-- Ooze friend  (crashes)
+                <!-- Ooze friend -->
                 <node id="GameObjects">
+                    <attribute id="AnubisConfigName" type="FixedString" value="DefaultMonster" />
                     <attribute id="Archetype" type="FixedString" value="beast" />
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="1328bac4-118d-bcf2-2bf5-068b37efdc6f" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h9346bc2ee24745aca6324263d72ec7b4f17f" version="1" />
                     <attribute id="Icon" type="FixedString" value="1328bac4-118d-bcf2-2bf5-068b37efdc6f-_(Icon_Ooze)" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="e9ea3fe3-0cad-4549-9758-755023bdcec6" />
-                    <attribute id="Name" type="LSString" value="ROF_Slimy_Companion" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="e9ea3fe3-0cad-4549-9758-755023bdcec6" />
+                    <attribute id="MapKey" type="FixedString" value="6e831db4-2531-48a8-ab87-445c5b0032a8" />
+                    <attribute id="Name" type="LSString" value="ROF_SLIMY_COMPANION" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="6240f9ef-fc81-4301-8ea7-de4a0ad4e57e" />
+                    <attribute id="Race" type="guid" value="889ca85e-9263-4086-aeab-352dd1eed3a0" />
+                    <attribute id="SpellSet" type="FixedString" value="CommonBeastActions" />
                     <attribute id="Stats" type="FixedString" value="TWN_Ooze_Putrid" />
                     <attribute id="Type" type="FixedString" value="character" />
                     <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_AI_CONTROLLED" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="RELENTLESS_AVENGER" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="LocomotionParams" />
                         <node id="SkillList">
                             <children>
@@ -160,7 +174,6 @@
                         </node>
                     </children>
                 </node>
-                -->
 
                 <!-- End of nodes -->
             </children>

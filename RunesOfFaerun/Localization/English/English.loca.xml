@@ -21,4 +21,7 @@
     <!-- Rune of SLimy Companionship -->
     <content contentuid="h734eec9431f24026adeca0836a4e3f85fe56" version="1">Rune of Slimy Companionship</content>
     <content contentuid="h8c39eb22a79249b098d82edb0269df6fa498" version="1">The rune feels slick and slimy to the touch</content>
+
+    <!-- AI CONTROLLED stauts -->
+    <content contentuid="h408c900e8c8a4c3eb46f1f4f70d12b9e0fef" version="1">Under AI Control</content>
 </contentList>
