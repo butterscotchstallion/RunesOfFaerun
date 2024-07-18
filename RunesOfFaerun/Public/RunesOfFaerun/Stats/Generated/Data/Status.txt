@@ -1,3 +1,11 @@
+new entry "STATUS_ROF_AI_CONTROLLED"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		data "Icon" "GenericIcon_DamageType_Psychic"
+		data "DisplayName" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
+		data "Description" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;LoseControl;LoseControlFriendly"
+
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"
 	type "StatusData"
@@ -29,9 +37,3 @@ new entry "STATUS_ROF_BONE_ARMOR"
 		data "StatusGroups" "SG_RemoveOnRespec"
 		data "AuraRadius" "20"
 
-new entry "STATUS_ROF_AI_CONTROLLED"
-	type "StatusData"
-		data "DisplayName" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
-		data "Description" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
-		data "Icon" "statIcons_Madness"
-		data "StatusPropertyFlags" "LoseControl;LoseControlFriendly"

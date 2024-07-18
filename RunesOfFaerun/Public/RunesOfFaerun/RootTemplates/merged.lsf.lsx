@@ -103,6 +103,12 @@
                                 <node id="Status">
                                     <attribute id="Object" type="FixedString" value="RELENTLESS_AVENGER" />
                                 </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="UNSTOPPABLE" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="DAMPENELEMENTS_RESISTANCE" />
+                                </node>
                             </children>
                         </node>
                         <node id="LocomotionParams" />
@@ -149,7 +155,7 @@
                                     <attribute id="MinimumImpact" type="int32" value="0" />
                                     <attribute id="OnlyCastOnSelf" type="bool" value="False" />
                                     <attribute id="ScoreModifier" type="float" value="1" />
-                                    <attribute id="Skill" type="FixedString" value="Target_Pseudopod_Ooze_Gray" />
+                                    <attribute id="Skill" type="FixedString" value="Target_LOW_GreaseWizard_Ooze_Pseudo" />
                                     <attribute id="SpellCastingAbility" type="uint8" value="0" />
                                     <attribute id="StartRound" type="int32" value="0" />
                                     <attribute id="TacticianHardcore" type="bool" value="True" />

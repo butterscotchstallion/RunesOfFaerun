@@ -2,6 +2,34 @@ local eh = {}
 
 SLIMY_COMPANION_GUID = '6e831db4-2531-48a8-ab87-445c5b0032a8'
 
+eh.GetHostEntityMaxHP = function()
+    local entity = Ext.Entity.Get(Osi.GetHostCharacter())
+    if entity then
+        if entity.Health then
+            return entity.Health.MaxHp
+        end
+    end
+end
+
+eh.SetEntityHP = function(guid, hpValue)
+    local entity = Ext.Entity.Get(guid)
+    if entity and entity.Health then
+        entity.Health.MaxHp = hpValue
+        entity.Health.Hp = hpValue
+        entity:Replicate('Health')
+        RunesOfFaerun.Info('Set ' .. guid .. ' HP to ' .. hpValue)
+    else
+        RunesOfFaerun.Critical('Could not set HP of ' .. guid)
+    end
+end
+
+eh.SetEntityMaxHPToHostMaxHP = function(entityGUID)
+    local hostHP = eh.GetHostEntityMaxHP()
+    if hostHP then
+        eh.SetEntityHP(entityGUID, hostHP)
+    end
+end
+
 ---@param entityGUID guid
 eh.SetEntityLevelToHostLevel = function(entityGUID)
     local hostLevel = tonumber(Osi.GetLevel(Osi.GetHostCharacter()))
@@ -9,6 +37,8 @@ eh.SetEntityLevelToHostLevel = function(entityGUID)
         Ext.OnNextTick(function()
             Osi.SetLevel(entityGUID, hostLevel)
             RunesOfFaerun.Info('Set ' .. entityGUID .. ' level to ' .. hostLevel)
+
+            eh.SetEntityMaxHPToHostMaxHP(entityGUID)
         end)
     end
 end
