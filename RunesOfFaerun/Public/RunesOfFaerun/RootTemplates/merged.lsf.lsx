@@ -95,6 +95,13 @@
                     <attribute id="Stats" type="FixedString" value="TWN_Ooze_Putrid" />
                     <attribute id="Type" type="FixedString" value="character" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="26c78224-a4c1-43e4-b943-75e7fa1bfa41" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="StatusList">
                             <children>
                                 <node id="Status">
