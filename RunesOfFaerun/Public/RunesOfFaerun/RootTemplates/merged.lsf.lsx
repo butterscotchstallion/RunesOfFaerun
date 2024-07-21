@@ -101,13 +101,13 @@
                                     <attribute id="Object" type="FixedString" value="STATUS_ROF_AI_CONTROLLED" />
                                 </node>
                                 <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="RELENTLESS_AVENGER" />
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_RELENTLESS" />
                                 </node>
                                 <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="UNSTOPPABLE" />
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_UNSTOPPABLE" />
                                 </node>
                                 <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="DAMPENELEMENTS_RESISTANCE" />
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_DAMPENELEMENTS_RESISTANCE" />
                                 </node>
                             </children>
                         </node>

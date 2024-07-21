@@ -4,7 +4,23 @@ new entry "STATUS_ROF_AI_CONTROLLED"
 		data "Icon" "GenericIcon_DamageType_Psychic"
 		data "DisplayName" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
 		data "Description" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
-		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;LoseControl;LoseControlFriendly"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;LoseControl;LoseControlFriendly;IgnoreResting"
+
+// Permanent slime buffs
+new entry "STATUS_ROF_RELENTLESS"
+	type "StatusData"
+	using "RELENTLESS_AVENGER"
+		data "StatusPropertyFlags" "IgnoreResting"
+
+new entry "STATUS_ROF_UNSTOPPABLE"
+	type "StatusData"
+	using "UNSTOPPABLE"
+		data "StatusPropertyFlags" "IgnoreResting"
+
+new entry "STATUS_ROF_DAMPENELEMENTS_RESISTANCE"
+	type "StatusData"
+	using "DAMPENELEMENTS_RESISTANCE"
+		data "StatusPropertyFlags" "IgnoreResting"
 
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"

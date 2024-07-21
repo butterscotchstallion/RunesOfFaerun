@@ -1,0 +1,84 @@
+new treasuretable "CHA_Exterior_Bandit_Leader"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+
+new treasuretable "_Valuables_Generic"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+
+new treasuretable "CHA_Container_Abandoned"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+
+new treasuretable "DIGGING_CHESTS"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+
+new treasuretable "Exploration_Major_Scroll"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+
+new treasuretable "GOB_DrowCommander"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_MagicItems_Unique"
+CanMerge 1
+new subtable "1,1"
+object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+
+// ST_MagicItems_Unique
+// ST_CHA_Treasure_Jewelry
+// GOB_ZhentQuarters_Chest_Gold
+// HAG_AbandonedCamp_Backpack_Wizard
+// HAG_Swamp_Chest
+// HAV_HarperQuarterMaster_Magic_Trade
+// HAV_UnfortunateGnome_Magic_Trade
+// LOW_CazadorsPalace_Crypt_Treasure
+// MOO_MimicReward
+// MOO_WallTentacleOgress_Treasure
+// PLA_Corpse_Skeleton_River
+// PLA_ZhentHideout_Container_Illicit
+// SCL_GraveyardNecromancerPreparation_Chest
+// SCL_Supplies_Fancy
+// SHA_HiddenRoom_Magic_Chest
+// SHA_CryptFront_Sarcophagus_Wife
+// SHA_Orthon_Chest
+// UND_Duergar_Raft_Chest
+// UND_KC_ExecutedDrow_Random
+// UND_KC_LavaElemental
+// UND_KuoToa_Belongings
+// UND_MyconidRevenge_QuestReward_Evil
+// UND_MyconidRevenge_QuestReward_Good
+// UND_Spectator_Reward
+// UND_ZhentPort_LockedCargo
+// WYR_Circus_Ringmaster_Chest
+// WYR_Circus_KoboldMerchant_Magic
+// WYR_OpenHand_Sarcophagus
+// WYR_SmugglerCave_Basement_Treasure
+// WYR_WyrmsCastle_Banites_OpulentChest
+// WYR_Refugee_Belongings
+// WYR_FlamingFist_Quartermaster_Trade_Magic
+// WYR_Dragon_Legendary_Trident_Treasure
+// WYR_Flophouse_GuestBelongings_Adventurers
+// WYR_JungleOfChult_Arcanic_Treasure
