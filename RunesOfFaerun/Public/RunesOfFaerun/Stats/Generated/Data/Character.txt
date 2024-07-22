@@ -1,0 +1,6 @@
+new entry "ROF_Dreadful_Nurse"
+	type "Character"
+	using "KillerReplica_Cleric"
+		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
+
+ 

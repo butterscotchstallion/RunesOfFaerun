@@ -24,4 +24,12 @@
 
     <!-- AI CONTROLLED status -->
     <content contentuid="h408c900e8c8a4c3eb46f1f4f70d12b9e0fef" version="1">Under AI Control</content> h865b642d83ae477ab72aabd329418dc48cg3 <content contentuid="h865b642d83ae477ab72aabd329418dc48cg3" version="1">test</content>
+
+    <!-- Bloodstained rune -->
+    <content contentuid="hf86e272f0bd64dcb99f28354c5947537ff74" version="1">The rune is stained a deep red with blood</content>
+    <content contentuid="hce3c88f9860e430b93d0f5f9ed41aebe087f" version="1">Blood-Stained Rune</content>
+    <!-- Summon nurse spell -->
+    <content contentuid="h39e131095bbb4f798c4148ef1933b5b05gcd" version="1">Dreadful Nurse</content>
+    <content contentuid="h9917a7a4ff2f40538f68255de074496f8205" version="1">Summons a dreadful nurse, but at what cost?</content>
+    <content contentuid="h38d5c061048a41049088b5985ed20c300g6b" version="1">Dreadful Nurse</content>
 </contentList>

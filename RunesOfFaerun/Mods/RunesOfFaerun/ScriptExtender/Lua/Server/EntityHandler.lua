@@ -1,6 +1,7 @@
 local eh = {}
 
 SLIMY_COMPANION_GUID = '6e831db4-2531-48a8-ab87-445c5b0032a8'
+NURSE_COMPANION_GUID = '027611f4-16bf-45f2-a782-ed5606bd676d'
 
 eh.GetHostEntityMaxHP = function()
     local entity = Ext.Entity.Get(Osi.GetHostCharacter())
@@ -47,7 +48,8 @@ end
 ---@param instanceGUID guid
 eh.HandleByGUID = function(rootGUID, instanceGUID)
     local companions = {
-        [SLIMY_COMPANION_GUID] = true
+        [SLIMY_COMPANION_GUID] = true,
+        [NURSE_COMPANION_GUID] = true
     }
 
     if companions[rootGUID] then

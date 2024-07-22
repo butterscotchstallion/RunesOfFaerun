@@ -20,3 +20,8 @@ new entry "OBJ_RUNE_OF_SLIMY_COMPANIONSHIP"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "06fa8fd2-deb6-430e-8a47-6a73b487bbd6"
+
+new entry "OBJ_BLOODSTAINED_RUNE"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "a3892610-78e3-4adf-a5d4-e55105cef4a7"

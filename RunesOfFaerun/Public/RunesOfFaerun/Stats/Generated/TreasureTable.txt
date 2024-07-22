@@ -47,6 +47,11 @@ object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
 
+new treasuretable "GOB_ZhentQuarters_Chest_Gold"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
 // GOB_ZhentQuarters_Chest_Gold

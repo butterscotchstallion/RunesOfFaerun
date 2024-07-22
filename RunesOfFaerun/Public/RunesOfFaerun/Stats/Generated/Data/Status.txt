@@ -22,6 +22,17 @@ new entry "STATUS_ROF_DAMPENELEMENTS_RESISTANCE"
 	using "DAMPENELEMENTS_RESISTANCE"
 		data "StatusPropertyFlags" "IgnoreResting"
 
+new entry "STATUS_ROF_MAGE_ARMOR"
+	type "StatusData"
+	using "MAGE_ARMOR"
+		data "StatusPropertyFlags" "IgnoreResting"
+
+new entry "STATUS_ROF_ADD_SPELLSLOTS"
+	type "StatusData"
+		// amount, level
+		data "Boosts" "ActionResourceOverride(SpellSlot,4,1);ActionResourceOverride(SpellSlot,4,2);ActionResource(SpellSlot,4,3);"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
+
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"
 	type "StatusData"

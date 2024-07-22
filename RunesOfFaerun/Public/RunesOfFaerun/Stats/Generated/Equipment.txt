@@ -1,0 +1,4 @@
+new equipment "EQP_ROF_Dreadful_Nurse"
+    add initialweaponset "Melee"
+    add equipmentgroup
+    add equipment entry "WPN_HUM_Trepan_A"
