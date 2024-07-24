@@ -38,8 +38,6 @@ eh.SetEntityLevelToHostLevel = function(entityGUID)
         Ext.OnNextTick(function()
             Osi.SetLevel(entityGUID, hostLevel)
             RunesOfFaerun.Info('Set ' .. entityGUID .. ' level to ' .. hostLevel)
-
-            eh.SetEntityMaxHPToHostMaxHP(entityGUID)
         end)
     end
 end

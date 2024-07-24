@@ -92,7 +92,7 @@
                     <attribute id="ParentTemplateId" type="FixedString" value="6240f9ef-fc81-4301-8ea7-de4a0ad4e57e" />
                     <attribute id="Race" type="guid" value="889ca85e-9263-4086-aeab-352dd1eed3a0" />
                     <attribute id="SpellSet" type="FixedString" value="CommonBeastActions" />
-                    <attribute id="Stats" type="FixedString" value="TWN_Ooze_Putrid" />
+                    <attribute id="Stats" type="FixedString" value="ROF_Slime_Companion" />
                     <attribute id="Type" type="FixedString" value="character" />
                     <children>
                         <node id="Tags">
@@ -258,7 +258,7 @@
                     <attribute id="Name" type="LSString" value="ROF_Nurse_Companion" />
                     <attribute id="ParentTemplateId" type="FixedString" value="e90d8b03-2355-46da-a74a-ad66795759ac" />
                     <attribute id="Race" type="guid" value="02e5c59e-80e7-4176-a289-1d08699583f5" />
-                    <attribute id="SpellSet" type="FixedString" value="CommonBeastActions" />
+                    <attribute id="SpellSet" type="FixedString" value="CommonPlayerActions" />
                     <attribute id="Stats" type="FixedString" value="ROF_Dreadful_Nurse" />
                     <attribute id="Type" type="FixedString" value="character" />
                     <attribute id="VisualTemplate" type="FixedString" value="4b8ff439-0a98-6e6c-ad48-c695c1c29b27" />
@@ -273,7 +273,7 @@
                                     <attribute id="Object" type="FixedString" value="STATUS_ROF_MAGE_ARMOR" />
                                 </node>
                                 <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_ADD_SPELLSLOTS" />
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_HEALTHBOOST" />
                                 </node>
                             </children>
                         </node>
@@ -284,6 +284,76 @@
                                 </node>
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="801bd716-0666-4dd5-b449-45ffa9a52a0f" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="EquipmentTypes">
+                            <children>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="d2141ff0-1368-4c35-38b4-cde98120f882" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="896f8a20-7dda-4bff-26b7-c308ccda7bcc" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="4135c6a5-78b6-4c6d-df85-7df72cf575e7" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="ccab7523-374c-49b4-c796-f38bb9e5cac1" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="59075318-8af3-41ed-e7be-583c7bc39add" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="2fc3e6f9-120c-4adf-c3b7-9078d7ae12c3" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="f85002a2-8e0e-4a49-0faa-2ef57d983a3a" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="7883d641-2b8b-40dc-d885-7551d41dbc2b" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="b428632e-3137-47aa-8fae-ffddc26fc87c" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="12b80df8-aaf1-4543-fa84-46c4e422b551" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="2b95bdd2-317f-41c1-c09e-a05f888b0a8b" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="ab54402e-d3f3-497d-819b-9b51af1827b8" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="bcba31b8-507e-483a-2990-b02d3d0b5166" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="bf90a760-4f63-416d-9d96-c10e7228d5e8" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="520bf44f-b723-4e61-598d-ba19a747cac1" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="edda8fbb-6456-4514-ccb3-a23667bc314c" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="f0953501-75b1-43a3-9986-d5e2d18fe801" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="2d85d633-d496-44a1-43a6-950e87ef6d9a" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="4d500520-1818-4a5e-b983-4932e2576929" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="edb9b30a-3db2-4a36-7db7-fbfdda5ef450" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="4df07ab5-44a3-421e-bcb4-8c59d649c8cf" />
+                                </node>
+                                <node id="">
+                                    <attribute id="Object" type="guid" value="8ac2eb82-8563-4657-4c8c-07153957d778" />
                                 </node>
                             </children>
                         </node>

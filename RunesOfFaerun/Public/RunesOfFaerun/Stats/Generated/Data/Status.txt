@@ -27,11 +27,10 @@ new entry "STATUS_ROF_MAGE_ARMOR"
 	using "MAGE_ARMOR"
 		data "StatusPropertyFlags" "IgnoreResting"
 
-new entry "STATUS_ROF_ADD_SPELLSLOTS"
+new entry "STATUS_ROF_HEALTHBOOST"
 	type "StatusData"
-		// amount, level
-		data "Boosts" "ActionResourceOverride(SpellSlot,4,1);ActionResourceOverride(SpellSlot,4,2);ActionResource(SpellSlot,4,3);"
-		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
+	using "HEALTHBOOST_HARDCORE"
+		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"
 
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"

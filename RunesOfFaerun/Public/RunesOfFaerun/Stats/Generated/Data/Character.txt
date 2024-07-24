@@ -1,6 +1,11 @@
 new entry "ROF_Dreadful_Nurse"
 	type "Character"
 	using "KillerReplica_Cleric"
+		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:4:1;SpellSlot:3:3:2;SpellSlot:3:3:3;SpellSlot:1:1:4"
+
+new entry "ROF_Slime_Companion"
+	type "Character"
+	using "TWN_Ooze_Putrid"
 		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
 
  
