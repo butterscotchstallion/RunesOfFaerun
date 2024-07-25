@@ -8,4 +8,11 @@ new entry "ROF_Slime_Companion"
 	using "TWN_Ooze_Putrid"
 		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
 
+new entry "ROF_Giant_Badger"
+	type "Character"
+	using "Badger_Giant"
+		data "Vitality" "100"
+		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1"
+
+
  

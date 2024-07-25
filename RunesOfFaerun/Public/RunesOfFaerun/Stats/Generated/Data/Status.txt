@@ -32,6 +32,16 @@ new entry "STATUS_ROF_HEALTHBOOST"
 	using "HEALTHBOOST_HARDCORE"
 		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"
 
+new entry "STATUS_ROF_BADGER_BITES"
+	type "StatusData"
+		data "Passives" "BrutalBite"
+		data "StatusPropertyFlags" "IgnoreResting"
+
+new entry "STATUS_MISTY_ESCAPE"
+	type "StatusData"
+		data "Passives" "MistyEscape"
+		data "StatusPropertyFlags" "IgnoreResting"
+
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"
 	type "StatusData"

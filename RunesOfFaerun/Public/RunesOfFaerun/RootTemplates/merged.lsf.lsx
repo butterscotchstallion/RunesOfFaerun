@@ -607,6 +607,254 @@
                     </children>
                 </node>
 
+                <!-- Scarred Rune  -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="he4537cd0bf1a4744ba3b4ca2632b3b5f033d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h3d21d126113e4d57a6a35407938d284e15c5" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="8c0b2f86-c4d6-4e64-aa12-2e6da8bfcc04" />
+                    <attribute id="Name" type="LSString" value="ROF_Scarred_Rune" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_SCARRED_RUNE" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Shout_ROF_Summon_Badger" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!-- Giant Badger -->
+                <node id="GameObjects">
+                    <attribute id="Archetype" type="FixedString" value="beast" />
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="2b022bc4-448f-00c6-fc6d-18a4298f920c" />
+                    <attribute id="DeathEffect" type="guid" value="f56585cd-1df0-47c2-95a2-74ba2fd46662" />
+                    <attribute id="DisableEquipping" type="bool" value="True" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4ef8e19c9d904c65a219b3f43aec83089bcb" version="1" />
+                    <attribute id="Flag" type="int32" value="0" />
+                    <attribute id="Icon" type="FixedString" value="2b022bc4-448f-00c6-fc6d-18a4298f920c-_(Icon_Badger)" />
+                    <attribute id="IsLootable" type="bool" value="False" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="c0369b2e-f495-4831-8e10-9e16ac7b2261" />
+                    <attribute id="Name" type="LSString" value="ROF_GiantBadger" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="cf0e0508-7317-4838-b4ef-7ae26c9cf4f2" />
+                    <attribute id="ReadinessFlags" type="uint32" value="12" />
+                    <attribute id="Stats" type="FixedString" value="ROF_Giant_Badger" />
+                    <attribute id="Type" type="FixedString" value="character" />
+                    <attribute id="SpellSet" type="FixedString" value="CommonPlayerActions" />
+                    <attribute id="VocalAlertResourceID" type="FixedString" value="299e0c63-003a-759c-b8ca-94071d9f86f9" />
+                    <attribute id="VocalAngryResourceID" type="FixedString" value="4cde9647-6367-7a63-9014-bf27439be739" />
+                    <attribute id="VocalBoredResourceID" type="FixedString" value="4756ffed-df5f-ce43-38be-4bf961dc5329" />
+                    <attribute id="VocalExhaustedResourceID" type="FixedString" value="9b36af33-31e4-e4bb-fda4-b364ef59d1b1" />
+                    <attribute id="VocalRelaxedResourceID" type="FixedString" value="fce78e8d-2581-3b70-7f47-71641f480f97" />
+                    <attribute id="Scale" type="float" value="1.25" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_AI_CONTROLLED" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_RELENTLESS" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_UNSTOPPABLE" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_ROF_BADGER_BITES" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_MISTY_ESCAPE" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="SkillList">
+                            <children>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_Bite_Mimic" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_MistyStep" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_Bite_Bulette" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Shout_GoadingRoar_Bear_Summon" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="CasualExplorer" type="bool" value="True" />
+                                    <attribute id="Classic" type="bool" value="True" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="HonorHardcore" type="bool" value="True" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_StrengthDrain_Shadow" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <attribute id="TacticianHardcore" type="bool" value="True" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="SpeakerGroupList">
+                            <children>
+                                <node id="SpeakerGroup">
+                                    <attribute id="Object" type="guid" value="02cdc15e-1dc3-5eb4-f73c-9458b4f90b9f" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Tags">
+                            <children>
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="26c78224-a4c1-43e4-b943-75e7fa1bfa41" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
                 <!-- End of nodes -->
             </children>
         </node>

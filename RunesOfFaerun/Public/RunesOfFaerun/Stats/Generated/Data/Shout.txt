@@ -25,3 +25,11 @@ new entry "Shout_ROF_Summon_Nurse"
 		data "DisplayName" "h39e131095bbb4f798c4148ef1933b5b05gcd"
 		data "Description" "h9917a7a4ff2f40538f68255de074496f8205"
 
+new entry "Shout_ROF_Summon_Badger"
+	type "SpellData"
+		data "SpellType" "Shout"
+	using "Shout__WildMagic"
+		data "SpellProperties" "Summon(c0369b2e-f495-4831-8e10-9e16ac7b2261,Permanent,,,'ROFBadgerStack',UNSUMMON_ABLE,SHADOWCURSE_SUMMON_CHECK)"
+		data "DisplayName" "h99fe28c4bd2d464391bf18d829295d40ee66"
+		data "Description" "hee42ce5b03964c05a282f86b34431e0d9e41"
+

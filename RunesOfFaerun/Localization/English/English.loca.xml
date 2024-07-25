@@ -31,4 +31,11 @@
     <!-- Summon nurse spell -->
     <content contentuid="h9917a7a4ff2f40538f68255de074496f8205" version="1">Summons a dreadful nurse, but at what cost?</content>
     <content contentuid="h38d5c061048a41049088b5985ed20c300g6b" version="1">Summon Dreadful Nurse</content>
+
+    <!-- Giant Badger -->
+    <content contentuid="h4ef8e19c9d904c65a219b3f43aec83089bcb" version="1">Giant Badger</content>
+    <content contentuid="h3d21d126113e4d57a6a35407938d284e15c5" version="1">Scarred Rune</content>
+    <content contentuid="he4537cd0bf1a4744ba3b4ca2632b3b5f033d" version="1">The rune is heavily scarred by a massive claw</content>
+    <content contentuid="h99fe28c4bd2d464391bf18d829295d40ee66" version="1">Summon Giant Badger</content>
+    <content contentuid="hee42ce5b03964c05a282f86b34431e0d9e41" version="1">Summons a giant badger to defend you</content>
 </contentList>

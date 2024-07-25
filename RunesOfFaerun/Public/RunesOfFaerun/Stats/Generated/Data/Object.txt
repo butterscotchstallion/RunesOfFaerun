@@ -25,3 +25,9 @@ new entry "OBJ_BLOODSTAINED_RUNE"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "a3892610-78e3-4adf-a5d4-e55105cef4a7"
+
+new entry "OBJ_SCARRED_RUNE"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "8c0b2f86-c4d6-4e64-aa12-2e6da8bfcc04"
+

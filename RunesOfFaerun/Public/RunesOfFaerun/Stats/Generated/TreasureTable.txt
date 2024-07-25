@@ -1,56 +1,94 @@
+// Rune of Bone Armor
 new treasuretable "CHA_Exterior_Bandit_Leader"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 
 new treasuretable "_Valuables_Generic"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 
 new treasuretable "CHA_Container_Abandoned"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
 new treasuretable "DIGGING_CHESTS"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
 new treasuretable "Exploration_Major_Scroll"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
 new treasuretable "GOB_DrowCommander"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_MagicItems_Unique"
 CanMerge 1
 new subtable "1,1"
-object category "I_ROF_Rune_of_Slimy_Companionship",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_ROF_Rune_of_Bone_Armor",1,0,0,0,0,0,0,0
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
+// Bloodstained Rune
 new treasuretable "GOB_ZhentQuarters_Chest_Gold"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "HAG_AbandonedCamp_Backpack_Wizard"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_Circus_KoboldMerchant_Magic"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "SHA_Orthon_Chest"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
+// Scarred rune
+new treasuretable "PLA_ZhentHideout_Container_Illicit"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_MimicReward"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_Duergar_Raft_Chest"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_KuoToa_Belongings"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
 
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
