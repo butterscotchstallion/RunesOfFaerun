@@ -1,32 +1,9 @@
-local sh = {}
-
 --[[
-Finds the index of a spell by name in the spell container,
-so it can be changed
+
+Spell Handler
+
 --]]
----@param spellName string
----@param spellContainer table
----@return number | false
-local function GetIndexOfSpellInSpellContainer(spellName, spellContainer)
-    local spells = spellContainer.Spells
-
-    if spells and #spells > 0 then
-        for index, spell in pairs(spells) do
-            if spell.SpellId then
-                if spell.SpellId.OriginatorPrototype == spellName then
-                    return index
-                end
-            else
-                RunesOfFaerun.Critical('Spell doesnt have a SpellId?')
-                break
-            end
-        end
-    else
-        RunesOfFaerun.Critical('Empty spell container?!')
-    end
-
-    return false
-end
+local sh = {}
 
 ---@param entity table
 ---@param spellName string
@@ -68,21 +45,18 @@ end
 ---@param entity table
 ---@param spellName string
 local function RemoveSpellFromSpellBook(entity, spellName)
-    if entity.SpellBook and entity.SpellBook.Spells then
+    if entity.SpellBook then
         local spellExists = false
-        local filteredSpells = {}
-        for _, spell in pairs(entity.SpellBook.Spells) do
+        for i, spell in pairs(entity.SpellBook.Spells) do
             if spell.Id.OriginatorPrototype == spellName then
+                entity.SpellBook.Spells[i] = nil
                 spellExists = true
-            else
-                table.insert(filteredSpells, spell)
+                break
             end
         end
 
         if spellExists then
-            entity.SpellBook.Spells = filteredSpells
             entity:Replicate('SpellBook')
-
             RunesOfFaerun.Info('Found spell "' .. spellName .. '" and replicated!')
         else
             RunesOfFaerun.Critical('Spell "' .. spellName .. '" does not exist in SpellBook')
@@ -105,51 +79,6 @@ local function RemoveSpellFromSpellContainer(entity, spellName)
 end
 
 --[[
-- Find spell that was casted
-- Set the origin to Osiris to allow it to be
-removed by Osi.RemoveSpell
-- Osi.RemoveSpell
-
-Test with:
-
-!RemoveSpell uuid spellName
---]]
----@param spellName string
----@param casterGUID string
-local function RemoveSpellFromCaster(spellName, casterGUID)
-    local entity = Ext.Entity.Get(casterGUID)
-
-    if entity then
-        local spellContainer = entity.SpellContainer
-
-        if spellContainer then
-            RunesOfFaerun.Info('Searching for spells in entity "' .. casterGUID .. '"')
-
-            local spellIndex = GetIndexOfSpellInSpellContainer(spellName, spellContainer)
-
-            if spellIndex ~= false and spellIndex then
-                --Sets the source of the spell as Osiris, allowing it to be removed by Osi.RemoveSpell
-                spellContainer.Spells[spellIndex].SpellId.SourceType = 'Osiris'
-                entity:Replicate('SpellContainer')
-
-                RunesOfFaerun.Info('Successfully changed spell source of ' .. spellName .. '!')
-
-                Ext.OnNextTick(function()
-                    Osi.RemoveSpell(casterGUID, spellName, 1)
-                    RunesOfFaerun.Info('Called RemoveSpell on ' .. casterGUID)
-                end)
-            else
-                RunesOfFaerun.Critical('Failed to find spell index of spell "' .. spellName .. '"!')
-            end
-        else
-            RunesOfFaerun.Critical('Entity ' .. casterGUID .. ' did not have a spell container???')
-        end
-    else
-        RunesOfFaerun.Critical('Could not get entity of caster: ' .. casterGUID)
-    end
-end
-
---[[
 - Remove Spell from caster
 - Add the spell to the target
 --]]
@@ -163,6 +92,5 @@ sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer
 sh.RemoveSpellFromSpellBook = RemoveSpellFromSpellBook
 sh.RemoveSpellFromAddedSpells = RemoveSpellFromAddedSpells
 sh.OnSpellStealCasted = OnSpellStealCasted
-sh.RemoveSpellFromCaster = RemoveSpellFromCaster
 
 RunesOfFaerun.SpellHandler = sh

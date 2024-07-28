@@ -29,13 +29,22 @@ local commands = {
         ---@param spellName string
         func = function(cmd, uuid, spellName)
             if uuid and spellName then
-                --RunesOfFaerun.SpellHandler.RemoveSpellFromCaster(spellName, uuid)
                 local entity = Ext.Entity.Get(uuid)
-                RunesOfFaerun.SpellHandler.RemoveSpellFromAddedSpells(entity, spellName)
+                for _, interrupt in pairs(entity.InterruptContainer.Interrupts) do
+                    _D(interrupt:GetAllComponents())
+                end
+                --RunesOfFaerun.SpellHandler.RemoveSpellFromAddedSpells(entity, spellName)
                 RunesOfFaerun.SpellHandler.RemoveSpellFromSpellBook(entity, spellName)
             else
                 RunesOfFaerun.Critical('Invalid arguments')
             end
+        end
+    },
+    {
+        name = 'SpawnHostileSpellSlinger',
+        params = '',
+        func = function()
+            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger()
         end
     }
 }
