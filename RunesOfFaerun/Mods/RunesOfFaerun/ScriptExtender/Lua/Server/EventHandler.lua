@@ -1,3 +1,10 @@
+--[[
+
+Event Handler
+
+--]]
+
+
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
 end
@@ -11,5 +18,10 @@ local function OnEnteredLevel(templateName, rootGUID, level)
     end
 end
 
+local function OnUsingSpellOnTarget(caster, target, spell, spellType, spellElement, storyActionID)
+
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
+--Ext.Osiris.RegisterListener("UsingSpellOnTarget", 6, "after", OnUsingSpellOnTarget)

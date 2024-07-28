@@ -37,10 +37,17 @@ new entry "STATUS_ROF_BADGER_BITES"
 		data "Passives" "BrutalBite"
 		data "StatusPropertyFlags" "IgnoreResting"
 
-new entry "STATUS_MISTY_ESCAPE"
+new entry "STATUS_ROF_MISTY_ESCAPE"
 	type "StatusData"
 		data "Passives" "MistyEscape"
 		data "StatusPropertyFlags" "IgnoreResting"
+
+new entry "STATUS_ROF_AURA_OF_FEROCITY"
+	type "StatusData"
+	using "COL_ZEVLOR_LEVEL_8"
+		data "DisplayName" "hfa092a45fa9b4fb2a03cd358afe70d1208fg"
+		data "Description" "h5408e4d4becc4badb4e874cf4bbbe13a7a47"
+		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"
 
 // STATUS_ROF_BONE_ARMOR applies this spell
 new entry "STATUS_ROF_BONE_ARMOR_BUFF"
