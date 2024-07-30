@@ -917,6 +917,22 @@
                     </children>
                 </node>
 
+                <!-- Enemy caster for testing -->
+                <node id="GameObjects">
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e" />
+                    <attribute id="Icon" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e-EQP_Goblin_Scimitar_(Icon_Goblin_Female)" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="LevelOverride" type="int32" value="1" />
+                    <attribute id="MapKey" type="FixedString" value="be5650d4-e282-4ddd-aa0d-1b9411740302" />
+                    <attribute id="Name" type="LSString" value="ROF_Wizard_Tester" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="9629600b-2e80-4862-9ddb-1ae8e2ee824c" />
+                    <attribute id="Type" type="FixedString" value="character" />
+                    <attribute id="Stats" type="FixedString" value="ROF_Wizard_Tester" />
+                    <attribute id="Equipment" type="FixedString" value="EQP_ROF_Wizard_Tester" />
+                    <attribute id="ShowEquipmentVisuals" type="bool" value="True" />
+                    <children> </children>
+                </node>
+
                 <!-- End of nodes -->
             </children>
         </node>

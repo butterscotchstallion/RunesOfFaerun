@@ -2,3 +2,8 @@ new equipment "EQP_ROF_Dreadful_Nurse"
 add initialweaponset "Melee"
 add equipmentgroup
 add equipment entry "MAG_Bhaalist_Paralyzing_Dagger"
+
+new equipment "EQP_ROF_Wizard_Tester"
+add initialweaponset "Melee"
+add equipmentgroup
+add equipment entry "UNI_RobeOfSummer"

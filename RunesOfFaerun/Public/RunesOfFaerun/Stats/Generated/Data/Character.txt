@@ -16,5 +16,8 @@ new entry "ROF_Giant_Badger"
 		data "Weight" "100"
 		data "SoundSize" "Large"
 
-
+new entry "ROF_Wizard_Tester"
+	type "Character"
+	using "CRE_DaisyWisp"
+		data "Vitality" "200"
  

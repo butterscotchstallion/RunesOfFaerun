@@ -55,7 +55,7 @@ eh.HandleByGUID = function(rootGUID, instanceGUID)
     if companions[rootGUID] then
         eh.SetEntityLevelToHostLevel(instanceGUID)
     else
-        RunesOfFaerun.Info(rootGUID .. ' is not a known entity')
+        --RunesOfFaerun.Debug(rootGUID .. ' is not a known entity')
     end
 end
 
@@ -63,11 +63,11 @@ end
 local function SetCreatureHostile(creatureTplId)
     local evilFactionId = 'Evil_NPC_64321d50-d516-b1b2-cfac-2eb773de1ff6'
     Osi.SetFaction(creatureTplId, evilFactionId)
-    RunesOfFaerun.Info(string.format('Set hostile on %s', creatureTplId))
+    --RunesOfFaerun.Info(string.format('Set hostile on %s', creatureTplId))
 end
 
 eh.SpawnHostileSpellSlinger = function()
-    local uuid = 'e5f80c42-f6d1-4914-9fd6-685fb58c2574'
+    local uuid = 'be5650d4-e282-4ddd-aa0d-1b9411740302'
     local x, y, z = Osi.GetPosition(tostring(Osi.GetHostCharacter()))
     x = tonumber(x)
     if x and y and z then
@@ -77,7 +77,6 @@ eh.SpawnHostileSpellSlinger = function()
             RunesOfFaerun.Debug('Create successful: UUID = ' .. spawnUUID)
             Osi.RequestPing(x, y, z, spawnUUID, Osi.GetHostCharacter())
 
-            eh.SetEntityHP(spawnUUID, 100)
             SetCreatureHostile(spawnUUID)
             eh.SetEntityLevelToHostLevel(spawnUUID)
             local newSpell = "Projectile_FireBolt_NoRecharge"
