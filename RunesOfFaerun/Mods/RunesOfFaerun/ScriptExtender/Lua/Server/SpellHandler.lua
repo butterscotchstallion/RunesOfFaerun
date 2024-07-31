@@ -143,9 +143,9 @@ local function GetUnlockSpellBoost(unlockSpellName)
     )
     --]]
     local unlockBoost = ''
-    unlockBoost = unlockBoost .. "UnlockSpell('" .. unlockSpellName .. "');"
+    unlockBoost = unlockBoost .. "UnlockSpell(" .. unlockSpellName .. ");"
     unlockBoost = unlockBoost .. "UnlockSpellVariant("
-    unlockBoost = unlockBoost .. string.format("SpellId('%s')),", unlockSpellName)
+    unlockBoost = unlockBoost .. string.format("SpellId('%s'),", unlockSpellName)
     unlockBoost = unlockBoost .. 'ModifyUseCosts(Replace,SpellSlot,0,-1,SpellSlot)'
     unlockBoost = unlockBoost .. ")"
     return unlockBoost
@@ -165,11 +165,15 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
 
     if not status then
         status = Ext.Stats.Create(statusName, "StatusData", statusBase, persist)
-        status.SyncStat()
     end
 
-    status.Boosts = GetUnlockSpellBoost(unlockSpell)
-    status:Sync()
+    if status then
+        RunesOfFaerun.Debug('Syncing spell')
+        status.Boosts = GetUnlockSpellBoost(unlockSpell)
+        status:Sync()
+    else
+        RunesOfFaerun.Debug('Error creating status ' .. statusName)
+    end
 
     RunesOfFaerun.Debug('Unlock boost: ' .. status.Boosts)
 
@@ -190,7 +194,6 @@ local function OnSpellStealCasted(spellName, casterGUID, enemyGUID)
     --NOTE: seems like we shouldn't actually remove it, and the counterspell
     --addresses the detail of preventing it from being casted
     --AddSpell(casterGUID, spellName)
-    RunesOfFaerun.Debug('Spell steal casted, sending ' .. spellName)
     UnlockStolenSpell(casterGUID, spellName)
 end
 
