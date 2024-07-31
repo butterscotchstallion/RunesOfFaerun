@@ -919,6 +919,7 @@
 
                 <!-- Enemy caster for testing -->
                 <node id="GameObjects">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5a132a5eeaf74febb94d6c9ae8725a3e8787" version="1" />
                     <attribute id="CharacterVisualResourceID" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e" />
                     <attribute id="Icon" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e-EQP_Goblin_Scimitar_(Icon_Goblin_Female)" />
                     <attribute id="LevelName" type="FixedString" value="" />

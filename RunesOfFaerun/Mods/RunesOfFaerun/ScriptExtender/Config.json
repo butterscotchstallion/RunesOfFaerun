@@ -1,5 +1,5 @@
 {
-    "RequiredVersion": 16,
+    "RequiredVersion": 18,
     "ModTable": "RunesOfFaerun",
     "FeatureFlags": [
         "Lua"

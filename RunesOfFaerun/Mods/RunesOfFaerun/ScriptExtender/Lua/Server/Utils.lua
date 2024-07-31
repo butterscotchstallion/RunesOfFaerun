@@ -27,7 +27,17 @@ local function GetGUIDFromTpl(tplId)
     return string.sub(tplId, -36)
 end
 
+local function GetDisplayNameFromEntity(entity)
+    if entity.CustomName then
+        return entity.CustomName.Name
+    else
+        return "Unknown"
+    end
+end
+
 utils.SaveEntityToFile = SaveEntityToFile
 utils.PrintVersionMessage = PrintVersionMessage
 utils.GetGUIDFromTpl = GetGUIDFromTpl
+utils.GetDisplayNameFromEntity = GetDisplayNameFromEntity
+
 RunesOfFaerun.Utils = utils

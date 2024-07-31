@@ -4,6 +4,11 @@ Event Handler
 
 --]]
 local SPELL_STEAL_SUCCESS_SPELL_NAME = 'Target_SpellSteal_Success'
+local spellStealInfo = {
+    spell = nil,
+    enemy = nil,
+    interrupter = nil
+}
 
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
@@ -18,34 +23,15 @@ local function OnEnteredLevel(templateName, rootGUID, level)
     end
 end
 
----@param caster GUIDSTRING
+---@param caster string (template name)
 ---@param spell string
 ---@param spellType string
 ---@param spellElement string
 ---@param storyActionID integer
-local function OnCastedSpell(casterGUID, spellName, spellType, spellElement, storyActionID)
+local function OnCastedSpell(casterTpl, spellName, spellType, spellElement, storyActionID)
     if spellName == SPELL_STEAL_SUCCESS_SPELL_NAME then
-        --[[
-        RunesOfFaerun.Debug('Spell steal successful! Iterating interrupts')
-
-        local entity = Ext.Entity.Get(caster)
-        for _, interrupt in pairs(entity.InterruptContainer.Interrupts) do
-            local interruptComponent = interrupt:GetAllComponents()
-
-            if interruptComponent.InterruptData then
-                --field_18 = Interrupt spell name
-                --field_10 = Entity that casted the interrupt
-                if interruptComponent.InterruptData.field_18 == 'Target_ROF_Spell_Steal' then
-                    RunesOfFaerun.Debug('Found spell steal interrupt data, dumping...')
-                    _D(interruptComponent)
-                    --_D(interruptComponent.InterruptData.field_10:GetAllComponents())
-                    --RunesOfFaerun.Utils.SaveEntityToFile(caster .. '_interrupt_data',
-                    --    interruptComponent.InterruptData.field_10)
-                end
-            end
-        end
-        --]]
-        --RunesOfFaerun.SpellHandler.OnSpellStealCasted()
+        local casterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(casterTpl)
+        RunesOfFaerun.SpellHandler.OnSpellStealCasted(spellStealInfo.spell, casterGUID, spellStealInfo.enemy)
     end
 end
 
@@ -57,7 +43,8 @@ local function GetInterruptNameFromInterruptComponent(interruptComponent)
 end
 
 local function OnInterruptActionStateCreated(state)
-    --RunesOfFaerun.Utils.SaveEntityToFile("interrupt-state", state)
+    RunesOfFaerun.Debug('InterruptActionState created!')
+
     local interruptComponents = state:GetAllComponents()
     local actionState = interruptComponents.InterruptActionState
     local actions = actionState.Actions
@@ -67,10 +54,25 @@ local function OnInterruptActionStateCreated(state)
         if interruptName == "Target_ROF_Spell_Steal" then
             local event = actionState.Event.Event
             local interruptedSpell = event.Spell.OriginatorPrototype
+
             --Enemy caster
             local spellSourceComponents = actionState.Event.Source:GetAllComponents()
             local spellSourceUUID = spellSourceComponents.Uuid.EntityUuid
-            RunesOfFaerun.Debug(spellSourceUUID .. ' casted ' .. interruptedSpell .. ' and was interrupted')
+            local spellSourceName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(spellSourceComponents)
+            spellSourceName = spellSourceName .. ' (' .. spellSourceUUID .. ')'
+
+            --Interrupter
+            local interrupterComponents = actionState.Event.Target:GetAllComponents()
+            local interrupterUUID = interrupterComponents.Uuid.EntityUuid
+            local interrupterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(interruptComponents)
+            interrupterName = interrupterName .. '(' .. interrupterUUID .. ')'
+
+            --This is used when the counterspell succeeds
+            spellStealInfo.spell = interruptedSpell
+            spellStealInfo.enemy = spellSourceUUID
+
+            RunesOfFaerun.Debug(spellSourceName ..
+                ' casted ' .. interruptedSpell .. ' and was interrupted by ' .. interrupterName)
             break
         end
     end
