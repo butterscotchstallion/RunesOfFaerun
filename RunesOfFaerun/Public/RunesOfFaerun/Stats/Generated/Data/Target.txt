@@ -31,3 +31,10 @@ new entry "Target_ROF_Spell_Steal"
 		data "Description" "hcf76b83dcc544fe0b3dbb466862018b13ga2"
 		data "InterruptPrototype" "Interrupt_ROF_Spell_Steal"
 
+new entry "Projectile_ROF_Fireball"
+	type "SpellData"
+		data "SpellType" "Projectile"
+	using "Projectile_MAG_Legendary_Chromatic_Fireball"
+		data "SpellSuccess" "DealDamage(1,Fire,Magical)"
+		data "SpellFail" ""
+

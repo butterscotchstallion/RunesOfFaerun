@@ -9,9 +9,13 @@ local spellStealInfo = {
     enemy = nil,
     interrupter = nil
 }
+local spellStealSuccessCasted = false
 
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
+
+    --local entity = Ext.Entity.Get(Osi.GetHostCharacter())
+    --local ec = entity:GetAllComponents()
 end
 
 local function OnEnteredLevel(templateName, rootGUID, level)
@@ -30,8 +34,14 @@ end
 ---@param storyActionID integer
 local function OnCastedSpell(casterTpl, spellName, spellType, spellElement, storyActionID)
     if spellName == SPELL_STEAL_SUCCESS_SPELL_NAME then
+        spellStealSuccessCasted = true
         local casterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(casterTpl)
-        RunesOfFaerun.SpellHandler.OnSpellStealCasted(spellStealInfo.spell, casterGUID, spellStealInfo.enemy)
+
+        if spellStealInfo.spell and spellStealInfo.enemy then
+            RunesOfFaerun.SpellHandler.OnSpellStealCasted(spellStealInfo.spell, casterGUID, spellStealInfo.enemy)
+        else
+            RunesOfFaerun.Critical('Error obtaining spell and enemy!')
+        end
     end
 end
 
@@ -61,20 +71,35 @@ local function OnInterruptActionStateCreated(state)
             local spellSourceName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(spellSourceComponents)
             spellSourceName = spellSourceName .. ' (' .. spellSourceUUID .. ')'
 
-            --Interrupter
-            local interrupterComponents = actionState.Event.Target:GetAllComponents()
-            local interrupterUUID = interrupterComponents.Uuid.EntityUuid
-            local interrupterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(interruptComponents)
-            interrupterName = interrupterName .. '(' .. interrupterUUID .. ')'
+            RunesOfFaerun.Utils.SaveEntityToFile(spellSourceUUID, Ext.Entity.Get(spellSourceUUID))
 
             --This is used when the counterspell succeeds
             spellStealInfo.spell = interruptedSpell
             spellStealInfo.enemy = spellSourceUUID
 
-            RunesOfFaerun.Debug(spellSourceName ..
-                ' casted ' .. interruptedSpell .. ' and was interrupted by ' .. interrupterName)
-            break
+            --Interrupter
+            --Target will be NULL if it's a projectile like Fireball
+            if actionState.Event.Target then
+                local interrupterComponents = actionState.Event.Target:GetAllComponents()
+                local interrupterUUID = interrupterComponents.Uuid.EntityUuid
+                local interrupterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(interruptComponents)
+                interrupterName = interrupterName .. '(' .. interrupterUUID .. ')'
+
+                RunesOfFaerun.Debug(spellSourceName ..
+                    ' casted ' .. interruptedSpell .. ' and was interrupted by ' .. interrupterName)
+                break
+            else
+                RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
+            end
+        else
+            RunesOfFaerun.Debug('Interrupt ' .. interruptName .. ' casted')
         end
+    end
+end
+
+local function OnStatusApplied(object, status, causee, storyActionID)
+    if spellStealSuccessCasted then
+        RunesOfFaerun.Debug('Status applied: ' .. status .. ' to ' .. object)
     end
 end
 
@@ -82,3 +107,4 @@ Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
+--Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
