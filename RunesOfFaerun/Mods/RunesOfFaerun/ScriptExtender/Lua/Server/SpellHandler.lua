@@ -87,25 +87,6 @@ local function RemoveSpellFromEntity(guid, entity, spellName)
 
     RemoveSpellFromSpellBook(entity, spellName)
     RemoveSpellFromAddedSpells(entity, spellName)
-    --sh.addedSpells[guid] = nil
-end
-
----Apply unlock status with new spell for one turn
----@param guid GUIDSTRING
----@param spellName string
-local function AddSpell(guid, spellName)
-    Osi.AddSpell(guid, spellName, 1, 1)
-
-    if not sh.addedSpells[guid] then
-        sh.addedSpells[guid] = {}
-    end
-
-    --[[
-    This structure allows us to easily check if a spell
-    has been added and eliminates the possibility of
-    duplicates
-    --]]
-    sh.addedSpells[guid][spellName] = true
 end
 
 ---Delays a function call for a given number of ticks.
@@ -126,15 +107,24 @@ local function SP_DelayCallTicks(ticks, fn)
     end)
 end
 
+--Returns the boost to unlock the spell
 ---@param unlockSpellName string
 local function GetUnlockSpellBoost(unlockSpellName)
     --[[
+    Examples
+    ------------------------------------------------------------------
     data "Boosts" "UnlockSpellVariant(
         SpellId('Projectile_Jump'),
         ModifyUseCosts(Replace,BonusActionPoint,0,0,BonusActionPoint)
     )"
 
-    ModifyUseCosts(Replace, [new resource], [amount of new resource], [something about spell slots], [resource being replaced])
+    ModifyUseCosts(
+        Replace,
+        [new resource],
+        [amount of new resource],
+        [something about spell slots],
+        [resource being replaced]
+    )
 
     "UnlockSpellVariant(
         GreaterNecromancySpellFilter(),
@@ -208,73 +198,113 @@ end
         "SubResourceId" : 3 <--- level of spell slot
 }
 --]]
+---Replace this with map
 ---@param resourceUUID UUID
 ---@param useCosts table
-local function GetResourceInfoByResourceUUID(resourceUUID, useCosts)
+local function GetResourceInfoByResourceUUID(useCosts)
+    local resourceMap = {}
     for _, resource in pairs(useCosts) do
         if resource.Resources then
             for _, uuid in pairs(resource.Resources) do
-                if uuid == resourceUUID then
-                    return {
-                        amount = resource.Amount,
-                        level = resource.SubResourceId
-                    }
-                end
+                resourceMap[uuid] = {
+                    amount = resource.Amount,
+                    level = resource.SubResourceId
+                }
             end
         end
     end
-    RunesOfFaerun.Debug('Could not find resource with UUID ' .. resourceUUID)
+    return resourceMap
 end
 
 ---@param spellName string
-local function GetSpellUseCostsResourceUUIDs(spellName)
+local function GetSpellUseCostsResources(spellName)
     local cachedSpell = Ext.Stats.GetCachedSpell(spellName)
     if cachedSpell then
         local cachedSpellUseCosts = cachedSpell.UseCosts
-        local resourceUUIDs = {}
+        local resourceMap = GetResourceInfoByResourceUUID(cachedSpellUseCosts)
+        local spellCosts = {}
 
         for _, resourceInfo in pairs(cachedSpellUseCosts) do
             if resourceInfo.Resources then
                 for _, resourceUUID in pairs(resourceInfo.Resources) do
                     local staticActionResources = Ext.StaticData.Get(resourceUUID, "ActionResource")
+
                     --We only want spell resources here
                     if staticActionResources and staticActionResources.IsSpellResource then
-                        RunesOfFaerun.Debug('Found spell resource ' .. staticActionResources.Name)
-
-                        --Refactor me to store amount/level
-                        table.insert(resourceUUIDs, staticActionResources.ResourceUUID)
+                        spellCosts[resourceUUID] = resourceMap[resourceUUID]
                     end
                 end
             else
                 RunesOfFaerun.Debug('No resources!')
             end
         end
-        return resourceUUIDs
+
+        --Sort so that spell slots come first, since those are most likely
+        --to be the resource used
+        table.sort(spellCosts, function(a, b) return a > b end)
+
+        return spellCosts
     else
         RunesOfFaerun.Debug('Cached spell not found: ' .. spellName)
     end
 end
 
---Reduces spell slots based on the use cost of the spell that was casted
---Get resource UUIDs based on spell and modify the first one we find on the
---entity's action resources
----NOTE: also explore getting the preferred casting resource from the spellbook
----if the entity has the spell
+--[[
+Modifies spell slots based on the use cost of the spell that was casted
+
+1. Get resource UUIDs based on spell
+2. Modify the first one we find on the
+entity's action resources
+3. Replicate
+4. Print updated resources to confirm
+
+NOTE: also explore getting the preferred casting resource from the spellbook
+if the entity has the spell
+--]]
 local function ModifyEntitySpellSlots(spellName, entityGUID)
-    local resourceUUIDs = GetSpellUseCostsResourceUUIDs(spellName)
+    local spellCosts = GetSpellUseCostsResources(spellName)
     local entity = Ext.Entity.Get(entityGUID)
 
     if entity then
         local ec = entity:GetComponent('ActionResources')
-
-        if ec then
+        if ec and ec.Resources then
             local resources = ec.Resources
+            local updatedResource = false
 
-            for _, uuid in pairs(resourceUUIDs) do
-                if resources[uuid] then
-                    --Need amount here
+            --Iterate resources and modify the first one that has
+            --one of the resources in UseCosts
+            for resourceUUID, resourceInfo in pairs(spellCosts) do
+                if resources[resourceUUID] then
+                    RunesOfFaerun.Debug('Resource ' .. resourceUUID .. ' exists')
+
+                    for _, resource in pairs(resources[resourceUUID]) do
+                        if resource.ResourceUUID == resourceUUID and resource.Level == resourceInfo.level then
+                            local oldResourceValue = resource.Amount
+                            local newResourceValue = math.abs(oldResourceValue - resourceInfo.amount)
+                            resource.Amount = newResourceValue
+                            entity:Replicate('ActionResources')
+
+                            RunesOfFaerun.Debug(
+                                string.format('Changed resource %s (%s) from %s to %s',
+                                    resource.ResourceUUID,
+                                    resource.Level,
+                                    oldResourceValue,
+                                    newResourceValue
+                                )
+                            )
+                            updatedResource = true
+                            break
+                        end
+                    end
+                end
+
+                if updatedResource then
                     break
                 end
+            end
+
+            if not updatedResource then
+                RunesOfFaerun.Debug('Could not find resource on entity!')
             end
         else
             RunesOfFaerun.Critical('Could not get action resources for ' .. entityGUID)
@@ -299,22 +329,6 @@ local function OnSpellStealCasted(spellName, casterGUID, enemyGUID)
     ModifyEntitySpellSlots(spellName, enemyGUID)
 end
 
---[[
-Removes any spells that were stolen after each turn has ended
---]]
-local function RemoveStolenSpells(guid)
-    if sh.addedSpells[guid] then
-        RunesOfFaerun.Debug('Removing stolen spells for ' .. guid)
-
-        local entity = Ext.Entity.Get(guid)
-
-        for spell, _ in pairs(sh.addedSpells) do
-            RemoveSpellFromEntity(guid, entity, spell)
-        end
-    end
-end
-
---sh.RemoveStolenSpells = RemoveStolenSpells
 sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer
 sh.RemoveSpellFromSpellBook = RemoveSpellFromSpellBook
 sh.RemoveSpellFromAddedSpells = RemoveSpellFromAddedSpells
