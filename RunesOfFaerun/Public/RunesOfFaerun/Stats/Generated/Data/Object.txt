@@ -15,25 +15,38 @@ new entry "OBJ_RUNE_ROF_BONE_ARMOR"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "e5e39521-2b95-4b18-b07a-dbe5f1356576"
+		data "Rarity" "Rare"
 
 new entry "OBJ_RUNE_OF_SLIMY_COMPANIONSHIP"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "06fa8fd2-deb6-430e-8a47-6a73b487bbd6"
+		data "Rarity" "Legendary"
 
 new entry "OBJ_BLOODSTAINED_RUNE"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "a3892610-78e3-4adf-a5d4-e55105cef4a7"
+		data "Rarity" "Legendary"
 
 new entry "OBJ_SCARRED_RUNE"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "8c0b2f86-c4d6-4e64-aa12-2e6da8bfcc04"
+		data "Rarity" "Legendary"
 
 new entry "OBJ_HARNESSED_WEAVE_RUNE"
 	type "Object"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "5eca5168-c839-4a9f-8efe-6372d97727a8"
+		data "Rarity" "Legendary"
+
+new entry "OBJ_CRUSHING_FLIGHT_RUNE"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "6e8e7821-5a7c-4468-ab10-8be4ae8eb12a"
+		data "Rarity" "Legendary"
+
+
 
 

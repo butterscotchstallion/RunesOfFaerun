@@ -97,11 +97,24 @@ new entry "STATUS_ROF_STOLEN_SPELL_UNLOCK_TEST"
 		data "DisplayName" "hae8e8216290c4e3e96ea4bbf069e70d44669"
 		data "Description" "h14128bd9e57d460da839fa6a78e2e4f55781"
 
-new entry "STATUS_APPLY_SPELL_STEALER"
+// Template for statuses that just unlock a spell and are invisible
+new entry "STATUS_UNLOCK_SPELL_BASE"
 	type "StatusData"
 		data "StatusType" "BOOST"
-		data "Icon" "statIcons_WildMagic_TurnMagic"
+		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"
+		// Empty displayname/description
 		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484"
 		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b"
+		data "Icon" "statIcons_WildMagic_TurnMagic"
+
+new entry "STATUS_APPLY_SPELL_STEALER"
+	type "StatusData"
+	using "STATUS_UNLOCK_SPELL_BASE"
+		data "StatusType" "BOOST"
 		data "Passives" "ROF_SpellStealer"
-		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"
+
+new entry "STATUS_APPLY_CRUSHING_FLIGHT"
+	type "StatusData"
+	using "STATUS_UNLOCK_SPELL_BASE"
+		data "StatusType" "BOOST"
+		data "Passives" "ROF_CrushingFlight"

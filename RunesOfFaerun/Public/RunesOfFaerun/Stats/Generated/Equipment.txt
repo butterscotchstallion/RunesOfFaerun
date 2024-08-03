@@ -1,7 +1,7 @@
 new equipment "EQP_ROF_Dreadful_Nurse"
 add initialweaponset "Melee"
 add equipmentgroup
-add equipment entry "MAG_Bhaalist_Paralyzing_Dagger"
+add equipment entry "MAG_Psychic_MentalSundering_Dagger"
 
 new equipment "EQP_ROF_Wizard_Tester"
 add initialweaponset "Melee"
