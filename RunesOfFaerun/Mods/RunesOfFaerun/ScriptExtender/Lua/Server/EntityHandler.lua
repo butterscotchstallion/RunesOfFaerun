@@ -79,11 +79,10 @@ eh.SpawnHostileSpellSlinger = function()
             Osi.RequestPing(x, y, z, spawnUUID, Osi.GetHostCharacter())
 
             SetCreatureHostile(spawnUUID)
-            --eh.SetEntityLevelToHostLevel(spawnUUID)
+
             local newSpell = "Projectile_Fireball"
             Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
             RunesOfFaerun.Debug('Using ' .. newSpell)
-            --Osi.UseSpell(spawnUUID, "Target_Heal", Osi.GetHostCharacter())
         else
             RunesOfFaerun.Debug('Failed to create ' .. uuid)
         end

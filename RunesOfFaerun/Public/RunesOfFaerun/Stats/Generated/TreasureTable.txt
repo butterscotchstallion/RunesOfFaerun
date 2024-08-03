@@ -90,6 +90,21 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
 
+new treasuretable "UND_Duergar_Raft_Chest"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_KC_LavaElemental"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
+
+new treasuretable "UND_Spectator_Reward"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
+
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
 // GOB_ZhentQuarters_Chest_Gold

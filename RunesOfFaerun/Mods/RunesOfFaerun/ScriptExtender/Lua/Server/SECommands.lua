@@ -51,7 +51,7 @@ local commands = {
 
 local function RegisterCommands()
     for _, command in ipairs(commands) do
-        RunesOfFaerun.Debug(string.format('Registered command "%s"', command.name))
+        --RunesOfFaerun.Debug(string.format('Registered command "%s"', command.name))
         Ext.RegisterConsoleCommand(command.name, command.func)
     end
 end

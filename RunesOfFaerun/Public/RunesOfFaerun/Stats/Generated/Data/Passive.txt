@@ -1,0 +1,6 @@
+new entry "ROF_SpellStealer"
+	type "PassiveData"
+		data "DisplayName" "h9bff298bdddc4befb82b3ca350cef40bgce0"
+		data "Description" "h8f1a3759a1cd44268e89efdb3330298885gf"
+		data "Icon" "statIcons_WildMagic_TurnMagic"
+		data "Boosts" "UnlockSpell(Target_ROF_Spell_Steal)"

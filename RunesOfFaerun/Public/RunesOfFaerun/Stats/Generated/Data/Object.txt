@@ -31,3 +31,9 @@ new entry "OBJ_SCARRED_RUNE"
 	using "OBJ_RUNE_ROF_TPL_RUNE"
 		data "RootTemplate" "8c0b2f86-c4d6-4e64-aa12-2e6da8bfcc04"
 
+new entry "OBJ_HARNESSED_WEAVE_RUNE"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "5eca5168-c839-4a9f-8efe-6372d97727a8"
+
+

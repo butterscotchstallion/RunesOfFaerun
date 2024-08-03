@@ -173,15 +173,15 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
 
     --RunesOfFaerun.Debug('Unlock boost: ' .. status.Boosts)
 
-    SP_DelayCallTicks(1, function()
-        local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
-        if updatedStatus then
-            Osi.ApplyStatus(characterGUID, statusName, 1)
-            RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
-        else
-            RunesOfFaerun.Debug('Status doesnt exist yet?')
-        end
-    end)
+    --SP_DelayCallTicks(1, function()
+    local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
+    if updatedStatus then
+        Osi.ApplyStatus(characterGUID, statusName, 1)
+        RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
+    else
+        RunesOfFaerun.Debug('Status doesnt exist yet?')
+    end
+    --end)
 end
 
 --[[
@@ -304,7 +304,7 @@ local function ModifyEntitySpellSlots(spellName, entityGUID)
             end
 
             if not updatedResource then
-                RunesOfFaerun.Debug('Could not find resource on entity!')
+                RunesOfFaerun.Debug('Could not find/update resource on entity ' .. entityGUID .. '!')
             end
         else
             RunesOfFaerun.Critical('Could not get action resources for ' .. entityGUID)
