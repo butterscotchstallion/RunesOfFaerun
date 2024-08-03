@@ -53,8 +53,6 @@ local function GetInterruptNameFromInterruptComponent(interruptComponent)
 end
 
 local function OnInterruptActionStateCreated(state)
-    RunesOfFaerun.Debug('InterruptActionState created!')
-
     local interruptComponents = state:GetAllComponents()
     local actionState = interruptComponents.InterruptActionState
     local actions = actionState.Actions
@@ -91,15 +89,7 @@ local function OnInterruptActionStateCreated(state)
             else
                 RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
             end
-        else
-            RunesOfFaerun.Debug('Interrupt ' .. interruptName .. ' casted')
         end
-    end
-end
-
-local function OnStatusApplied(object, status, causee, storyActionID)
-    if spellStealSuccessCasted then
-        RunesOfFaerun.Debug('Status applied: ' .. status .. ' to ' .. object)
     end
 end
 
@@ -107,4 +97,3 @@ Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
---Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
