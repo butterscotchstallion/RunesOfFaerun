@@ -63,9 +63,9 @@ new entry "Target_ROF_Add_Crushing_Flight_Passive"
 		data "SpellType" "Target"
 		data "DisplayName" "h9bff298bdddc4befb82b3ca350cef40bgce0"
 		data "Description" "h8f1a3759a1cd44268e89efdb3330298885gf"
-		data "SpellProperties" "ApplyStatus(SELF, STATUS_APPLY_CRUSHING_FLIGHT, 100, -1)"
+		data "SpellProperties" "ApplyStatus(STATUS_APPLY_CRUSHING_FLIGHT, 100, -1)"
 		data "TargetConditions" "Tagged('ROF_GIANT_BADGER')"
-		data "TooltipStatusApply" "ApplyStatus(SELF, STATUS_APPLY_CRUSHING_FLIGHT, 100, -1)"
+		data "TooltipStatusApply" "ApplyStatus(STATUS_APPLY_CRUSHING_FLIGHT, 100, -1)"
 		
 
 

@@ -993,7 +993,7 @@
                                     <children>
                                         <node id="Attributes">
                                             <attribute id="Consume" type="bool" value="False" />
-                                            <attribute id="SkillID" type="FixedString" value="Target_ROF_Add_Crushing_Leap_Passive" />
+                                            <attribute id="SkillID" type="FixedString" value="Target_ROF_Add_Crushing_Flight_Passive" />
                                         </node>
                                     </children>
                                 </node>
