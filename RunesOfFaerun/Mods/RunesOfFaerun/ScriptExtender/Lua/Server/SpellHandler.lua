@@ -87,24 +87,7 @@ local function RemoveSpellFromEntity(guid, entity, spellName)
 
     RemoveSpellFromSpellBook(entity, spellName)
     RemoveSpellFromAddedSpells(entity, spellName)
-end
-
----Delays a function call for a given number of ticks.
----Server runs at a target of 30hz, so each tick is ~33ms and 30 ticks is ~1 second.
----This IS synced between server and client.
----Credit: Cephelos @ Larian
----@param ticks integer
----@param fn function
-local function SP_DelayCallTicks(ticks, fn)
-    local ticksPassed = 0
-    local eventID
-    eventID = Ext.Events.Tick:Subscribe(function()
-        ticksPassed = ticksPassed + 1
-        if ticksPassed >= ticks then
-            fn()
-            Ext.Events.Tick:Unsubscribe(eventID)
-        end
-    end)
+    RemoveSpellFromSpellBookPrepares(entity, spellName)
 end
 
 --Returns the boost to unlock the spell
@@ -171,9 +154,6 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
 
     status:Sync()
 
-    --RunesOfFaerun.Debug('Unlock boost: ' .. status.Boosts)
-
-    --SP_DelayCallTicks(1, function()
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
     if updatedStatus then
         Osi.ApplyStatus(characterGUID, statusName, 1)
@@ -181,7 +161,6 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
     else
         RunesOfFaerun.Debug('Status doesnt exist yet?')
     end
-    --end)
 end
 
 --[[
@@ -198,7 +177,6 @@ end
         "SubResourceId" : 3 <--- level of spell slot
 }
 --]]
----Replace this with map
 ---@param resourceUUID UUID
 ---@param useCosts table
 local function GetResourceInfoByResourceUUID(useCosts)
@@ -324,7 +302,6 @@ end
 local function OnSpellStealCasted(spellName, casterGUID, enemyGUID)
     --NOTE: seems like we shouldn't actually remove it, and the counterspell
     --addresses the detail of preventing it from being casted
-    --AddSpell(casterGUID, spellName)
     UnlockStolenSpell(casterGUID, spellName)
     ModifyEntitySpellSlots(spellName, enemyGUID)
 end

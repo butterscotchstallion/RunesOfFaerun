@@ -28,11 +28,13 @@ local function GetGUIDFromTpl(tplId)
 end
 
 local function GetDisplayNameFromEntity(entity)
-    if entity.CustomName then
-        return entity.CustomName.Name
-    else
-        return "Unknown"
+    local name = "Unknown"
+    if entity.ServerDisplayNameList and entity.ServerDisplayNameList.Names and entity.ServerDisplayNameList.Names[2] then
+        name = entity.ServerDisplayNameList.Names[2].Name
+    elseif entity and entity.Data and entity.Data.StatsId then
+        name = entity.Data.StatsId
     end
+    return name
 end
 
 utils.SaveEntityToFile = SaveEntityToFile
