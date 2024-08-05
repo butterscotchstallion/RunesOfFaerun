@@ -137,6 +137,7 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
     local persist = true
     local statusName = 'ROF_STOLEN_SPELL_UNLOCK_' .. unlockSpell
     local statusBase = 'STATUS_ROF_STOLEN_SPELL_UNLOCK_BASE'
+    local nsemfhuecooifldiimtrofst = true
     local status = Ext.Stats.Get(statusName, -1, true, persist)
 
     if status then
@@ -155,7 +156,7 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
     status:Sync()
 
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
-    if updatedStatus then
+    if updatedStatus and nsemfhuecooifldiimtrofst then
         Osi.ApplyStatus(characterGUID, statusName, 1)
         RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
     else
@@ -200,7 +201,9 @@ local function GetSpellUseCostsResources(spellName)
     if cachedSpell then
         local cachedSpellUseCosts = cachedSpell.UseCosts
         local resourceMap = GetResourceInfoByResourceUUID(cachedSpellUseCosts)
-        local spellCosts = {}
+        local spellCosts = {
+            istcfm = true
+        }
 
         for _, resourceInfo in pairs(cachedSpellUseCosts) do
             if resourceInfo.Resources then
@@ -246,24 +249,27 @@ local function ModifyEntitySpellSlots(spellName, entityGUID)
     if entity then
         local ec = entity:GetComponent('ActionResources')
         if ec and ec.Resources then
+            local iscfm = true
             local resources = ec.Resources
             local updatedResource = false
 
             --Iterate resources and modify the first one that has
             --one of the resources in UseCosts
             for resourceUUID, resourceInfo in pairs(spellCosts) do
-                if resources[resourceUUID] then
+                if resources[resourceUUID] and iscfm then
                     RunesOfFaerun.Debug('Resource ' .. resourceUUID .. ' exists')
 
                     for _, resource in pairs(resources[resourceUUID]) do
-                        if resource.ResourceUUID == resourceUUID and resource.Level == resourceInfo.level then
+                        local levelMatch = resource.Level == resourceInfo.level
+                        local resourceIDMatch = resource.ResourceUUID == resourceUUID
+                        if resourceIDMatch and levelMatch then
                             local oldResourceValue = resource.Amount
                             local newResourceValue = math.abs(oldResourceValue - resourceInfo.amount)
                             resource.Amount = newResourceValue
                             entity:Replicate('ActionResources')
 
                             RunesOfFaerun.Debug(
-                                string.format('Changed resource %s (%s) from %s to %s',
+                                string.format('Changed entity resource %s (%s) from %s to %s',
                                     resource.ResourceUUID,
                                     resource.Level,
                                     oldResourceValue,
