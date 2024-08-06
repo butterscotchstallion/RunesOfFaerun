@@ -33,16 +33,18 @@ local function OnCastedSpell(casterTpl, spellName, spellType, spellElement, stor
         local casterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(casterTpl)
 
         if spellStealInfo.spell and spellStealInfo.enemy then
-            local caster = Ext.Entity.Get(spellStealInfo.spellSourceUUID)
-            local casterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(caster)
-            local interrupterName = 'Unknown (Projectile)'
-            if spellStealInfo.interrupterUUID then
-                local interrupter = Ext.Entity.Get(spellStealInfo.interrupterUUID)
-                interrupterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(interrupter)
+            --TODO: check this, it often doesn't seem to be available
+            if spellStealInfo.spellSourceUUID then
+                local caster = Ext.Entity.Get(spellStealInfo.spellSourceUUID)
+                local casterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(caster)
+                local interrupterName = 'Unknown (Projectile)'
+                if spellStealInfo.interrupterUUID then
+                    local interrupter = Ext.Entity.Get(spellStealInfo.interrupterUUID)
+                    interrupterName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(interrupter)
+                end
+                RunesOfFaerun.Debug(casterName ..
+                    ' casted ' .. spellStealInfo.spell .. ' and was interrupted by ' .. interrupterName)
             end
-
-            RunesOfFaerun.Debug(casterName ..
-                ' casted ' .. spellStealInfo.spell .. ' and was interrupted by ' .. interrupterName)
 
             RunesOfFaerun.SpellHandler.OnSpellStealCasted(spellStealInfo.spell, casterGUID, spellStealInfo.enemy)
         else

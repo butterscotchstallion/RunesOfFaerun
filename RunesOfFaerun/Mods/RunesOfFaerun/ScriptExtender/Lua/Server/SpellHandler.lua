@@ -201,9 +201,7 @@ local function GetSpellUseCostsResources(spellName)
     if cachedSpell then
         local cachedSpellUseCosts = cachedSpell.UseCosts
         local resourceMap = GetResourceInfoByResourceUUID(cachedSpellUseCosts)
-        local spellCosts = {
-            istcfm = true
-        }
+        local spellCosts = {}
 
         for _, resourceInfo in pairs(cachedSpellUseCosts) do
             if resourceInfo.Resources then

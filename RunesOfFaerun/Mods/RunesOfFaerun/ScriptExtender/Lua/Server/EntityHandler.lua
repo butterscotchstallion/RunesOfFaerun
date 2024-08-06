@@ -71,7 +71,6 @@ eh.SpawnHostileSpellSlinger = function()
     local x, y, z = Osi.GetPosition(tostring(Osi.GetHostCharacter()))
     x = tonumber(x)
     if x and y and z then
-        x = x + 15
         RunesOfFaerun.Debug(string.format('Creating %s at position %s %s %s', uuid, x, y, z))
         local spawnUUID = Osi.CreateAt(uuid, x, y, z, 0, 1, '')
         if spawnUUID then
