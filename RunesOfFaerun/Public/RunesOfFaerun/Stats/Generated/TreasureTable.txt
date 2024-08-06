@@ -123,6 +123,21 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
 
+new treasuretable "OBJ_ROF_RUNE_POUCH_TT"
+CanMerge 1
+new subtable "-1"
+object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
+
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
 // GOB_ZhentQuarters_Chest_Gold

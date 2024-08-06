@@ -971,6 +971,85 @@
                     </children>
                 </node>
 
+                <!-- Rune pouch -->
+                <node id="GameObjects">
+                    <attribute id="CastShadow" type="bool" value="False" />
+                    <attribute id="Description" type="TranslatedString" handle="h02b65302bbf640a6a43dabd65cba1c4b8372" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hec70078fbe224315b3353c0c607c3805488e" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Pouch_Leather_Old_A" />
+                    <attribute id="InventoryType" type="uint8" value="11" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="74477542-5ad9-4907-9c1d-e9ef90b26b06" />
+                    <attribute id="Name" type="LSString" value="ROF_Rune_Pouch" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="ea8cc72a-e078-4ce7-bd63-14bcf1851f46" />
+                    <attribute id="PhysicsTemplate" type="FixedString" value="68e81f6a-8ba8-7a9e-9d5b-f6104c13903b" />
+                    <attribute id="RecieveDecal" type="bool" value="False" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_ROF_RUNE_POUCH" />
+                    <attribute id="Tooltip" type="uint8" value="2" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="fe8ff285-0cff-ee51-4513-9768ac646e46" />
+                    <attribute id="WalkThrough" type="bool" value="True" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="OBJ_ROF_RUNE_POUCH_TT" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Bounds">
+                            <children>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.448918" />
+                                    <attribute id="Max" type="fvec3" value="0.18665761 0.08201054 0.086278826" />
+                                    <attribute id="Min" type="fvec3" value="-0.1605246 -0.00021844357 -0.09821212" />
+                                    <attribute id="Radius" type="float" value="0.0960515" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="0" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.448918" />
+                                    <attribute id="Max" type="fvec3" value="0.18665761 0.08201054 0.086278826" />
+                                    <attribute id="Min" type="fvec3" value="-0.1605246 -0.00021844357 -0.09821212" />
+                                    <attribute id="Radius" type="float" value="0.192103" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="1" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.448918" />
+                                    <attribute id="Max" type="fvec3" value="0.18665761 0.08201054 0.086278826" />
+                                    <attribute id="Min" type="fvec3" value="-0.1605246 -0.00021844357 -0.09821212" />
+                                    <attribute id="Radius" type="float" value="0.192103" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="2" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnDestroyActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="26" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="ActivateSoundEvent" type="FixedString" value="3ea82655-5140-4287-9ab8-794559f182d3" />
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="PlayOnHUD" type="bool" value="False" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Tags">
+                            <children>
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="9b6f9531-c2d3-47b2-9153-861425152eb3" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
                 <!-- End of nodes -->
             </children>
         </node>

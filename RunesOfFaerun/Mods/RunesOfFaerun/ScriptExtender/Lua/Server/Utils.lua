@@ -37,6 +37,12 @@ local function GetDisplayNameFromEntity(entity)
     return name
 end
 
+local function SummonRunePouch()
+    RunesOfFaerun.Debug('Spawning Rune Pouch!')
+    Osi.TemplateAddTo("74477542-5ad9-4907-9c1d-e9ef90b26b06", Osi.GetHostCharacter(), 1, 1)
+end
+
+utils.SummonRunePouch = SummonRunePouch
 utils.SaveEntityToFile = SaveEntityToFile
 utils.PrintVersionMessage = PrintVersionMessage
 utils.GetGUIDFromTpl = GetGUIDFromTpl

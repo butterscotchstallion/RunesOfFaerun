@@ -41,10 +41,17 @@ local commands = {
         end
     },
     {
-        name = 'SpawnHostileSpellSlinger',
+        name = 'spawncaster',
         params = '',
         func = function()
             RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger()
+        end
+    },
+    {
+        name = 'spawnrunepouch',
+        params = '',
+        func = function()
+            RunesOfFaerun.Utils.SummonRunePouch()
         end
     }
 }

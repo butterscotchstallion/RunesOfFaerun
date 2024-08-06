@@ -47,6 +47,14 @@ new entry "OBJ_CRUSHING_FLIGHT_RUNE"
 		data "RootTemplate" "6e8e7821-5a7c-4468-ab10-8be4ae8eb12a"
 		data "Rarity" "Legendary"
 
+new entry "OBJ_ROF_RUNE_POUCH"
+	type "Object"
+	using "_Container"
+		data "RootTemplate" "74477542-5ad9-4907-9c1d-e9ef90b26b06"
+		data "ValueOverride" "5"
+		data "Weight" "10"
+		data "Rarity" "Legendary"
+
 
 
 
