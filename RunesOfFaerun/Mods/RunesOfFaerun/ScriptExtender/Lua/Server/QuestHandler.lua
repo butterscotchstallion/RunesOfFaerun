@@ -36,19 +36,15 @@ local function AddQuests()
     config.quests = config.quests or {}
 
     for questName, data in pairs(quests) do
-        if not config.quests[questName] then
-            config.quests[questName] = data
-            totalQuests = totalQuests + 1
-            RunesOfFaerun.Debug(string.format('Added quest "%s"', questName))
-        end
+        config.quests[questName] = data
+        totalQuests = totalQuests + 1
+        RunesOfFaerun.Debug(string.format('Added quest "%s"', questName))
     end
 
     if totalQuests > 0 then
         RunesOfFaerun.Debug(string.format('Added %s quests', totalQuests))
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     end
-
-    _D(RunesOfFaerun.ModVarsHandler.GetConfig().quests)
 end
 
 ---@param characterGUID string
@@ -99,6 +95,7 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     else
         RunesOfFaerun.Debug('Failed to find a character to update! Check characterGUID')
+        _D(quests)
     end
 end
 
