@@ -12,6 +12,7 @@ local spellStealSuccessCasted = false
 
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
+    RunesOfFaerun.QuestHandler.Initialize()
 end
 
 local function OnEnteredLevel(templateName, rootGUID, level)

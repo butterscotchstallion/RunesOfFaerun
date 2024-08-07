@@ -16,15 +16,15 @@ local function AddQuests()
     local quests = {
         GrymforgeDuergarVsGnomes = {
             characters = {
-                ['348c5bc8-c514-41d7-a997-c8e58814d765'] = {
+                ['S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765'] = {
                     name = 'Stickpit',
                     dead = false
                 },
-                ['472eba90-f5e8-48cb-ad55-2397e0013a2d'] = {
+                ['S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'] = {
                     name = 'Ward Pistle',
                     dead = false
                 },
-                ['986cb3be-bb31-4aa8-85c0-1f9a315760af'] = {
+                ['S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af'] = {
                     name = 'Ward Magmar',
                     dead = false
                 }
@@ -46,9 +46,9 @@ local function AddQuests()
     if totalQuests > 0 then
         RunesOfFaerun.Debug(string.format('Added %s quests', totalQuests))
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
-
-        _D(RunesOfFaerun.ModVarsHandler.GetConfig())
     end
+
+    _D(RunesOfFaerun.ModVarsHandler.GetConfig().quests)
 end
 
 ---@param characterGUID string
@@ -57,20 +57,39 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
     local updates = 0
     RunesOfFaerun.Debug('Updating quests...')
 
-    for _, questName in pairs(quests) do
-        for questName, data in pairs(quests[questName]) do
-            if data[characterGUID] then
-                quests[questName].data[characterGUID].dead = true
-                updates = updates + 1
-                RunesOfFaerun.Debug(
-                    string.format(
-                        'Set quest character %s [%s] as dead for %s',
-                        data[characterGUID].name,
-                        characterGUID,
-                        questName
-                    )
+    --[[
+    Example structure
+    {
+        GrymforgeDuergarVsGnomes = {
+            characters = {
+                ['S_UND_ElevatorGnome'] = {
+                    name = 'Stickpit',
+                    dead = false
+                },
+                ['S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'] = {
+                    name = 'Ward Pistle',
+                    dead = false
+                },
+                ['S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af'] = {
+                    name = 'Ward Magmar',
+                    dead = false
+                }
+            }
+        }
+    }
+    --]]
+    for questName, data in pairs(quests) do
+        if data.characters[characterGUID] then
+            quests[questName].characters[characterGUID].dead = true
+            updates = updates + 1
+            RunesOfFaerun.Debug(
+                string.format(
+                    'Set quest character %s [%s] as dead for %s',
+                    data.characters[characterGUID].name,
+                    characterGUID,
+                    questName
                 )
-            end
+            )
         end
     end
 
@@ -96,6 +115,7 @@ end
 local function ResetQuests()
     RunesOfFaerun.Debug('Resetting quests')
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
+    config = {}
     config.quests = {}
     RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     AddQuests()
@@ -105,7 +125,6 @@ qh.GetQuests = GetQuestData
 qh.GetQuestData = GetQuestData
 qh.OnDied = OnDied
 qh.ResetQuests = ResetQuests
-
-Initialize()
+qh.Initialize = Initialize
 
 RunesOfFaerun.QuestHandler = qh
