@@ -22,6 +22,7 @@ new entry "Interrupt_ROF_Spell_Steal"
 		data "ExtraDescription" ""
 		data "Success" "Counterspell();UseSpell(OBSERVER_SOURCE,Target_SpellSteal_Success,true,true,true)"
 		data "Failure" "UseSpell(OBSERVER_SOURCE,Target_Counterspell_Failure,true,true,true)"
+		// NYI
 		//data "Conditions" "not HasSpellCastBlocked(context.Observer) and IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and not HasStringInSpellRoll('WeaponAttack') and not AnyEntityIsItem() and not SpellId('Shout_END_Gale_ActivateNethereseOrb') and CounterspellCheck(context.Observer, context.Source) and (SpellLevelEqualTo(1) and SpellPowerLevelEqualTo(4))"
 
 new entry "Target_ROF_Spell_Steal"

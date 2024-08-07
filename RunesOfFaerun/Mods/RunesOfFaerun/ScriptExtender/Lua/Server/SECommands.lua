@@ -53,6 +53,13 @@ local commands = {
         func = function()
             RunesOfFaerun.Utils.SummonRunePouch()
         end
+    },
+    {
+        name = 'resetquests',
+        params = '',
+        func = function()
+            RunesOfFaerun.QuestHandler.ResetQuests()
+        end
     }
 }
 

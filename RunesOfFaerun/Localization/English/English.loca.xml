@@ -44,7 +44,8 @@
 
     <!-- Spell Steal -->
     <content contentuid="he93a366158be4c5fbff0cd73f42fb9630b9e" version="1">Spell Steal</content>
-    <content contentuid="hcf76b83dcc544fe0b3dbb466862018b13ga2" version="1">If a creature is casting a 1st level spell, you may use your reaction to redirect and siphon the spell. Any material components required for the spell are consumed from the creature casting it and that creature loses a spell slot like normal. If you have stolen a spell, you can cast it on your next turn without requiring materials, without having known the spell, and without using a spell slot. If you do not cast the spell by the end of your next turn, the spell fails with no effects. At Higher Levels. &lt;br&gt;The level of spells that can be stolen increases by 1 for every level of spell slot above 4th used.</content>
+    <content contentuid="hcf76b83dcc544fe0b3dbb466862018b13ga2" version="1">If a creature is casting a spell, you may use your reaction to redirect and siphon the spell. Spell slots required for the spell are consumed from the creature casting it and that creature loses a spell slot like normal. If you have stolen a spell, you can cast it on your next turn without requiring materials, without having known the spell, and without using a spell slot. You lose access to the spell after one turn.</content>
+    
     <content contentuid="h5a132a5eeaf74febb94d6c9ae8725a3e8787" version="1">Test Enemy Caster</content>
     <content contentuid="hefd6523c4aa2423db7bf5f0ed57de82079b7" version="1">Stolen Spell</content>
     <content contentuid="h14128bd9e57d460da839fa6a78e2e4f55781" version="1">You have temporarily gained access to an enemy's spell</content>
@@ -60,6 +61,6 @@
     <content contentuid="h3b0bc5cdd628431aaaba8dee2ca2666309f3" version="1">This is a Giant Badger</content>
     <content contentuid="h5d87a101a3cb468ab8b8e29dbe0cf48789af" version="1">Giant Badger</content>
 
-    <content contentuid="h02b65302bbf640a6a43dabd65cba1c4b8372" version="1">The pouch is bulging with magical runes, brimming with arcane power</content>
+    <content contentuid="h02b65302bbf640a6a43dabd65cba1c4b8372" version="1">The pouch is bulging with magical runes, and radiating arcane power</content>
     <content contentuid="hec70078fbe224315b3353c0c607c3805488e" version="1">Pouch of Many Runes</content>
 </contentList>

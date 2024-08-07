@@ -95,7 +95,12 @@ local function OnInterruptActionStateCreated(state)
     end
 end
 
+local function OnDied(characterGUID)
+    RunesOfFaerun.QuestHandler.OnDied(characterGUID)
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
+Ext.Osiris.RegisterListener("Died", 1, "after", OnDied)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
