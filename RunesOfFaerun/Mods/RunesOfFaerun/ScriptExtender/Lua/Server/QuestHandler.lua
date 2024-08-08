@@ -1,13 +1,20 @@
 local qh = {}
 
-local function GetQuests()
+local function GetIncompleteQuests()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
-    return config.quests or {}
+    local allQuests = config.quests or {}
+    local quests = {}
+    for questName, data in pairs(allQuests) do
+        if not data.state.completed then
+            quests[questName] = data
+        end
+    end
+    return quests
 end
 
 ---@param questID string
 local function GetQuestData(questID)
-    local quests = GetQuests()
+    local quests = GetIncompleteQuests()
     return quests[questID] or {}
 end
 
@@ -28,6 +35,9 @@ local function AddQuests()
                     name = 'Ward Magmar',
                     dead = false
                 }
+            },
+            state = {
+                completed = false
             }
         }
     }
@@ -47,9 +57,13 @@ local function AddQuests()
     end
 end
 
+--[[
+Updates quests and returns updated quests
+--]]
 ---@param characterGUID string
+---@return quests table
 local function UpdateQuestsOnCharacterDeath(characterGUID)
-    local quests = GetQuests()
+    local quests = GetIncompleteQuests()
     local updates = 0
     RunesOfFaerun.Debug('Updating quests...')
 
@@ -58,7 +72,7 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
     {
         GrymforgeDuergarVsGnomes = {
             characters = {
-                ['S_UND_ElevatorGnome'] = {
+                ['S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765'] = {
                     name = 'Stickpit',
                     dead = false
                 },
@@ -80,10 +94,11 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
             updates = updates + 1
             RunesOfFaerun.Debug(
                 string.format(
-                    'Set quest character %s [%s] as dead for %s',
+                    '[%s] %s marked as %sDEAD%s',
+                    questName,
                     data.characters[characterGUID].name,
-                    characterGUID,
-                    questName
+                    RunesOfFaerun.log.COLORS['red'],
+                    RunesOfFaerun.log.COLORS['end']
                 )
             )
         end
@@ -92,11 +107,14 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
     if updates > 0 then
         local config = RunesOfFaerun.ModVarsHandler.GetConfig()
         config.quests = quests
+        --UpdateConfig will print updated config
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     else
         RunesOfFaerun.Debug('Failed to find a character to update! Check characterGUID')
         _D(quests)
     end
+
+    return quests
 end
 
 local function OnDied(characterGUID)
@@ -112,13 +130,24 @@ end
 local function ResetQuests()
     RunesOfFaerun.Debug('Resetting quests')
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
-    config = {}
     config.quests = {}
     RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     AddQuests()
 end
 
-qh.GetQuests = GetQuestData
+--Called when combat has ended
+local function OnCombatEnded()
+    local quests = GetIncompleteQuests()
+
+    for questName, _ in pairs(quests) do
+        if RunesOfFaerun.Quests[questName] then
+            RunesOfFaerun.Quests[questName].OnCombatEnded(quests[questName])
+        end
+    end
+end
+
+qh.OnCombatEnded = OnCombatEnded
+qh.GetIncompleteQuests = GetIncompleteQuests
 qh.GetQuestData = GetQuestData
 qh.OnDied = OnDied
 qh.ResetQuests = ResetQuests

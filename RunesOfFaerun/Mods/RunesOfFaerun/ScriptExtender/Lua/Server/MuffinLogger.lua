@@ -1,12 +1,14 @@
-local muffinLogger = {}
-local logPrefix    = '[' .. MOD_NAME .. ']'
-local logLevel     = RunesOfFaerun['logLevel']
-local COLORS       = {
+local muffinLogger  = {}
+local logPrefix     = '[' .. MOD_NAME .. ']'
+local logLevel      = RunesOfFaerun['logLevel']
+local COLORS        = {
     ["magenta"] = "\x1b[1;35m",
     ["red"]     = "\x1b[1;31m",
     ["yellow"]  = "\x1b[1;33m",
     ["end"]     = ""
 }
+
+muffinLogger.COLORS = COLORS
 
 --The annotations for the print functions are NYI
 ---@param message string
@@ -50,3 +52,7 @@ RunesOfFaerun['Debug']    = muffinLogger.Debug
 RunesOfFaerun['Info']     = muffinLogger.Info
 RunesOfFaerun['Warn']     = muffinLogger.Warn
 RunesOfFaerun['Critical'] = muffinLogger.Critical
+Debug                     = muffinLogger.Debug
+Info                      = muffinLogger.Info
+Warn                      = muffinLogger.Warn
+Critical                  = muffinLogger.Critical
