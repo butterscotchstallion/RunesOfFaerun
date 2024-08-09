@@ -1,11 +1,13 @@
 local qh = {}
 
+QUEST_GIVER_GHOST = '8443f632-b498-4856-b74a-c24a51be9c34'
+
 local function GetIncompleteQuests()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     local allQuests = config.quests or {}
     local quests = {}
     for questName, data in pairs(allQuests) do
-        if not data.state.completed then
+        if not allQuests[questName].data.state.completed then
             quests[questName] = data
         end
     end
@@ -18,6 +20,11 @@ local function GetQuestData(questID)
     return quests[questID] or {}
 end
 
+--[[
+Most quests will be active by default, but followups and quests
+that can only be discovered through a certain path will be inactive
+by default.
+--]]
 local function AddQuests()
     local totalQuests = 0
     local quests = {
@@ -37,7 +44,8 @@ local function AddQuests()
                 }
             },
             state = {
-                completed = false
+                completed = false,
+                active = true
             }
         }
     }
@@ -146,6 +154,61 @@ local function OnCombatEnded()
     end
 end
 
+--[[
+ "RotationQuat" :
+    [
+        0.0,
+        0.84889668226242065,
+        0.0,
+        0.52855885028839111
+    ],
+    "Scale" :
+    [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "Translate" :
+    [
+        -604.72119140625,
+        5.2900390625,
+        378.54287719726562
+    ]
+]]
+local function RotateEntity(entityGUID)
+    local entity = Ext.Entity.Get(entityGUID)
+
+    if entity then
+        entity.Transform.Transform.RotationQuat = {
+            0.0,
+            0.84889668226242065,
+            0.0,
+            0.52855885028839111
+        }
+        entity:Replicate('Transform')
+        Debug('Updated entity rotation')
+    end
+end
+
+local function SpawnQuestGiver()
+    local x = -604.68005371094
+    local y = 5.2900390625
+    local z = 378.66064453125
+
+    Debug('Attempting to spawn quest giver')
+
+    local spawnUUID = Osi.CreateAt(QUEST_GIVER_GHOST, x, y, z, 0, 1, '')
+
+    if spawnUUID then
+        Info('Quest giver spawned')
+        Osi.ShowMapMarker(Osi.GetHostCharacter(), "3f082e30-2c2a-41ea-8162-087a37a7c5a3", 1)
+        RotateEntity(spawnUUID)
+    else
+        Critical('Failed to spawn quest giver!')
+    end
+end
+
+qh.SpawnQuestGiver = SpawnQuestGiver
 qh.OnCombatEnded = OnCombatEnded
 qh.GetIncompleteQuests = GetIncompleteQuests
 qh.GetQuestData = GetQuestData

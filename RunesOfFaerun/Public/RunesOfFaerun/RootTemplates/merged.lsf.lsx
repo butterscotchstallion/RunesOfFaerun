@@ -1050,6 +1050,181 @@
                     </children>
                 </node>
 
+                <!-- Quest Ghost -->
+                <node id="GameObjects">
+                    <attribute id="AnimationSetResourceID" type="FixedString" value="ae996c12-9f93-655f-6f04-f7bec8cef6eb" />
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="80aed5fc-bff1-1721-78ce-5036aaa2d179" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="he49cd8020b7f4261860e7805548cb408d77e" version="1" />
+                    <attribute id="Icon" type="FixedString" value="80aed5fc-bff1-1721-78ce-5036aaa2d179-_(Icon_Nightmare_Nurse)" />
+                    <attribute id="InventoryType" type="uint8" value="7" />
+                    <attribute id="LevelName" type="FixedString" value="WLD_Main_A" />
+                    <attribute id="LevelOverride" type="int32" value="8" />
+                    <attribute id="MapKey" type="FixedString" value="8443f632-b498-4856-b74a-c24a51be9c34" />
+                    <attribute id="Name" type="LSString" value="ROF_QuestGhost" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="ca08113f-5ed5-42b3-9a50-adf2c1fe6bac" />
+                    <attribute id="Race" type="guid" value="c5eb388a-1b23-413e-b8c2-debb885e829e" />
+                    <attribute id="Stats" type="FixedString" value="LOW_OskarsBeloved_Mummy" />
+                    <attribute id="Type" type="FixedString" value="character" />
+                    <children>
+                        <!--
+                        "RotationQuat" : 
+                            [
+                                0.0,
+                                0.84889668226242065,
+                                0.0,
+                                0.52855885028839111
+                            ],
+                            "Scale" : 
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ],
+                            "Translate" : 
+                            [
+                                -604.72119140625,
+                                5.2900390625,
+                                378.54287719726562
+                            ]
+                        -->
+                        <node id="Transform">
+                            <attribute id="Position" type="fvec3" value="-604.68005371094 5.2900390625 378.66064453125" />
+                            <attribute id="RotationQuat" type="fvec4" value="0 0.84889668226242065 0 0.52855885028839111" />
+                            <attribute id="Scale" type="float" value="1" />
+                        </node>
+                        <node id="LocomotionParams" />
+                        <node id="SkillList">
+                            <children>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_LOW_OskarsBeloved_WitheringTouch" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_LOW_OskarsBeloved_Mummy_Multiattack" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Skill">
+                                    <attribute id="AIFlags" type="uint16" value="0" />
+                                    <attribute id="FallbackStartRound" type="int32" value="-1" />
+                                    <attribute id="LearningStrategy" type="uint8" value="0" />
+                                    <attribute id="MinimumImpact" type="int32" value="0" />
+                                    <attribute id="OnlyCastOnSelf" type="bool" value="False" />
+                                    <attribute id="ScoreModifier" type="float" value="1" />
+                                    <attribute id="Skill" type="FixedString" value="Target_LOW_OskarsBeloved_Mummy_Glare" />
+                                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                                    <attribute id="StartRound" type="int32" value="0" />
+                                    <children>
+                                        <node id="SourceConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                        <node id="TargetConditions">
+                                            <attribute id="MaximumHealthPercentage" type="int32" value="100" />
+                                            <attribute id="MinimumHealthPercentage" type="int32" value="0" />
+                                            <children>
+                                                <node id="Tags" />
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="GHOST_FX" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="DISINTEGRATE_DEATH" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="STATUS_GHOSTLY_QUEST_GIVER" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!-- ROF_QuestMarker_GrymforgeDuergarVsGnomes -->
+                <node id="GameObjects">
+                    <attribute id="Flag" type="int32" value="1" />
+                    <attribute id="LevelName" type="FixedString" value="WLD_Main_A" />
+                    <attribute id="MapKey" type="FixedString" value="3f082e30-2c2a-41ea-8162-087a37a7c5a3" />
+                    <attribute id="Name" type="LSString" value="ROF_QuestMarker_GrymforgeDuergarVsGnomes" />
+                    <attribute id="OnlyCharacterEvents" type="bool" value="False" />
+                    <attribute id="OnlyOsirisEvents" type="bool" value="False" />
+                    <attribute id="TemplateName" type="FixedString" value="ROF_QuestMarker_GrymforgeDuergarVsGnomes" />
+                    <attribute id="Type" type="FixedString" value="trigger" />
+                    <children>
+                        <node id="FadeChildren" />
+                        <node id="LayerList">
+                            <children>
+                                <node id="Layers">
+                                    <children>
+                                        <node id="Object">
+                                            <attribute id="MapKey" type="FixedString" value="WLD_Main_A" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Transform">
+                            <attribute id="Position" type="fvec3" value="-604.27349853516 5.2900390625 378.18719482422" />
+                            <attribute id="RotationQuat" type="fvec4" value="0 0 0 1" />
+                            <attribute id="Scale" type="float" value="1" />
+                        </node>
+                    </children>
+                </node>
+
                 <!-- End of nodes -->
             </children>
         </node>

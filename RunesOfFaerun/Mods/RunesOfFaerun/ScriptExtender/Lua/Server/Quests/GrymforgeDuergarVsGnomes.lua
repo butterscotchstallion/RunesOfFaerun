@@ -1,15 +1,18 @@
 local handler = {}
 
+--Least likely, but maybe they did this in stealth or something
 local function HandleGnomeDead()
-
+    Info('Handling Gnome dead quest')
 end
 
+--Most common path
 local function HandleDuegarDead()
-
+    Info('Handling Duegar dead quest')
 end
 
+--Damn is this person a Dark Urge or what?
 local function HandleAllDead()
-
+    Info('Handling all dead quest')
 end
 
 --[[

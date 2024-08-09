@@ -60,6 +60,13 @@ local commands = {
         func = function()
             RunesOfFaerun.QuestHandler.ResetQuests()
         end
+    },
+    {
+        name = 'spawnquestgiver',
+        params = '',
+        func = function()
+            RunesOfFaerun.QuestHandler.SpawnQuestGiver()
+        end
     }
 }
 
