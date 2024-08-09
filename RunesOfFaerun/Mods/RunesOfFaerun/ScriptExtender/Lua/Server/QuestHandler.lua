@@ -159,18 +159,30 @@ local function ResetQuests()
     AddQuests()
 end
 
---Called when combat has ended
-local function OnCombatEnded()
+local function GetNamedQuestHandlerMap()
     local quests = GetIncompleteQuests()
-    local foundCombatEndedHandler = false
-
-    for questName, _ in pairs(quests) do
+    local questMap = {}
+    for questName, data in pairs(quests) do
         if RunesOfFaerun.Quests[questName] then
             foundCombatEndedHandler = true
-            RunesOfFaerun.Quests[questName].OnCombatEnded(quests[questName])
+            questMap[questName] = {
+                handler = RunesOfFaerun.Quests[questName],
+                quest = data
+            }
+        else
+            Debug(questName)
         end
     end
-    Critical('Could not find handler')
+    return questMap
+end
+
+--Called when combat has ended
+local function OnCombatEnded()
+    local questMap = GetNamedQuestHandlerMap()
+    for questName, quest in pairs(questMap) do
+        --Should we check if the quest is active or something first?
+        questMap[questName].handler.OnCombatEnded(questMap[questName].quest)
+    end
 end
 
 --[[
@@ -260,5 +272,6 @@ qh.ResetQuests = ResetQuests
 qh.Initialize = Initialize
 qh.ShowQuests = ShowQuests
 qh.ShowIncompleteQuests = ShowIncompleteQuests
+qh.GetNamedQuestHandlerMap = GetNamedQuestHandlerMap
 
 RunesOfFaerun.QuestHandler = qh

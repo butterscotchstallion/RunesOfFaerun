@@ -73,6 +73,8 @@ local function OnCombatEnded(quest)
         HandleGnomeDead()
     elseif duegarDead then
         HandleDuegarDead()
+    else
+        Debug('CombatEnded: no characters dead?')
     end
 end
 

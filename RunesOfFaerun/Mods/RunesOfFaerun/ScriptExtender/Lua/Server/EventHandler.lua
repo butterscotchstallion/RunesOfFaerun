@@ -104,7 +104,9 @@ local function OnDied(characterGUID)
 end
 
 local function OnCombatEnded(_)
-    RunesOfFaerun.QuestHandler.OnCombatEnded()
+    Ext.Timer.WaitFor(2000, function()
+        RunesOfFaerun.QuestHandler.OnCombatEnded()
+    end, nil)
 end
 
 local function OnStatusApplied(object, status, causee, storyActionID)

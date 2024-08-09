@@ -90,6 +90,13 @@ local commands = {
             Osi.Die('986cb3be-bb31-4aa8-85c0-1f9a315760af', 16, Osi.GetHostCharacter(), 1, 1)
             RunesOfFaerun.QuestHandler.OnCombatEnded()
         end
+    },
+    {
+        name = 'showquestmap',
+        params = '',
+        func = function()
+            _D(RunesOfFaerun.QuestHandler.GetNamedQuestHandlerMap())
+        end
     }
 }
 
