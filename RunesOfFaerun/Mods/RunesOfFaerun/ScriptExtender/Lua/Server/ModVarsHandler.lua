@@ -14,7 +14,7 @@ end
 local function UpdateConfig(config)
     Ext.Vars.GetModVariables(ModuleUUID).Config = config
     RunesOfFaerun.Debug('Configuration updated!')
-    _D(GetConfig())
+    --_D(GetConfig())
 end
 
 mvh.GetConfig = GetConfig

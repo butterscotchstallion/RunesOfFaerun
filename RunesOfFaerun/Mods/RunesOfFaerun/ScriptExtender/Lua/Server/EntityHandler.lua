@@ -88,4 +88,13 @@ eh.SpawnHostileSpellSlinger = function()
     end
 end
 
+eh.GetPartyMembersMap = function()
+    local members = {}
+    local players = Osi.DB_Players:Get(nil)
+    for _, player in pairs(players) do
+        members[player[1]] = true
+    end
+    return members
+end
+
 RunesOfFaerun.EntityHandler = eh

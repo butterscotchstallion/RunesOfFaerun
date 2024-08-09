@@ -1,16 +1,32 @@
 local handler = {}
 
+local function ShowQuestDialog()
+    local characterGUID = Osi.GetHostCharacter()
+    if not RunesOfFaerun.QuestHandler.state.isShowingDialog then
+        RunesOfFaerun.QuestHandler.state.isShowingDialog = true
+        local message = Osi.ResolveTranslatedString('hb0111faeg00cfg471fg8df3g8b16427eb06c')
+        Osi.OpenMessageBoxYesNo(characterGUID, message)
+    end
+end
+
 --Least likely, but maybe they did this in stealth or something
 local function HandleGnomeDead()
     Info('Handling Gnome dead quest')
 end
 
 --Most common path
+--It is possible to kill only one of the duegar
 local function HandleDuegarDead()
     Info('Handling Duegar dead quest')
+
+    local spawnUUID = RunesOfFaerun.QuestHandler.SpawnQuestGiver()
+
+    if spawnUUID then
+        ShowQuestDialog()
+    end
 end
 
---Damn is this person a Dark Urge or what?
+--Damn, is this person a Dark Urge or what?
 local function HandleAllDead()
     Info('Handling all dead quest')
 end

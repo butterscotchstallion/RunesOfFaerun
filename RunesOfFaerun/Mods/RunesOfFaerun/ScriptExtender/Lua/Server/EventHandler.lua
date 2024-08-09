@@ -64,34 +64,37 @@ end
 local function OnInterruptActionStateCreated(state)
     local interruptComponents = state:GetAllComponents()
     local actionState = interruptComponents.InterruptActionState
-    local actions = actionState.Actions
-    for _, action in pairs(actions) do
-        local interruptName = GetInterruptNameFromInterruptComponent(action.Interrupt:GetAllComponents())
 
-        if interruptName == "Target_ROF_Spell_Steal" then
-            local event = actionState.Event.Event
-            local interruptedSpell = event.Spell.OriginatorPrototype
+    if actionState then
+        local actions = actionState.Actions
+        for _, action in pairs(actions) do
+            local interruptName = GetInterruptNameFromInterruptComponent(action.Interrupt:GetAllComponents())
 
-            --Enemy caster
-            local spellSourceComponents = actionState.Event.Source:GetAllComponents()
-            local spellSourceUUID = spellSourceComponents.Uuid.EntityUuid
+            if interruptName == "Target_ROF_Spell_Steal" then
+                local event = actionState.Event.Event
+                local interruptedSpell = event.Spell.OriginatorPrototype
 
-            --This is used if/when the counterspell succeeds
-            spellStealInfo.spell = interruptedSpell
-            spellStealInfo.enemy = spellSourceUUID
-            spellStealInfo.interrupterUUID = nil
+                --Enemy caster
+                local spellSourceComponents = actionState.Event.Source:GetAllComponents()
+                local spellSourceUUID = spellSourceComponents.Uuid.EntityUuid
 
-            --Interrupter
-            --Target will be NULL if it's a projectile like Fireball
-            if actionState.Event.Target then
-                local interrupterComponents = actionState.Event.Target:GetAllComponents()
-                local interrupterUUID = interrupterComponents.Uuid.EntityUuid
-                spellStealInfo.interrupterUUID = interrupterUUID
-            else
-                RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
+                --This is used if/when the counterspell succeeds
+                spellStealInfo.spell = interruptedSpell
+                spellStealInfo.enemy = spellSourceUUID
+                spellStealInfo.interrupterUUID = nil
+
+                --Interrupter
+                --Target will be NULL if it's a projectile like Fireball
+                if actionState.Event.Target then
+                    local interrupterComponents = actionState.Event.Target:GetAllComponents()
+                    local interrupterUUID = interrupterComponents.Uuid.EntityUuid
+                    spellStealInfo.interrupterUUID = interrupterUUID
+                else
+                    RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
+                end
+
+                break
             end
-
-            break
         end
     end
 end
@@ -104,9 +107,19 @@ local function OnCombatEnded(_)
     RunesOfFaerun.QuestHandler.OnCombatEnded()
 end
 
+local function OnStatusApplied(object, status, causee, storyActionID)
+    --RunesOfFaerun.QuestHandler.CheckIfQuestAuraAffectsPartyMember(object)
+end
+
+local function OnMessageBoxYesNoClosed(character, message, result)
+    Debug(string.format('Message box closed: %s %s %s', character, message, result))
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
 Ext.Osiris.RegisterListener("Died", 1, "after", OnDied)
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", OnCombatEnded)
+Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
+Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

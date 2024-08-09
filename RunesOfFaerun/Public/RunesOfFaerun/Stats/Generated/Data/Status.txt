@@ -128,3 +128,11 @@ new entry "STATUS_GHOSTLY_QUEST_GIVER"
 		data "TooltipDamage" ""
 		data "TickFunctors" ""
 		data "StatusEffectOnTurn" ""
+
+new entry "STATUS_QUEST_GIVER_AURA"
+	type "StatusData"
+	using "SILENCED_AURA"
+		// EMPTY
+		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484"
+		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b"
+	//data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;"

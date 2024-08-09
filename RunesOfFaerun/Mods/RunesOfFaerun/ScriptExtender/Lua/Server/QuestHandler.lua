@@ -1,13 +1,24 @@
-local qh = {}
+local qh = {
+    state = {
+        questGiversActive = {
+
+        },
+        isShowingDialog = false
+    }
+}
 
 QUEST_GIVER_GHOST = '8443f632-b498-4856-b74a-c24a51be9c34'
 
-local function GetIncompleteQuests()
+local function GetAllQuests()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
-    local allQuests = config.quests or {}
+    return config.quests or {}
+end
+
+local function GetIncompleteQuests()
+    local allQuests = GetAllQuests()
     local quests = {}
     for questName, data in pairs(allQuests) do
-        if not allQuests[questName].data.state.completed then
+        if not data.state.completed then
             quests[questName] = data
         end
     end
@@ -119,7 +130,7 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     else
         RunesOfFaerun.Debug('Failed to find a character to update! Check characterGUID')
-        _D(quests)
+        --_D(quests)
     end
 
     return quests
@@ -128,6 +139,11 @@ end
 local function OnDied(characterGUID)
     RunesOfFaerun.Debug(characterGUID .. ' died')
     UpdateQuestsOnCharacterDeath(characterGUID)
+
+    --Probably won't happen but let's be prepared
+    if qh.state.questGiversActive[characterGUID] then
+        qh.state.questGiversActive[characterGUID] = false
+    end
 end
 
 local function Initialize()
@@ -146,12 +162,15 @@ end
 --Called when combat has ended
 local function OnCombatEnded()
     local quests = GetIncompleteQuests()
+    local foundCombatEndedHandler = false
 
     for questName, _ in pairs(quests) do
         if RunesOfFaerun.Quests[questName] then
+            foundCombatEndedHandler = true
             RunesOfFaerun.Quests[questName].OnCombatEnded(quests[questName])
         end
     end
+    Critical('Could not find handler')
 end
 
 --[[
@@ -201,13 +220,37 @@ local function SpawnQuestGiver()
 
     if spawnUUID then
         Info('Quest giver spawned')
+
+        qh.state.questGiversActive[spawnUUID] = true
+
         Osi.ShowMapMarker(Osi.GetHostCharacter(), "3f082e30-2c2a-41ea-8162-087a37a7c5a3", 1)
+
         RotateEntity(spawnUUID)
+
+        return spawnUUID
     else
         Critical('Failed to spawn quest giver!')
+        return nil
     end
 end
 
+local function CheckIfQuestAuraAffectsPartyMember(characterGUID)
+    local partyMemberMap = RunesOfFaerun.EntityHandler.GetPartyMembersMap()
+
+    if partyMemberMap[characterGUID] then
+        RunesOfFaerun.QuestHandler.ShowQuestDialog(characterGUID)
+    end
+end
+
+local function ShowQuests()
+    _D(GetAllQuests())
+end
+
+local function ShowIncompleteQuests()
+    _D(GetIncompleteQuests())
+end
+
+qh.CheckIfQuestAuraAffectsPartyMember = CheckIfQuestAuraAffectsPartyMember
 qh.SpawnQuestGiver = SpawnQuestGiver
 qh.OnCombatEnded = OnCombatEnded
 qh.GetIncompleteQuests = GetIncompleteQuests
@@ -215,5 +258,7 @@ qh.GetQuestData = GetQuestData
 qh.OnDied = OnDied
 qh.ResetQuests = ResetQuests
 qh.Initialize = Initialize
+qh.ShowQuests = ShowQuests
+qh.ShowIncompleteQuests = ShowIncompleteQuests
 
 RunesOfFaerun.QuestHandler = qh

@@ -67,6 +67,29 @@ local commands = {
         func = function()
             RunesOfFaerun.QuestHandler.SpawnQuestGiver()
         end
+    },
+    {
+        name = 'showquests',
+        params = '',
+        func = function()
+            RunesOfFaerun.QuestHandler.ShowQuests()
+        end
+    },
+    {
+        name = 'showincompletequests',
+        params = '',
+        func = function()
+            RunesOfFaerun.QuestHandler.ShowIncompleteQuests()
+        end
+    },
+    {
+        name = 'killgrymforgeduegar',
+        params = '',
+        func = function()
+            Osi.Die('472eba90-f5e8-48cb-ad55-2397e0013a2d', 16, Osi.GetHostCharacter(), 1, 1)
+            Osi.Die('986cb3be-bb31-4aa8-85c0-1f9a315760af', 16, Osi.GetHostCharacter(), 1, 1)
+            RunesOfFaerun.QuestHandler.OnCombatEnded()
+        end
     }
 }
 
