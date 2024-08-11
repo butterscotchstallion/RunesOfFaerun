@@ -35,6 +35,14 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_RUNE_ROF_BONE_ARMOR" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">
@@ -63,6 +71,14 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_RUNE_OF_SLIMY_COMPANIONSHIP" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">
@@ -102,6 +118,10 @@
                                 </node>
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="801bd716-0666-4dd5-b449-45ffa9a52a0f" />
+                                </node>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
                                 </node>
                             </children>
                         </node>
@@ -261,6 +281,14 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_BLOODSTAINED_RUNE" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">
@@ -650,6 +678,14 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_SCARRED_RUNE" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">
@@ -693,8 +729,13 @@
                     <children>
                         <node id="Tags">
                             <children>
+                                <!--Giant Badger - used for enhancement rune -->
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="cd166ffc-7057-4473-8496-176c18481a7a" />
+                                </node>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
                                 </node>
                             </children>
                         </node>
@@ -927,6 +968,14 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_HARNESSED_WEAVE_RUNE" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">
@@ -955,6 +1004,18 @@
                     <attribute id="Stats" type="FixedString" value="OBJ_CRUSHING_FLIGHT_RUNE" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                                <!--Enhancement Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="4a349b52-43b3-4999-83af-0272b284d0d9" />
+                                </node>
+                            </children>
+                        </node>
                         <node id="OnUsePeaceActions">
                             <children>
                                 <node id="Action">

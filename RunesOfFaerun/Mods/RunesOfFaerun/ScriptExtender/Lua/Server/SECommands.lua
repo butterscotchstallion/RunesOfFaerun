@@ -47,6 +47,7 @@ local commands = {
             RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger()
         end
     },
+    --[[
     {
         name = 'spawnrunepouch',
         params = '',
@@ -54,6 +55,7 @@ local commands = {
             RunesOfFaerun.Utils.SummonRunePouch()
         end
     },
+    --]]
     {
         name = 'resetquests',
         params = '',
@@ -63,9 +65,9 @@ local commands = {
     },
     {
         name = 'spawnquestgiver',
-        params = '',
-        func = function()
-            RunesOfFaerun.QuestHandler.SpawnQuestGiver()
+        params = 'uuid',
+        func = function(_, uuid)
+            RunesOfFaerun.QuestHandler.SpawnQuestGiver(uuid)
         end
     },
     {
@@ -96,6 +98,13 @@ local commands = {
         params = '',
         func = function()
             _D(RunesOfFaerun.QuestHandler.GetNamedQuestHandlerMap())
+        end
+    },
+    {
+        name = 'resetrunediscoveries',
+        params = '',
+        func = function()
+            RunesOfFaerun.HelpDialogHandler.ResetRuneDiscoveries()
         end
     }
 }

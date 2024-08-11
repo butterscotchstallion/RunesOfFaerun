@@ -117,6 +117,14 @@ local function OnMessageBoxYesNoClosed(character, message, result)
     Debug(string.format('Message box closed: %s %s %s', character, message, result))
 end
 
+local function OnTemplateAddedTo(objectTemplate, object2, inventoryHolder, addType)
+    local isRune = RunesOfFaerun.HelpDialogHandler.IsRune(object2)
+
+    if isRune then
+        RunesOfFaerun.HelpDialogHandler.OnRuneDiscovered(object2, inventoryHolder)
+    end
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
@@ -124,4 +132,5 @@ Ext.Osiris.RegisterListener("Dying", 1, "after", OnDying)
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", OnCombatEnded)
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
+Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

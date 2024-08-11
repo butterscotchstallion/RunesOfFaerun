@@ -1,11 +1,15 @@
 local utils = {}
 
 local function SaveEntityToFile(targetName, entity)
-    --%localappdata%\Larian Studios\Baldur's Gate 3\Script Extender
-    local filename = targetName .. ".json"
-    Ext.IO.SaveFile(filename, Ext.DumpExport(entity:GetAllComponents()))
-    RunesOfFaerun.Info('Saved target entity to %localappdata%\\Larian Studios\\Baldur\'s Gate 3\\Script Extender\\' ..
-        filename)
+    if entity then
+        --%localappdata%\Larian Studios\Baldur's Gate 3\Script Extender
+        local filename = targetName .. ".json"
+        Ext.IO.SaveFile(filename, Ext.DumpExport(entity:GetAllComponents()))
+        RunesOfFaerun.Info('Saved target entity to %localappdata%\\Larian Studios\\Baldur\'s Gate 3\\Script Extender\\' ..
+            filename)
+    else
+        Critical('Attempted to save entity file for nil entity!')
+    end
 end
 
 local function PrintVersionMessage()
@@ -27,6 +31,34 @@ local function GetGUIDFromTpl(tplId)
     return string.sub(tplId, -36)
 end
 
+local function GetEntityFromTpl(tplId)
+    local uuid = RunesOfFaerun.Utils.GetGUIDFromTpl(tplId)
+
+    if uuid and string.len(uuid) == 36 then
+        Debug('Getting entity: ' .. uuid)
+        return Ext.Entity.Get(uuid)
+    else
+        Critical('Could not get UUID from tpl ' .. tplId)
+    end
+end
+
+local function GetTagMapByTplId(tplId)
+    local entity = GetEntityFromTpl(tplId)
+
+    if entity and entity.Tag then
+        local tags = entity.Tag.Tags
+        local tagMap = {}
+
+        for _, tagUUID in pairs(tags) do
+            tagMap[tagUUID] = true
+        end
+
+        return tagMap
+    else
+        Critical('Could not get entity tags from tpl ' .. tplId)
+    end
+end
+
 local function GetDisplayNameFromEntity(entity)
     local name = "Unknown"
     if entity.ServerDisplayNameList and entity.ServerDisplayNameList.Names and entity.ServerDisplayNameList.Names[2] then
@@ -42,6 +74,7 @@ local function SummonRunePouch()
     Osi.TemplateAddTo("74477542-5ad9-4907-9c1d-e9ef90b26b06", Osi.GetHostCharacter(), 1, 1)
 end
 
+utils.GetTagMapByTplId = GetTagMapByTplId
 utils.SummonRunePouch = SummonRunePouch
 utils.SaveEntityToFile = SaveEntityToFile
 utils.PrintVersionMessage = PrintVersionMessage

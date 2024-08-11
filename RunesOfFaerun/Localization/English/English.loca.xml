@@ -68,4 +68,15 @@
 
     <!--GrymforgeDuergarVsGnomes dialog-->
     <content contentuid="hb0111faeg00cfg471fg8df3g8b16427eb06c" version="1">Hi there</content>
+
+    <!-- Rune tags -->
+    <content contentuid="h60cc08b275b94ca0a0a6bb35ff5b7e29gbb2" version="1">A magical rune from Runes of Faerun</content>
+    <content contentuid="hfa827b3ed5c54ad6b45819c023ae51dbcbca" version="1">A magical rune</content>
+    <content contentuid="he36cf237998248a18dab80566b8cdbfdfgg5" version="1">Enhancement Rune</content>
+    <content contentuid="h32111b11af4e46eba28ed27a111692329ec4" version="1">A powerful rune that augments other rune spells</content>
+
+    <!-- Rune help -->
+    <content contentuid="h36d9c75c51b04a74a311479f87fa04b3c802" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered a Rune! Right click on it to unlock its power.</content>
+    <!-- Enhancement rune -->
+    <content contentuid="h0e7339d361b64bd299f1c63f4909bd07006f" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered an Enhancement Rune. Enhancement runes improve other runes. Right click on it to unlock its power.</content>
 </contentList>

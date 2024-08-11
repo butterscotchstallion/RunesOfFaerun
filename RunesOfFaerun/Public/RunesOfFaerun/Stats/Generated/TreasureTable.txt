@@ -49,6 +49,11 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 
 // Bloodstained Rune
+ new treasuretable "TWN_Surgeon_Treasure"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+
 new treasuretable "GOB_ZhentQuarters_Chest_Gold"
 CanMerge 1
 new subtable "1,1"
