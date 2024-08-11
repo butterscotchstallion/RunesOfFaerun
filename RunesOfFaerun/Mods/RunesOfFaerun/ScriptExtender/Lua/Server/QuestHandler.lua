@@ -38,28 +38,11 @@ by default.
 --]]
 local function AddQuests()
     local totalQuests = 0
-    local quests = {
-        GrymforgeDuergarVsGnomes = {
-            characters = {
-                ['S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765'] = {
-                    name = 'Stickpit',
-                    dead = false
-                },
-                ['S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'] = {
-                    name = 'Ward Pistle',
-                    dead = false
-                },
-                ['S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af'] = {
-                    name = 'Ward Magmar',
-                    dead = false
-                }
-            },
-            state = {
-                completed = false,
-                active = true
-            }
-        }
-    }
+    local quests = {}
+
+    for questName, _ in pairs(RunesOfFaerun.Quests) do
+        quests[questName] = RunesOfFaerun.Quests[questName].GetQuestData()
+    end
 
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     config.quests = config.quests or {}
@@ -136,11 +119,12 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
     return quests
 end
 
-local function OnDied(characterGUID)
+local function OnDying(characterGUID)
     RunesOfFaerun.Debug(characterGUID .. ' died')
     UpdateQuestsOnCharacterDeath(characterGUID)
 
     --Probably won't happen but let's be prepared
+    --TODO: fix this
     if qh.state.questGiversActive[characterGUID] then
         qh.state.questGiversActive[characterGUID] = false
     end
@@ -267,7 +251,7 @@ qh.SpawnQuestGiver = SpawnQuestGiver
 qh.OnCombatEnded = OnCombatEnded
 qh.GetIncompleteQuests = GetIncompleteQuests
 qh.GetQuestData = GetQuestData
-qh.OnDied = OnDied
+qh.OnDying = OnDying
 qh.ResetQuests = ResetQuests
 qh.Initialize = Initialize
 qh.ShowQuests = ShowQuests

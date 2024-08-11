@@ -99,12 +99,12 @@ local function OnInterruptActionStateCreated(state)
     end
 end
 
-local function OnDied(characterGUID)
-    RunesOfFaerun.QuestHandler.OnDied(characterGUID)
+local function OnDying(characterGUID)
+    RunesOfFaerun.QuestHandler.OnDying(characterGUID)
 end
 
 local function OnCombatEnded(_)
-    Ext.Timer.WaitFor(2000, function()
+    Ext.Timer.WaitFor(4000, function()
         RunesOfFaerun.QuestHandler.OnCombatEnded()
     end, nil)
 end
@@ -120,7 +120,7 @@ end
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
-Ext.Osiris.RegisterListener("Died", 1, "after", OnDied)
+Ext.Osiris.RegisterListener("Dying", 1, "after", OnDying)
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", OnCombatEnded)
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)

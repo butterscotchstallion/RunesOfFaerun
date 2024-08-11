@@ -1,4 +1,31 @@
-local handler = {}
+local handler = {
+    NPC_GNOME_TPL      = 'S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765',
+    NPC_DUEGAR_001_TPL = 'S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af',
+    NPC_DUEGAR_002_TPL = 'S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'
+}
+
+local function GetQuestData()
+    return {
+        characters = {
+            [handler.NPC_GNOME_TPL] = {
+                name = 'Stickpit',
+                dead = false
+            },
+            [handler.NPC_DUEGAR_001_TPL] = {
+                name = 'Ward Pistle',
+                dead = false
+            },
+            [handler.NPC_DUEGAR_002_TPL] = {
+                name = 'Ward Magmar',
+                dead = false
+            }
+        },
+        state = {
+            completed = false,
+            active = true
+        }
+    }
+end
 
 local function ShowQuestDialog()
     local characterGUID = Osi.GetHostCharacter()
@@ -38,23 +65,6 @@ Handles quest possibilities
 local function OnCombatEnded(quest)
     Debug('[GrymforgeDuergarVsGnomes] Handling OnCombatEnded')
 
-    --[[
-    characters = {
-                ['S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765'] = {
-                    name = 'Stickpit',
-                    dead = false
-                },
-                ['S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'] = {
-                    name = 'Ward Pistle',
-                    dead = false
-                },
-                ['S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af'] = {
-                    name = 'Ward Magmar',
-                    dead = false
-                }
-            }
-    }
-    --]]
     local deadCharacters = {}
     for characterGUID, state in pairs(quest.characters) do
         if state.dead then
@@ -62,9 +72,9 @@ local function OnCombatEnded(quest)
         end
     end
 
-    local gnomeDead = deadCharacters['S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765']
-    local duegarDead = deadCharacters['S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af'] or
-        deadCharacters['S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d']
+    local gnomeDead = deadCharacters[handler.NPC_GNOME_TPL]
+    local duegarDead = deadCharacters[handler.NPC_DUEGAR_001_TPL] or
+        deadCharacters[handler.NPC_DUEGAR_002_TPL]
     local isAllDead = gnomeDead and duegarDead
 
     if isAllDead then
@@ -79,5 +89,6 @@ local function OnCombatEnded(quest)
 end
 
 handler.OnCombatEnded = OnCombatEnded
+handler.GetQuestData = GetQuestData
 
 RunesOfFaerun.Quests.GrymforgeDuergarVsGnomes = handler
