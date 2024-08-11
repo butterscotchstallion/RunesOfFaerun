@@ -7,7 +7,7 @@ local qh = {
     }
 }
 
-QUEST_GIVER_GHOST = '8443f632-b498-4856-b74a-c24a51be9c34'
+
 
 local function GetAllQuests()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
@@ -113,7 +113,6 @@ local function UpdateQuestsOnCharacterDeath(characterGUID)
         RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
     else
         RunesOfFaerun.Debug('Failed to find a character to update! Check characterGUID')
-        --_D(quests)
     end
 
     return quests
@@ -205,14 +204,15 @@ local function RotateEntity(entityGUID)
     end
 end
 
-local function SpawnQuestGiver()
+---@param npcUUID string
+local function SpawnQuestGiver(npcUUID)
     local x = -604.68005371094
     local y = 5.2900390625
     local z = 378.66064453125
 
     Debug('Attempting to spawn quest giver')
 
-    local spawnUUID = Osi.CreateAt(QUEST_GIVER_GHOST, x, y, z, 0, 1, '')
+    local spawnUUID = Osi.CreateAt(npcUUID, x, y, z, 0, 1, '')
 
     if spawnUUID then
         Info('Quest giver spawned')
@@ -221,7 +221,9 @@ local function SpawnQuestGiver()
 
         Osi.ShowMapMarker(Osi.GetHostCharacter(), "3f082e30-2c2a-41ea-8162-087a37a7c5a3", 1)
 
-        RotateEntity(spawnUUID)
+        --RotateEntity(spawnUUID)
+        --Turn toward player
+        Osi.SteerTo(spawnUUID, Osi.GetHostCharacter(), 1)
 
         return spawnUUID
     else
@@ -230,6 +232,7 @@ local function SpawnQuestGiver()
     end
 end
 
+--Hopefully will not need jank like this
 local function CheckIfQuestAuraAffectsPartyMember(characterGUID)
     local partyMemberMap = RunesOfFaerun.EntityHandler.GetPartyMembersMap()
 

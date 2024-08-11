@@ -1,7 +1,8 @@
 local handler = {
     NPC_GNOME_TPL      = 'S_UND_ElevatorGnome_348c5bc8-c514-41d7-a997-c8e58814d765',
     NPC_DUEGAR_001_TPL = 'S_UND_ElevatorGuard_001_986cb3be-bb31-4aa8-85c0-1f9a315760af',
-    NPC_DUEGAR_002_TPL = 'S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d'
+    NPC_DUEGAR_002_TPL = 'S_UND_ElevatorGuard_002_472eba90-f5e8-48cb-ad55-2397e0013a2d',
+    QUEST_GIVER_UUID   = '8443f632-b498-4856-b74a-c24a51be9c34',
 }
 
 local function GetQuestData()
@@ -46,7 +47,7 @@ end
 local function HandleDuegarDead()
     Info('Handling Duegar dead quest')
 
-    local spawnUUID = RunesOfFaerun.QuestHandler.SpawnQuestGiver()
+    local spawnUUID = RunesOfFaerun.QuestHandler.SpawnQuestGiver(handler.QUEST_GIVER_UUID)
 
     if spawnUUID then
         ShowQuestDialog()
