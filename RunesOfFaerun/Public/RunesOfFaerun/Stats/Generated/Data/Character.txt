@@ -7,6 +7,7 @@ new entry "ROF_Slime_Companion"
 	type "Character"
 	using "TWN_Ooze_Putrid"
 		data "ActionResources" "ActionPoint:1;BonusActionPoint:1;Movement:12;ReactionActionPoint:1;SpellSlot:4:3:3"
+		data "SoundSize" "Tiny"
 
 new entry "ROF_Giant_Badger"
 	type "Character"

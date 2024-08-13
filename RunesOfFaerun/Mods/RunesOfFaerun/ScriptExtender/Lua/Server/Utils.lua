@@ -35,7 +35,6 @@ local function GetEntityFromTpl(tplId)
     local uuid = RunesOfFaerun.Utils.GetGUIDFromTpl(tplId)
 
     if uuid and string.len(uuid) == 36 then
-        Debug('Getting entity: ' .. uuid)
         return Ext.Entity.Get(uuid)
     else
         Critical('Could not get UUID from tpl ' .. tplId)

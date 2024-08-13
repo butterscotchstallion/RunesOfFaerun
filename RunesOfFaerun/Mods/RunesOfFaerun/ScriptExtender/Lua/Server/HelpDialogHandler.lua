@@ -28,7 +28,6 @@ end
 local function IsRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then
-        --All runes have this tag
         return tagMap[hdh.RUNE_TAG]
     end
 end
@@ -36,7 +35,6 @@ end
 local function IsEnhancementRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then
-        --All runes have this tag
         return tagMap[hdh.ENHANCEMENT_RUNE_TAG]
     end
 end
@@ -92,9 +90,8 @@ local function OnRuneDiscovered(tplId, inventoryHolder)
             ShowRuneHelp(inventoryHolder)
             hdh.hasDiscoveredRune = true
         end
+        SaveDiscoveryFlags()
     end
-
-    SaveDiscoveryFlags()
 end
 
 local function ResetRuneDiscoveries()
