@@ -356,10 +356,16 @@ local function GetRandomSpellNameFromSpellBook(characterGUID)
         end
 
         local attempts = 0
+        local maxAttempts = 49
         local randomSpell = nil
-        while randomSpell and not denySpellMap[randomSpell] do
+        while not denySpellMap[randomSpell] do
             randomSpell = spellNames[math.random(#spellNames)]
             attempts = attempts + 1
+
+            --This probably should never happen but let's be safe
+            if attempts >= maxAttempts then
+                return nil
+            end
         end
 
         Debug('Found random spell not in deny list in ' .. attempts .. ' attempts')
@@ -376,9 +382,14 @@ local function HandleAmnesia(characterGUID)
 
     local randomSpellName = GetRandomSpellNameFromSpellBook(characterGUID)
 
-    Debug('Found random spell ' .. randomSpellName)
+    if randomSpellName then
+        Debug('Found random spell ' .. randomSpellName)
+    else
+        Critical('Error getting random spell')
+    end
 end
 
+sh.HandleAmnesia = HandleAmnesia
 sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer
 sh.RemoveSpellFromSpellBook = RemoveSpellFromSpellBook
 sh.RemoveSpellFromAddedSpells = RemoveSpellFromAddedSpells
