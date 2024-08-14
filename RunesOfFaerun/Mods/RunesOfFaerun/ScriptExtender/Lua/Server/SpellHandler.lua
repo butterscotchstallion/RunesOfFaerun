@@ -310,6 +310,75 @@ local function OnSpellStealCasted(spellName, casterGUID, enemyGUID)
     ModifyEntitySpellSlots(spellName, enemyGUID)
 end
 
+--[[
+Don't choose randomly from these spells
+]]
+local function GetDenySpellMap()
+    return {
+        --Target_MainHandAttack = true,
+        --Projectile_MainHandAttack = true,
+        --Projectile_PiercingShot = true,
+        Projectile_Jump = true,
+        Target_Dip = true,
+        Shout_Hide = true,
+        Target_Shove = true,
+        Throw_Throw = true,
+        Throw_ImprovisedWeapon = true,
+        Shout_Dash = true,
+        Target_Help = true,
+        Shout_Disengage = true,
+        Target_DancingLights = true,
+        Shout_Dodge = true,
+        --Perform spells
+        Shout_Bard_Perform_Stargazing_Lyre = true,
+        Shout_Bard_Perform_ThePower_Lyre = true,
+        Shout_Bard_Perform_Lyre = true,
+        Shout_SCL_SpiderLyre_Perform = true,
+        --Mod spells
+        Teleport_All = true,
+        AE_Spell_Container = true,
+        Shout_Open_Mirror = true,
+        Shout_Open_Creation = true,
+        Target_Grapple = true,
+    }
+end
+
+--Finds a random spell in the spell book that isn't in the deny list
+---@param characterGUID GUIDSTRING
+local function GetRandomSpellNameFromSpellBook(characterGUID)
+    local entity = Ext.Entity.Get(characterGUID)
+    local denySpellMap = GetDenySpellMap()
+    local spellNames = {}
+
+    if entity.SpellBook then
+        for _, spell in pairs(entity.SpellBook.Spells) do
+            table.insert(spellNames, spell.Id.Prototype)
+        end
+
+        local attempts = 0
+        local randomSpell = nil
+        while randomSpell and not denySpellMap[randomSpell] do
+            randomSpell = spellNames[math.random(#spellNames)]
+            attempts = attempts + 1
+        end
+
+        Debug('Found random spell not in deny list in ' .. attempts .. ' attempts')
+
+        return randomSpell
+    else
+        RunesOfFaerun.Critical('Entity has no SpellBook')
+    end
+end
+
+---@param characterGUID GUIDSTRING
+local function HandleAmnesia(characterGUID)
+    Debug('Handling Amnesia on ' .. characterGUID)
+
+    local randomSpellName = GetRandomSpellNameFromSpellBook(characterGUID)
+
+    Debug('Found random spell ' .. randomSpellName)
+end
+
 sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer
 sh.RemoveSpellFromSpellBook = RemoveSpellFromSpellBook
 sh.RemoveSpellFromAddedSpells = RemoveSpellFromAddedSpells

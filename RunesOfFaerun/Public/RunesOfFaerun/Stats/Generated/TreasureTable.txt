@@ -12,6 +12,8 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 
 new treasuretable "CHA_Container_Abandoned"
 CanMerge 1
@@ -26,6 +28,8 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 
 new treasuretable "Exploration_Major_Scroll"
 CanMerge 1
@@ -33,6 +37,8 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 
 new treasuretable "GOB_DrowCommander"
 CanMerge 1
@@ -47,6 +53,8 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 
 // Bloodstained Rune
  new treasuretable "TWN_Surgeon_Treasure"
@@ -128,6 +136,13 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
 
+// Rune of Unsummoning
+new treasuretable "ST_MagicItems_Unique"
+CanMerge 1
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
+
+// Rune pouch
 new treasuretable "OBJ_ROF_RUNE_POUCH_TT"
 CanMerge 1
 new subtable "-1"
@@ -142,6 +157,8 @@ new subtable "-1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "-1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry

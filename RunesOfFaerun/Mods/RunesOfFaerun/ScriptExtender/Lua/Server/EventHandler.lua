@@ -65,6 +65,9 @@ local function OnInterruptActionStateCreated(state)
     local interruptComponents = state:GetAllComponents()
     local actionState = interruptComponents.InterruptActionState
 
+    --Debug('Interrupt action state created')
+    --RunesOfFaerun.Utils.SaveEntityToFile('interrupt-08-12', state)
+
     if actionState then
         local actions = actionState.Actions
         for _, action in pairs(actions) do
@@ -96,6 +99,9 @@ local function OnInterruptActionStateCreated(state)
                 break
             end
         end
+    else
+        Critical(
+            'InterruptActionState does not have expected structure! Spellsteal will not be able to acquire the interrupted spell :(')
     end
 end
 
@@ -111,6 +117,10 @@ end
 
 local function OnStatusApplied(object, status, causee, storyActionID)
     --RunesOfFaerun.QuestHandler.CheckIfQuestAuraAffectsPartyMember(object)
+
+    if status == 'ROF_AMNESIA' then
+        RunesOfFaerun.SpellHandler.HandleAmnesia(object)
+    end
 end
 
 local function OnMessageBoxYesNoClosed(character, message, result)

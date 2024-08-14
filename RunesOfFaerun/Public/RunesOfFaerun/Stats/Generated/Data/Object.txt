@@ -55,6 +55,13 @@ new entry "OBJ_ROF_RUNE_POUCH"
 		data "Weight" "10"
 		data "Rarity" "Legendary"
 
+new entry "OBJ_RUNE_ROF_UNSUMMONING"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "1c373036-15d2-4cbf-9779-b38cca590a4b"
+		data "Rarity" "Legendary"
+
+
 
 
 
