@@ -61,7 +61,8 @@ new entry "OBJ_RUNE_ROF_UNSUMMONING"
 		data "RootTemplate" "1c373036-15d2-4cbf-9779-b38cca590a4b"
 		data "Rarity" "Legendary"
 
-
-
-
-
+new entry "OBJ_RUNE_ROF_TEMPORARY_AMNESIA"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "dfda117d-598c-46bd-8a50-4df7c2ff53b6"
+		data "Rarity" "Legendary"

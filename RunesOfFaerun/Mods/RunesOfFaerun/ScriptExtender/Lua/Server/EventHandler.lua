@@ -115,14 +115,6 @@ local function OnCombatEnded(_)
     end, nil)
 end
 
-local function OnStatusApplied(object, status, causee, storyActionID)
-    --RunesOfFaerun.QuestHandler.CheckIfQuestAuraAffectsPartyMember(object)
-
-    if status == 'ROF_AMNESIA' then
-        RunesOfFaerun.SpellHandler.HandleAmnesia(object)
-    end
-end
-
 local function OnMessageBoxYesNoClosed(character, message, result)
     Debug(string.format('Message box closed: %s %s %s', character, message, result))
 end
@@ -135,12 +127,25 @@ local function OnTemplateAddedTo(objectTemplate, object2, inventoryHolder, addTy
     end
 end
 
+local function OnStatusApplied(object, status, _, _)
+    if status == 'STATUS_ROF_AMNESIA' then
+        RunesOfFaerun.SpellHandler.HandleAmnesiaApplied(object)
+    end
+end
+
+local function OnStatusRemoved(object, status, _, _)
+    if status == 'STATUS_ROF_AMNESIA' then
+        RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
+    end
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
 Ext.Osiris.RegisterListener("Dying", 1, "after", OnDying)
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", OnCombatEnded)
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
+Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

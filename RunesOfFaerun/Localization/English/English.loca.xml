@@ -81,4 +81,19 @@
     <content contentuid="h0e7339d361b64bd299f1c63f4909bd07006f" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered an Enhancement Rune. Enhancement runes improve other runes. Right click on it to unlock its power.</content>
     
     <content contentuid="h0d14f277b0e043d1b44e86676052cf17afd1" version="1">Runes of Faerun summoned creature</content>
+    <content contentuid="hcf26b005d384472c8131f971c263a60c6g5b" version="1">Dismiss targeted summon</content>
+
+    <!--Rune of Unsummoning-->
+    <content contentuid="hc64bd8cc7fdd46eca61c1acf58536f098d3d" version="1">Grants the ability to dismiss runic summons</content>
+    <content contentuid="h3d7503f4776f4dca8c19686d433eccdc189e" version="1">Rune of Unsummoning</content>
+
+    <!-- Status/Target spell -->
+    <content contentuid="h7669884ba01e48239bb6e5c5dfb5969e7d1e" version="1">Temporary Amnesia</content>
+    <content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, causing them to forget a spell</content>
+
+    <!--Rune-->
+    <content contentuid="he0b8c9d169284df4bfeb7bceda0f89c0e8a7" version="1">The rune feels light in your hand, almost ethereal</content>
+    <content contentuid="h9b36a091869d40809d40f8c040c4db7cg0f0" version="1">Rune of Temporary Amnesia</content>
+
+    <content contentuid="h64c8a1a665d742358877b171bef307c25884" version="1">Grants the spell Temporary Amnesia</content>
 </contentList>

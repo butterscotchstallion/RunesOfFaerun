@@ -6,6 +6,9 @@ Spell Handler
 local sh = {
     addedSpells = {
         --GUID -> spell
+    },
+    amnesiaSpells = {
+
     }
 }
 
@@ -47,22 +50,24 @@ end
 
 ---@param entity table
 ---@param spellName string
+---@return spell The spell that was removed
 local function RemoveSpellFromSpellBook(entity, spellName)
     if entity.SpellBook then
-        local spellExists = false
+        local foundSpell = nil
         for i, spell in pairs(entity.SpellBook.Spells) do
             if spell.Id.OriginatorPrototype == spellName then
+                foundSpell = spell
                 entity.SpellBook.Spells[i] = nil
-                spellExists = true
                 break
             end
         end
 
-        if spellExists then
+        if foundSpell then
             entity:Replicate('SpellBook')
-            RunesOfFaerun.Info('Found spell "' .. spellName .. '" and replicated!')
+            RunesOfFaerun.Info('RemoveFromSpellBook: Found spell "' .. spellName .. '" and replicated!')
+            return foundSpell
         else
-            RunesOfFaerun.Critical('Spell "' .. spellName .. '" does not exist in SpellBook')
+            RunesOfFaerun.Critical('RemoveFromSpellBook: Spell "' .. spellName .. '" does not exist in SpellBook')
         end
     else
         RunesOfFaerun.Critical('Entity has no SpellBook')
@@ -81,13 +86,40 @@ local function RemoveSpellFromSpellContainer(entity, spellName)
 
 end
 
---Removes spell from several areas at once
-local function RemoveSpellFromEntity(guid, entity, spellName)
-    RunesOfFaerun.Debug('Removing spell "' .. spellName .. '" from ' .. guid)
+local function AddSpellToSpellBook(entity, spell)
+    if entity.SpellBook then
+        local spellName = spell.Id.Prototype
+        local spells = {}
+        for _, spellbookSpell in pairs(entity.SpellBook.Spells) do
+            table.insert(spells, spellbookSpell)
+        end
+        table.insert(spells, spell)
+        entity.SpellBook.Spells = spells
 
-    RemoveSpellFromSpellBook(entity, spellName)
-    RemoveSpellFromAddedSpells(entity, spellName)
-    RemoveSpellFromSpellBookPrepares(entity, spellName)
+        entity:Replicate('SpellBook')
+        RunesOfFaerun.Info('Added spell "' .. spellName .. '"')
+    else
+        RunesOfFaerun.Critical('Entity has no SpellBook')
+    end
+end
+
+---@param characterGUID GUIDSTRING
+--Removes spell from several areas at once
+local function RemoveSpellFromEntity(characterGUID, entity, spell)
+    local spellName = spell.Id.OriginatorPrototype
+    RunesOfFaerun.Debug('Removing spell "' .. spellName .. '" from ' .. characterGUID)
+
+    return RemoveSpellFromSpellBook(entity, spellName)
+    --RemoveSpellFromAddedSpells(entity, spellName)
+    --RemoveSpellFromSpellBookPrepares(entity, spellName)
+    --RemoveSpellFromSpellContainer(entity, spellName)
+end
+
+---@param characterGUID GUIDSTRING
+---@param entity entity
+---@param spellName string
+local function AddSpellToEntity(characterGUID, entity, spell)
+    AddSpellToSpellBook(entity, spell)
 end
 
 --Returns the boost to unlock the spell
@@ -334,7 +366,9 @@ local function GetDenySpellMap()
         Shout_Bard_Perform_ThePower_Lyre = true,
         Shout_Bard_Perform_Lyre = true,
         Shout_SCL_SpiderLyre_Perform = true,
+        Shout_Bard_Perform_BardDance_Lyre = true,
         --Mod spells
+        FOCUSDYES_CreatePledge = true,
         Teleport_All = true,
         AE_Spell_Container = true,
         Shout_Open_Mirror = true,
@@ -343,23 +377,27 @@ local function GetDenySpellMap()
     }
 end
 
+local function IsSpellInDenyList(spell)
+    if spell then
+        local denySpellMap = GetDenySpellMap()
+        return denySpellMap[spell.Id.OriginatorPrototype]
+    end
+    return false
+end
+
 --Finds a random spell in the spell book that isn't in the deny list
 ---@param characterGUID GUIDSTRING
 local function GetRandomSpellNameFromSpellBook(characterGUID)
     local entity = Ext.Entity.Get(characterGUID)
-    local denySpellMap = GetDenySpellMap()
-    local spellNames = {}
 
-    if entity.SpellBook then
-        for _, spell in pairs(entity.SpellBook.Spells) do
-            table.insert(spellNames, spell.Id.Prototype)
-        end
-
+    if entity and entity.SpellBook then
         local attempts = 0
         local maxAttempts = 49
         local randomSpell = nil
-        while not denySpellMap[randomSpell] do
-            randomSpell = spellNames[math.random(#spellNames)]
+        local isDenied = true
+        while isDenied do
+            randomSpell = entity.SpellBook.Spells[math.random(#entity.SpellBook.Spells)]
+            isDenied = IsSpellInDenyList(randomSpell)
             attempts = attempts + 1
 
             --This probably should never happen but let's be safe
@@ -368,7 +406,10 @@ local function GetRandomSpellNameFromSpellBook(characterGUID)
             end
         end
 
-        Debug('Found random spell not in deny list in ' .. attempts .. ' attempts')
+        if randomSpell then
+            Debug('Found random spell "' ..
+                randomSpell.Id.Prototype .. '" not in deny list in ' .. attempts .. ' attempts')
+        end
 
         return randomSpell
     else
@@ -376,20 +417,47 @@ local function GetRandomSpellNameFromSpellBook(characterGUID)
     end
 end
 
----@param characterGUID GUIDSTRING
-local function HandleAmnesia(characterGUID)
+---@param characterTpl string
+local function HandleAmnesiaApplied(characterTpl)
+    local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
     Debug('Handling Amnesia on ' .. characterGUID)
 
     local randomSpellName = GetRandomSpellNameFromSpellBook(characterGUID)
 
     if randomSpellName then
-        Debug('Found random spell ' .. randomSpellName)
+        local entity = Ext.Entity.Get(characterGUID)
+        if entity then
+            local spell = RemoveSpellFromEntity(characterGUID, entity, randomSpellName)
+            if spell then
+                sh.amnesiaSpells[characterGUID] = spell
+                Debug('Set amnesia spell ' .. spell.Id.OriginatorPrototype)
+            end
+        else
+            Critical('Could not get entity for ' .. characterGUID)
+        end
     else
         Critical('Error getting random spell')
     end
 end
 
-sh.HandleAmnesia = HandleAmnesia
+--Add spells that were removed to the entity
+---@param characterTpl string
+local function HandleAmnesiaRemoved(characterTpl)
+    local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
+
+    Debug('Handling Amnesia removed on ' .. characterGUID)
+
+    local spell = sh.amnesiaSpells[characterGUID]
+    local entity = Ext.Entity.Get(characterGUID)
+    if spell and entity then
+        AddSpellToEntity(characterGUID, entity, spell)
+    else
+        Critical('Could not find spell to remove for ' .. characterGUID)
+    end
+end
+
+sh.HandleAmnesiaRemoved = HandleAmnesiaRemoved
+sh.HandleAmnesiaApplied = HandleAmnesiaApplied
 sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer
 sh.RemoveSpellFromSpellBook = RemoveSpellFromSpellBook
 sh.RemoveSpellFromAddedSpells = RemoveSpellFromAddedSpells

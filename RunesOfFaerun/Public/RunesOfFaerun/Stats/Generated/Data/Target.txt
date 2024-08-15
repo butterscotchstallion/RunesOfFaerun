@@ -98,7 +98,14 @@ new entry "Target_ROF_Amnesia"
 		data "SpellAnimation" ",,;f12a602f-a39e-4752-a5bd-8fe8c8ff654e,,;23e80ef6-39b6-4229-9e2e-60a6d65c7aa7,,;f73184a5-9046-49dc-a6a7-c4d2a0005732,,;,,;f12a602f-a39e-4752-a5bd-8fe8c8ff654e,,;,,;,,;,,"
 		data "VerbalIntent" "Control"
 		data "SpellFlags" "CannotRotate;IsEnemySpell"
-		
+		//data "UseCosts" "ActionPoint:1;SpellSlotsGroup:1:1:5"
 
-
-		
+new entry "Target_ROF_Add_Temporary_Amnesia"
+	type "SpellData"
+	using "Target_ROF_Add_Passive_Base"
+		data "SpellType" "Target"
+		data "DisplayName" "h9b36a091869d40809d40f8c040c4db7cg0f0"
+		data "Description" "h64c8a1a665d742358877b171bef307c25884"
+		data "SpellProperties" "ApplyStatus(STATUS_ADD_TEMPORARY_AMNESIA, 100, -1)"
+		data "TooltipStatusApply" "ApplyStatus(STATUS_ADD_TEMPORARY_AMNESIA, 100, -1)"
+	

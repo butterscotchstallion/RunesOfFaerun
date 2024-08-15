@@ -106,6 +106,13 @@ local commands = {
         func = function()
             RunesOfFaerun.HelpDialogHandler.ResetRuneDiscoveries()
         end
+    },
+    {
+        name = 'amnesia',
+        params = '',
+        func = function()
+            Osi.ApplyStatus(Osi.GetHostCharacter(), 'STATUS_ROF_AMNESIA', 10, 1)
+        end
     }
 }
 

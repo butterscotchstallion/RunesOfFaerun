@@ -159,6 +159,8 @@ new subtable "-1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "-1"
 object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
