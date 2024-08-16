@@ -103,7 +103,7 @@ end
 --Removes spell from several areas at once
 local function RemoveSpellFromEntity(characterGUID, entity, spell)
     local spellName = spell.Id.OriginatorPrototype
-    RunesOfFaerun.Debug('Removing spell "' .. spellName .. '" from ' .. characterGUID)
+    --RunesOfFaerun.Debug('Removing spell "' .. spellName .. '" from ' .. characterGUID)
 
     return RemoveSpellFromSpellBook(entity, spellName)
     --RemoveSpellFromAddedSpells(entity, spellName)
@@ -416,16 +416,16 @@ end
 ---@param characterTpl string
 local function HandleAmnesiaApplied(characterTpl)
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
-    Debug('Handling Amnesia on ' .. characterGUID)
+    --Debug('Handling Amnesia on ' .. characterGUID)
 
     local randomSpell = GetRandomSpellFromSpellBook(characterGUID)
 
     if randomSpell then
         local entity = Ext.Entity.Get(characterGUID)
+        local spellCopy = Ext.Types.Serialize(randomSpell)
         if entity then
-            RemoveSpellFromEntity(characterGUID, entity, randomSpell)
+            RemoveSpellFromEntity(characterGUID, entity, spellCopy)
 
-            local spellCopy = Ext.Types.Serialize(randomSpell)
             sh.amnesiaSpells[characterGUID] = spellCopy
 
             Debug('Set amnesia spell ' .. spellCopy.Id.OriginatorPrototype)
@@ -442,7 +442,7 @@ end
 local function HandleAmnesiaRemoved(characterTpl)
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
 
-    Debug('Handling Amnesia removed on ' .. characterGUID)
+    --Debug('Handling Amnesia removed on ' .. characterGUID)
 
     local spell = sh.amnesiaSpells[characterGUID]
     local entity = Ext.Entity.Get(characterGUID)
