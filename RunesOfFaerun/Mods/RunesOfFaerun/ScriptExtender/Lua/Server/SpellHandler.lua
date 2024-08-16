@@ -88,14 +88,8 @@ end
 
 local function AddSpellToSpellBook(entity, spell)
     if entity.SpellBook then
-        local spellName = spell.Id.Prototype
-        local spells = {}
-        for _, spellbookSpell in pairs(entity.SpellBook.Spells) do
-            table.insert(spells, spellbookSpell)
-        end
-        table.insert(spells, spell)
-        entity.SpellBook.Spells = spells
-
+        local spellName = spell.Id.OriginatorPrototype
+        entity.SpellBook.Spells[#entity.SpellBook.Spells + 1] = spell
         entity:Replicate('SpellBook')
         RunesOfFaerun.Info('Added spell "' .. spellName .. '"')
     else
@@ -104,6 +98,8 @@ local function AddSpellToSpellBook(entity, spell)
 end
 
 ---@param characterGUID GUIDSTRING
+---@param entity entity
+---@param spell spell
 --Removes spell from several areas at once
 local function RemoveSpellFromEntity(characterGUID, entity, spell)
     local spellName = spell.Id.OriginatorPrototype
@@ -387,7 +383,7 @@ end
 
 --Finds a random spell in the spell book that isn't in the deny list
 ---@param characterGUID GUIDSTRING
-local function GetRandomSpellNameFromSpellBook(characterGUID)
+local function GetRandomSpellFromSpellBook(characterGUID)
     local entity = Ext.Entity.Get(characterGUID)
 
     if entity and entity.SpellBook then
@@ -422,16 +418,17 @@ local function HandleAmnesiaApplied(characterTpl)
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
     Debug('Handling Amnesia on ' .. characterGUID)
 
-    local randomSpellName = GetRandomSpellNameFromSpellBook(characterGUID)
+    local randomSpell = GetRandomSpellFromSpellBook(characterGUID)
 
-    if randomSpellName then
+    if randomSpell then
         local entity = Ext.Entity.Get(characterGUID)
         if entity then
-            local spell = RemoveSpellFromEntity(characterGUID, entity, randomSpellName)
-            if spell then
-                sh.amnesiaSpells[characterGUID] = spell
-                Debug('Set amnesia spell ' .. spell.Id.OriginatorPrototype)
-            end
+            RemoveSpellFromEntity(characterGUID, entity, randomSpell)
+
+            local spellCopy = Ext.Types.Serialize(randomSpell)
+            sh.amnesiaSpells[characterGUID] = spellCopy
+
+            Debug('Set amnesia spell ' .. spellCopy.Id.OriginatorPrototype)
         else
             Critical('Could not get entity for ' .. characterGUID)
         end

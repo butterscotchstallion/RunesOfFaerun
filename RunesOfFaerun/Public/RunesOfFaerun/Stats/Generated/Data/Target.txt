@@ -84,7 +84,7 @@ new entry "Target_ROF_Amnesia"
 		data "TargetConditions" "Character() and not Dead()"
 		data "DisplayName" "h7669884ba01e48239bb6e5c5dfb5969e7d1e"
 		data "Description" "h79a48ba18aae48d09155011cf83e7b6531g4"
-		data "SpellProperties" "ApplyStatus(STATUS_ROF_AMNESIA, 100, 3)"
+		data "SpellProperties" "ApplyStatus(STATUS_ROF_AMNESIA, 100, 1)"
 		data "TooltipStatusApply" "ApplyStatus(STATUS_ROF_AMNESIA, 100, 3)"
 		// from Target_ParalyzingRay_Spectator
 		data "Icon" "GenericIcon_Intent_Control"
