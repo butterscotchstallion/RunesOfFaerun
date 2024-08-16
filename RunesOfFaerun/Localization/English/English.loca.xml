@@ -89,7 +89,7 @@
 
     <!-- Status/Target spell -->
     <content contentuid="h7669884ba01e48239bb6e5c5dfb5969e7d1e" version="1">Temporary Amnesia</content>
-    <content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, causing them to forget a spell</content>
+    <content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, causing them to forget a spell temporarily</content>
 
     <!--Rune-->
     <content contentuid="he0b8c9d169284df4bfeb7bceda0f89c0e8a7" version="1">The rune feels light in your hand, almost ethereal</content>

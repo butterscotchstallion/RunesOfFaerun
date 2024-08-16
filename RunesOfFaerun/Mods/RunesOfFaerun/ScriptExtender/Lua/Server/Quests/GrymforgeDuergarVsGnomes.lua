@@ -64,6 +64,8 @@ Handles quest possibilities
 --]]
 ---@param quest table
 local function OnCombatEnded(quest)
+    --Delayed until dialogue/timeline features land in SE
+    --[[
     Debug('[GrymforgeDuergarVsGnomes] Handling OnCombatEnded')
 
     local deadCharacters = {}
@@ -87,6 +89,7 @@ local function OnCombatEnded(quest)
     else
         Debug('CombatEnded: no characters dead?')
     end
+    ]]
 end
 
 handler.OnCombatEnded = OnCombatEnded

@@ -106,13 +106,15 @@ local function OnInterruptActionStateCreated(state)
 end
 
 local function OnDying(characterGUID)
-    RunesOfFaerun.QuestHandler.OnDying(characterGUID)
+    --RunesOfFaerun.QuestHandler.OnDying(characterGUID)
 end
 
 local function OnCombatEnded(_)
+    --[[
     Ext.Timer.WaitFor(4000, function()
         RunesOfFaerun.QuestHandler.OnCombatEnded()
     end, nil)
+    ]]
 end
 
 local function OnMessageBoxYesNoClosed(character, message, result)
