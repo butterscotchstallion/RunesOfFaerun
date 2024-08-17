@@ -61,12 +61,10 @@ local function GetInterruptNameFromInterruptComponent(interruptComponent)
     end
 end
 
-local function OnInterruptActionStateCreated(state)
+local function OnInterruptActionStateCreated(state, type, comp)
     Ext.OnNextTick(function()
         local interruptComponents = state:GetAllComponents()
         local actionState = interruptComponents.InterruptActionState
-
-        --RunesOfFaerun.Utils.SaveEntityToFile('ROF-interrupt-state', state)
 
         if actionState then
             local actions = actionState.Actions
@@ -131,20 +129,15 @@ local function OnTemplateAddedTo(objectTemplate, object2, inventoryHolder, addTy
 end
 
 local function OnStatusApplied(object, status, _, _)
-    if status == 'STATUS_ROF_AMNESIA' then
+    if status == 'STATUS_ROF_TEMP_AMNESIA' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaApplied(object)
     end
 end
 
 local function OnStatusRemoved(object, status, _, _)
-    if status == 'STATUS_ROF_AMNESIA' then
+    if status == 'STATUS_ROF_TEMP_AMNESIA' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
     end
-end
-
-local function OnInterruptActionStateCreatedDeferred(state)
-    Debug('Deferred action state created')
-    --RunesOfFaerun.Utils.SaveEntityToFile('deferred-interrupt', state)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
@@ -157,4 +150,3 @@ Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
---Ext.Entity.OnCreateDeferred("InterruptActionState", OnInterruptActionStateCreatedDeferred, nil)

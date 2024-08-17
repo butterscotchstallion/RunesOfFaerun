@@ -425,11 +425,15 @@ local function HandleAmnesiaApplied(characterTpl)
         local entity = Ext.Entity.Get(characterGUID)
         local spellCopy = Ext.Types.Serialize(randomSpell)
         if entity then
+            local spellName = spellCopy.Id.OriginatorPrototype
+
+            --RunesOfFaerun.StatusUpdater.GetTempAmnesiaStatusFromEntity(entity)
+
             RemoveSpellFromEntity(characterGUID, entity, spellCopy)
 
             sh.amnesiaSpells[characterGUID] = spellCopy
 
-            Debug('Set amnesia spell ' .. spellCopy.Id.OriginatorPrototype)
+            Debug('Set amnesia spell ' .. spellName)
         else
             Critical('Could not get entity for ' .. characterGUID)
         end

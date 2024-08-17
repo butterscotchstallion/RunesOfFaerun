@@ -17,6 +17,7 @@ Ext.Require('Server/SpellHandler.lua')
 Ext.Require('Server/SECommands.lua')
 Ext.Require('Server/ModVarsHandler.lua')
 Ext.Require('Server/HelpDialogHandler.lua')
+Ext.Require('Server/StatusUpdater.lua')
 
 -- Specific quest event handlers
 Ext.Require('Server/Quests/GrymforgeDuergarVsGnomes.lua')
