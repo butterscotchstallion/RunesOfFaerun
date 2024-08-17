@@ -56,8 +56,8 @@
     <content contentuid="he23d08ef976541abafa58f7e4e5720e8a939" version="1">Rune of Harnessed Weave</content>
     <content contentuid="h9548784d0aad49639bf8fa17bcc6b244cgbe" version="1">The rune is warm to the touch, and pulsates with arcane power</content>
     
-    <content contentuid="ha134dfb317d841a2ba7ad44e5a3eb08c2380" version="1">Grants the Giant Badger the ability to perform a crushing leap</content>
-    <content contentuid="h133a5e3c113144de859c349aa83551cccd56" version="1">Rune of Crushing Leap</content>
+    <content contentuid="ha134dfb317d841a2ba7ad44e5a3eb08c2380" version="1">Grants the Giant Badger the ability to perform a crushing flight</content>
+    <content contentuid="h133a5e3c113144de859c349aa83551cccd56" version="1">Rune of Crushing Flight</content>
     <content contentuid="h3b0bc5cdd628431aaaba8dee2ca2666309f3" version="1">This is a Giant Badger</content>
     <content contentuid="h5d87a101a3cb468ab8b8e29dbe0cf48789af" version="1">Giant Badger</content>
 
@@ -89,7 +89,7 @@
 
     <!-- Status/Target spell -->
     <content contentuid="h7669884ba01e48239bb6e5c5dfb5969e7d1e" version="1">Temporary Amnesia</content>
-    <content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, causing them to forget a spell temporarily</content>
+    <content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, dealing [1] damage and causing them to forget a spell temporarily</content>
 
     <!--Rune-->
     <content contentuid="he0b8c9d169284df4bfeb7bceda0f89c0e8a7" version="1">The rune feels light in your hand, almost ethereal</content>

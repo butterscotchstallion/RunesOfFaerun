@@ -136,6 +136,7 @@ new entry "STATUS_ROF_AMNESIA"
 		data "Description" "h79a48ba18aae48d09155011cf83e7b6531g4"
 		data "Icon" "GenericIcon_Intent_Control"
 		data "StackId" "ROF_AMNESIA"
+		data "StatusPropertyFlags" "InitiateCombat;BringIntoCombat"
 
 new entry "STATUS_ADD_TEMPORARY_AMNESIA"
 	type "StatusData"

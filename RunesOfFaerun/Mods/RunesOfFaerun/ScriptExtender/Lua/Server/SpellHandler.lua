@@ -91,7 +91,8 @@ local function AddSpellToSpellBook(entity, spell)
         local spellName = spell.Id.OriginatorPrototype
         entity.SpellBook.Spells[#entity.SpellBook.Spells + 1] = spell
         entity:Replicate('SpellBook')
-        RunesOfFaerun.Info('Added spell "' .. spellName .. '"')
+        RunesOfFaerun.Info('Added spell "' ..
+            spellName .. '" to ' .. RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity))
     else
         RunesOfFaerun.Critical('Entity has no SpellBook')
     end

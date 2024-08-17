@@ -62,47 +62,48 @@ local function GetInterruptNameFromInterruptComponent(interruptComponent)
 end
 
 local function OnInterruptActionStateCreated(state)
-    local interruptComponents = state:GetAllComponents()
-    local actionState = interruptComponents.InterruptActionState
+    Ext.OnNextTick(function()
+        local interruptComponents = state:GetAllComponents()
+        local actionState = interruptComponents.InterruptActionState
 
-    --Debug('Interrupt action state created')
-    --RunesOfFaerun.Utils.SaveEntityToFile('interrupt-08-12', state)
+        --RunesOfFaerun.Utils.SaveEntityToFile('ROF-interrupt-state', state)
 
-    if actionState then
-        local actions = actionState.Actions
-        for _, action in pairs(actions) do
-            local interruptName = GetInterruptNameFromInterruptComponent(action.Interrupt:GetAllComponents())
+        if actionState then
+            local actions = actionState.Actions
+            for _, action in pairs(actions) do
+                local interruptName = GetInterruptNameFromInterruptComponent(action.Interrupt:GetAllComponents())
 
-            if interruptName == "Target_ROF_Spell_Steal" then
-                local event = actionState.Event.Event
-                local interruptedSpell = event.Spell.OriginatorPrototype
+                if interruptName == "Target_ROF_Spell_Steal" then
+                    local event = actionState.Event.Event
+                    local interruptedSpell = event.Spell.OriginatorPrototype
 
-                --Enemy caster
-                local spellSourceComponents = actionState.Event.Source:GetAllComponents()
-                local spellSourceUUID = spellSourceComponents.Uuid.EntityUuid
+                    --Enemy caster
+                    local spellSourceComponents = actionState.Event.Source:GetAllComponents()
+                    local spellSourceUUID = spellSourceComponents.Uuid.EntityUuid
 
-                --This is used if/when the counterspell succeeds
-                spellStealInfo.spell = interruptedSpell
-                spellStealInfo.enemy = spellSourceUUID
-                spellStealInfo.interrupterUUID = nil
+                    --This is used if/when the counterspell succeeds
+                    spellStealInfo.spell = interruptedSpell
+                    spellStealInfo.enemy = spellSourceUUID
+                    spellStealInfo.interrupterUUID = nil
 
-                --Interrupter
-                --Target will be NULL if it's a projectile like Fireball
-                if actionState.Event.Target then
-                    local interrupterComponents = actionState.Event.Target:GetAllComponents()
-                    local interrupterUUID = interrupterComponents.Uuid.EntityUuid
-                    spellStealInfo.interrupterUUID = interrupterUUID
-                else
-                    RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
+                    --Interrupter
+                    --Target will be NULL if it's a projectile like Fireball
+                    if actionState.Event.Target then
+                        local interrupterComponents = actionState.Event.Target:GetAllComponents()
+                        local interrupterUUID = interrupterComponents.Uuid.EntityUuid
+                        spellStealInfo.interrupterUUID = interrupterUUID
+                    else
+                        RunesOfFaerun.Debug('ActionState.Event has no Target. Projectile?')
+                    end
+
+                    break
                 end
-
-                break
             end
+        else
+            Critical(
+                'InterruptActionState does not have expected structure! Spellsteal will not be able to acquire the interrupted spell :(')
         end
-    else
-        Critical(
-            'InterruptActionState does not have expected structure! Spellsteal will not be able to acquire the interrupted spell :(')
-    end
+    end)
 end
 
 local function OnDying(characterGUID)
@@ -141,6 +142,11 @@ local function OnStatusRemoved(object, status, _, _)
     end
 end
 
+local function OnInterruptActionStateCreatedDeferred(state)
+    Debug('Deferred action state created')
+    --RunesOfFaerun.Utils.SaveEntityToFile('deferred-interrupt', state)
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
@@ -151,3 +157,4 @@ Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
+--Ext.Entity.OnCreateDeferred("InterruptActionState", OnInterruptActionStateCreatedDeferred, nil)
