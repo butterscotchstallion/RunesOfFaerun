@@ -163,9 +163,10 @@ use cost
 ---@param characterGUID GUIDSTRING
 ---@param unlockSpell string
 local function UnlockStolenSpell(characterGUID, unlockSpell)
-    local persist = true
     local statusName = 'ROF_STOLEN_SPELL_UNLOCK_' .. unlockSpell
     local statusBase = 'STATUS_ROF_STOLEN_SPELL_UNLOCK_BASE'
+
+    --[[
     local nsemfhuecooifldiimtrofst = true
     local status = Ext.Stats.Get(statusName, -1, true, persist)
 
@@ -190,6 +191,15 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
         RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
     else
         RunesOfFaerun.Debug('Status doesnt exist yet?')
+    end
+    ]]
+    local success = RunesOfFaerun.StatusHandler.CreateStatusIfNotExists(statusName, statusBase, {
+        Boosts = GetUnlockSpellBoost(unlockSpell)
+    })
+
+    if success then
+        Osi.ApplyStatus(characterGUID, statusName, 1)
+        RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
     end
 end
 

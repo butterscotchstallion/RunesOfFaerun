@@ -1,0 +1,70 @@
+local sh = {}
+local TEMP_AMNESIA_STATUS = 'STATUS_ROF_TEMP_AMNESIA'
+
+--This has a StackId so there should only be one on an entity
+local function GetTempAmnesiaStatusFromEntity(entity)
+    local status = nil
+    if entity then
+        local statusContainer = entity.StatusContainer
+
+        if statusContainer then
+            for statusEntityName, statusName in pairs(statusContainer.Statuses) do
+                if statusName == TEMP_AMNESIA_STATUS then
+                    local statusComponents = statusEntityName
+                    RunesOfFaerun.Utils.SaveEntityToFile('amnesia-status-components', statusComponents)
+                    break
+                end
+            end
+        end
+    end
+    return status
+end
+
+---@param statusName string
+---@param statusBaseName string
+---@param properties table
+local function CreateStatusIfNotExists(statusName, statusBaseName, properties)
+    local isCreateUpdateSuccessful = false
+    local persist = false
+    local status = Ext.Stats.Get(statusName, -1, true, persist)
+
+    if status then
+        RunesOfFaerun.Debug('Editing and syncing existing status ' .. statusName)
+    else
+        RunesOfFaerun.Debug('Creating status ' .. statusName)
+        status = Ext.Stats.Create(statusName, "StatusData", statusBaseName, persist)
+    end
+
+    if status then
+        for property, value in pairs(properties) do
+            status[property] = value
+        end
+    else
+        RunesOfFaerun.Critical('Error creating status ' .. statusName)
+    end
+
+    status:Sync()
+
+    local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
+    if updatedStatus then
+        Debug('Created status ' .. statusName .. ' successfully')
+        isCreateUpdateSuccessful = true
+    else
+        Critical('Failed to create get new status ' .. statusName)
+    end
+
+    return isCreateUpdateSuccessful
+end
+
+local function UpdateStatusAndReplicate(entity, updatedStatusName)
+end
+
+---@param spellName string
+local function GetUpdatedStatusName(statusName, spellName)
+    return string.format('%s: %s', statusName, spellName)
+end
+
+sh.CreateStatusIfNotExists = CreateStatusIfNotExists
+sh.GetTempAmnesiaStatusFromEntity = GetTempAmnesiaStatusFromEntity
+
+RunesOfFaerun.StatusHandler = sh
