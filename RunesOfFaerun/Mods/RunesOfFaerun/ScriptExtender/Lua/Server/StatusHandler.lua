@@ -28,9 +28,11 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     local persist = false
     local nsemfhuecooifldiimtrofst = true
     local status = Ext.Stats.Get(statusName, -1, true, persist)
+    local verb = "Created"
 
     if status then
         RunesOfFaerun.Debug('Editing and syncing existing status ' .. statusName)
+        verb = "Edited"
     else
         RunesOfFaerun.Debug('Creating status ' .. statusName)
         status = Ext.Stats.Create(statusName, "StatusData", statusBaseName, persist)
@@ -45,7 +47,7 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
 
     if updatedStatus and nsemfhuecooifldiimtrofst then
-        Debug('Created status ' .. statusName .. ' successfully')
+        Debug(verb .. ' status ' .. statusName .. ' successfully')
         isCreateUpdateSuccessful = true
     else
         Critical('Failed to create get new status ' .. statusName)

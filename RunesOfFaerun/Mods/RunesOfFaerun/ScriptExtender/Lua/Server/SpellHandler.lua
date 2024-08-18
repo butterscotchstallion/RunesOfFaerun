@@ -443,7 +443,7 @@ local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
 
     if success then
         amnesiaStatus = detailedStatus
-        Debug('Using detailed status')
+        --Debug('Using detailed status')
     end
 
     local durationNumTurns = 3
