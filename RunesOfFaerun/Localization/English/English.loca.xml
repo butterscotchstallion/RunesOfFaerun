@@ -96,4 +96,7 @@
     <content contentuid="h9b36a091869d40809d40f8c040c4db7cg0f0" version="1">Rune of Temporary Amnesia</content>
 
     <content contentuid="h64c8a1a665d742358877b171bef307c25884" version="1">Grants the spell Temporary Amnesia</content>
+
+    <!--Base Display Name-->
+    <content contentuid="h135375fadb604b468a2f0a20590fa55026de" version="1">Temporary Amnesia</content>
 </contentList>

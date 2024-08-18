@@ -70,6 +70,9 @@ eh.SpawnHostileSpellSlinger = function()
     local uuid = 'be5650d4-e282-4ddd-aa0d-1b9411740302'
     local x, y, z = Osi.GetPosition(tostring(Osi.GetHostCharacter()))
     x = tonumber(x)
+
+    x = x + 15
+
     if x and y and z then
         RunesOfFaerun.Debug(string.format('Creating %s at position %s %s %s', uuid, x, y, z))
         local spawnUUID = Osi.CreateAt(uuid, x, y, z, 0, 1, '')
@@ -77,11 +80,12 @@ eh.SpawnHostileSpellSlinger = function()
             RunesOfFaerun.Debug('Create successful: UUID = ' .. spawnUUID)
             Osi.RequestPing(x, y, z, spawnUUID, Osi.GetHostCharacter())
 
-            SetCreatureHostile(spawnUUID)
+            --[[SetCreatureHostile(spawnUUID)
 
-            local newSpell = "Target_DancingLights"
+            local newSpell = "Projectile_ROF_Fireball"
             Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
             RunesOfFaerun.Debug('Using ' .. newSpell)
+            ]]
         else
             RunesOfFaerun.Debug('Failed to create ' .. uuid)
         end

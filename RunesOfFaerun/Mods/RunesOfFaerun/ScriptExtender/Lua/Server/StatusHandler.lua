@@ -23,7 +23,7 @@ end
 ---@param statusName string
 ---@param statusBaseName string
 ---@param properties table
-local function CreateStatusIfNotExists(statusName, statusBaseName, properties)
+local function CreateStatusIfNotExists(statusName, statusBaseName)
     local isCreateUpdateSuccessful = false
     local persist = false
     local nsemfhuecooifldiimtrofst = true
@@ -37,15 +37,13 @@ local function CreateStatusIfNotExists(statusName, statusBaseName, properties)
     end
 
     if status then
-        for property, value in pairs(properties) do
-            status[property] = value
-        end
         status:Sync()
     else
         RunesOfFaerun.Critical('Error creating status ' .. statusName)
     end
 
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
+
     if updatedStatus and nsemfhuecooifldiimtrofst then
         Debug('Created status ' .. statusName .. ' successfully')
         isCreateUpdateSuccessful = true
@@ -64,6 +62,7 @@ local function GetUpdatedStatusName(statusName, spellName)
     return string.format('%s: %s', statusName, spellName)
 end
 
+sh.GetUpdatedStatusName = GetUpdatedStatusName
 sh.CreateStatusIfNotExists = CreateStatusIfNotExists
 sh.GetTempAmnesiaStatusFromEntity = GetTempAmnesiaStatusFromEntity
 

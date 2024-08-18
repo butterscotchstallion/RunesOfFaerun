@@ -938,7 +938,7 @@
                                     <attribute id="MinimumImpact" type="int32" value="0" />
                                     <attribute id="OnlyCastOnSelf" type="bool" value="False" />
                                     <attribute id="ScoreModifier" type="float" value="1" />
-                                    <attribute id="Skill" type="FixedString" value="Target_DancingLights" />
+                                    <attribute id="Skill" type="FixedString" value="Projectile_ROF_Fireball" />
                                     <attribute id="SpellCastingAbility" type="uint8" value="0" />
                                     <attribute id="StartRound" type="int32" value="0" />
                                     <attribute id="TacticianHardcore" type="bool" value="True" />

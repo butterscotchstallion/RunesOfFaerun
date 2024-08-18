@@ -9,7 +9,8 @@ local sh = {
     },
     amnesiaSpells = {
 
-    }
+    },
+    temporaryAmnesiaResolvedDisplayName = nil
 }
 
 ---@param entity table
@@ -166,33 +167,6 @@ local function UnlockStolenSpell(characterGUID, unlockSpell)
     local statusName = 'ROF_STOLEN_SPELL_UNLOCK_' .. unlockSpell
     local statusBase = 'STATUS_ROF_STOLEN_SPELL_UNLOCK_BASE'
 
-    --[[
-    local nsemfhuecooifldiimtrofst = true
-    local status = Ext.Stats.Get(statusName, -1, true, persist)
-
-    if status then
-        RunesOfFaerun.Debug('Editing and syncing existing status ' .. statusName)
-    else
-        RunesOfFaerun.Debug('Creating status ' .. statusName)
-        status = Ext.Stats.Create(statusName, "StatusData", statusBase, persist)
-    end
-
-    if status then
-        status.Boosts = GetUnlockSpellBoost(unlockSpell)
-    else
-        RunesOfFaerun.Debug('Error creating status ' .. statusName)
-    end
-
-    status:Sync()
-
-    local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
-    if updatedStatus and nsemfhuecooifldiimtrofst then
-        Osi.ApplyStatus(characterGUID, statusName, 1)
-        RunesOfFaerun.Debug('Applied unlock status "' .. statusName .. '" to ' .. characterGUID)
-    else
-        RunesOfFaerun.Debug('Status doesnt exist yet?')
-    end
-    ]]
     local success = RunesOfFaerun.StatusHandler.CreateStatusIfNotExists(statusName, statusBase, {
         Boosts = GetUnlockSpellBoost(unlockSpell)
     })
@@ -424,6 +398,54 @@ local function GetRandomSpellFromSpellBook(characterGUID)
     end
 end
 
+local function GetTempAmnesiaResolvedDisplayName()
+    local displayName = sh.temporaryAmnesiaResolvedDisplayName
+    if not displayName then
+        displayName = Osi.ResolveTranslatedString("h7669884ba01e48239bb6e5c5dfb5969e7d1e")
+        sh.temporaryAmnesiaResolvedDisplayName = displayName
+    end
+    return displayName
+end
+
+---If the user is on v19+ then they should be able to use
+---a dynamically created status. If not, a less detailed
+---status will be applied.
+---@param characterGUID GUIDSTRING
+---@param spell table
+local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
+    local spellName = spell.Id.OriginatorPrototype
+    local spellStatsEntry = Ext.Stats.Get(spellName, -1, true, true)
+    local spellDisplayName = Osi.ResolveTranslatedString(spellStatsEntry.DisplayName)
+    local amnesiaStatus = 'STATUS_ROF_TEMP_AMNESIA_BASE'
+    --Temporary Amnesia
+    local baseName = GetTempAmnesiaResolvedDisplayName()
+    --Detailed status includes the name of the spell that was forgotten
+    local detailedStatus = string.format('STATUS_ROF_TEMP_AMNESIA_%s', spellName)
+    local detailedStatusValue = RunesOfFaerun.StatusHandler.GetUpdatedStatusName(baseName, spellDisplayName)
+    local updatedHandleReturnValue = Ext.Loca.UpdateTranslatedString(
+        "h7669884ba01e48239bb6e5c5dfb5969e7d1e",
+        detailedStatusValue
+    )
+
+    if not updatedHandleReturnValue then
+        Debug('Error updating display name handle')
+    end
+
+    local success = RunesOfFaerun.StatusHandler.CreateStatusIfNotExists(
+        detailedStatus,
+        amnesiaStatus
+    )
+
+    if success then
+        amnesiaStatus = detailedStatus
+        Debug('Using detailed status')
+    end
+
+    local durationNumTurns = 3
+
+    Osi.ApplyStatus(characterGUID, amnesiaStatus, durationNumTurns)
+end
+
 ---@param characterTpl string
 local function HandleAmnesiaApplied(characterTpl)
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
@@ -437,8 +459,7 @@ local function HandleAmnesiaApplied(characterTpl)
         if entity then
             local spellName = spellCopy.Id.OriginatorPrototype
 
-            --RunesOfFaerun.StatusUpdater.GetTempAmnesiaStatusFromEntity(entity)
-
+            CreateOrApplyAmnesiaStatus(characterGUID, spellCopy)
             RemoveSpellFromEntity(characterGUID, entity, spellCopy)
 
             sh.amnesiaSpells[characterGUID] = spellCopy

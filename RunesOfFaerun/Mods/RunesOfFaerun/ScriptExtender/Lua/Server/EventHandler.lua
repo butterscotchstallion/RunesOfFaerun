@@ -129,13 +129,13 @@ local function OnTemplateAddedTo(objectTemplate, object2, inventoryHolder, addTy
 end
 
 local function OnStatusApplied(object, status, _, _)
-    if status == 'STATUS_ROF_TEMP_AMNESIA' then
+    if status == 'STATUS_ROF_TEMP_AMNESIA_TECHNICAL' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaApplied(object)
     end
 end
 
 local function OnStatusRemoved(object, status, _, _)
-    if status == 'STATUS_ROF_TEMP_AMNESIA' then
+    if status == 'STATUS_ROF_TEMP_AMNESIA_TECHNICAL' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
     end
 end
