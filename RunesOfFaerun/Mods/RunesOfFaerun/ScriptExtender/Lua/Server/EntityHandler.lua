@@ -79,7 +79,7 @@ eh.SpawnHostileSpellSlinger = function()
 
             SetCreatureHostile(spawnUUID)
 
-            local newSpell = "Projectile_Fireball"
+            local newSpell = "Target_DancingLights"
             Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
             RunesOfFaerun.Debug('Using ' .. newSpell)
         else

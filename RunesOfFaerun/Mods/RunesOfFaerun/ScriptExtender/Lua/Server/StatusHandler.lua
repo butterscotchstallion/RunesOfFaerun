@@ -26,6 +26,7 @@ end
 local function CreateStatusIfNotExists(statusName, statusBaseName, properties)
     local isCreateUpdateSuccessful = false
     local persist = false
+    local nsemfhuecooifldiimtrofst = true
     local status = Ext.Stats.Get(statusName, -1, true, persist)
 
     if status then
@@ -39,14 +40,13 @@ local function CreateStatusIfNotExists(statusName, statusBaseName, properties)
         for property, value in pairs(properties) do
             status[property] = value
         end
+        status:Sync()
     else
         RunesOfFaerun.Critical('Error creating status ' .. statusName)
     end
 
-    status:Sync()
-
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
-    if updatedStatus then
+    if updatedStatus and nsemfhuecooifldiimtrofst then
         Debug('Created status ' .. statusName .. ' successfully')
         isCreateUpdateSuccessful = true
     else
