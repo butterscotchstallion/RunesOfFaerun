@@ -92,7 +92,7 @@ local function AddSpellToSpellBook(entity, spell)
         local spellName = spell.Id.OriginatorPrototype
         entity.SpellBook.Spells[#entity.SpellBook.Spells + 1] = spell
         entity:Replicate('SpellBook')
-        RunesOfFaerun.Info('Added spell "' ..
+        RunesOfFaerun.Debug('Added spell "' ..
             spellName .. '" to ' .. RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity))
     else
         RunesOfFaerun.Critical('Entity has no SpellBook')
@@ -338,6 +338,7 @@ local function GetDenySpellMap()
         Throw_Throw = true,
         Throw_ImprovisedWeapon = true,
         Shout_Dash = true,
+        Shout_Dash_NPC = true,
         Target_Help = true,
         Shout_Disengage = true,
         Target_DancingLights = true,
@@ -457,6 +458,13 @@ local function HandleAmnesiaApplied(characterTpl)
         local entity = Ext.Entity.Get(characterGUID)
         local spellCopy = Ext.Types.Serialize(randomSpell)
         if entity then
+            --[[
+            Applies base status and then overwrites it with a more detailed status. If
+            the user is on a version of SE where this works, then the detailed status should
+            overwrite this one.
+            ]]
+            Osi.ApplyStatus(characterGUID, "STATUS_ROF_TEMP_AMNESIA_BASE", 3)
+
             local spellName = spellCopy.Id.OriginatorPrototype
 
             CreateOrApplyAmnesiaStatus(characterGUID, spellCopy)
