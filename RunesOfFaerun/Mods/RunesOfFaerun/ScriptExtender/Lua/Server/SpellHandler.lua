@@ -65,7 +65,7 @@ local function RemoveSpellFromSpellBook(entity, spellName)
 
         if foundSpell then
             entity:Replicate('SpellBook')
-            RunesOfFaerun.Info('RemoveFromSpellBook: Found spell "' .. spellName .. '" and replicated!')
+            RunesOfFaerun.Debug('RemoveFromSpellBook: Found spell "' .. spellName .. '" and replicated!')
             return foundSpell
         else
             RunesOfFaerun.Critical('RemoveFromSpellBook: Spell "' .. spellName .. '" does not exist in SpellBook')
@@ -400,12 +400,16 @@ local function GetRandomSpellFromSpellBook(characterGUID)
 end
 
 local function GetTempAmnesiaResolvedDisplayName()
+    --TODO: fix this if we ever have some translations
+    return "Temporary Amnesia"
+    --[[
     local displayName = sh.temporaryAmnesiaResolvedDisplayName
     if not displayName then
         displayName = Osi.ResolveTranslatedString("h7669884ba01e48239bb6e5c5dfb5969e7d1e")
         sh.temporaryAmnesiaResolvedDisplayName = displayName
     end
     return displayName
+    ]]
 end
 
 ---If the user is on v19+ then they should be able to use
