@@ -32,6 +32,7 @@ local function IsRune(tplId)
     end
 end
 
+--Bugged? Seems to be triggering a lot incorrectly
 local function IsEnhancementRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then

@@ -47,7 +47,6 @@ local commands = {
             RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger()
         end
     },
-    --[[
     {
         name = 'spawnrunepouch',
         params = '',
@@ -55,7 +54,6 @@ local commands = {
             RunesOfFaerun.Utils.SummonRunePouch()
         end
     },
-    --]]
     {
         name = 'resetquests',
         params = '',
