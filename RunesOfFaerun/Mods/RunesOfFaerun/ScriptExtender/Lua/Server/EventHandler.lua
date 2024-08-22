@@ -132,6 +132,10 @@ local function OnStatusApplied(object, status, _, _)
     if status == 'STATUS_ROF_TEMP_AMNESIA_TECHNICAL' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaApplied(object)
     end
+
+    if status == 'STATUS_ROF_TRANSFORMED' then
+        RunesOfFaerun.SpellHandler.HandleDuplicitousTransformation(object)
+    end
 end
 
 local function OnStatusRemoved(object, status, _, _)

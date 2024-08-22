@@ -99,4 +99,16 @@
 
     <!--Base Display Name-->
     <content contentuid="h135375fadb604b468a2f0a20590fa55026de" version="1">Temporary Amnesia</content>
+
+    <!--Duplicitous Bow-->
+    <content contentuid="h3589e9e7d0b542338ab96265db0accaf0a72" version="1">Duplicitous Bow</content>
+    <content contentuid="h0fcc56bc83b3445081f8e3c46a5447801377" version="1">The exquistely crafted bow thrums with power</content>
+    <content contentuid="h17ae60b4452847159d629358b526c42b622a" version="1">Duplicity</content>
+    <content contentuid="h0b84d62c94ba4b04ad5b1cde8d6fbef5d7ee" version="1">The unique enchantments of the bow grant you access to various new techniques</content>
+    <content contentuid="h379b07c1cef943298e7f702889fd81ab64ff" version="1">Duplicitous Trick Shots</content>
+    <content contentuid="h740a0702af57434ca3dc6d02a604de17gf83" version="1">A series of techniques learned from the Duplicitous Bow</content>
+    <content contentuid="h9a39795c7a744e5d9ea95f930de07816g333" version="1">Arrow of Transformation</content>
+    <content contentuid="h09b6fc9cc92043438022e961b387b9d895d3" version="1">Transforms the target into something else entirely</content>
+    <content contentuid="h62aa5b1f36464f8aae3e3d8936f20091d54a" version="1">Duplicitous Transformation</content>
+    <content contentuid="h77d44016945f4e74b59cb24908d54768e09a" version="1">Transformed by Duplicitous Bow</content>
 </contentList>

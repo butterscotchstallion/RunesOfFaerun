@@ -501,6 +501,31 @@ local function HandleAmnesiaRemoved(characterTpl)
     end
 end
 
+local function HandleDuplicitousTransformation(characterTpl)
+    local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
+    local entity = Ext.Entity.Get(characterGUID)
+    if entity then
+        local transformations = {
+            "POLYMORPH_CHEESE",
+            "POLYMORPH_SHAPECHANGER",
+            "POLYMORPH_SHEEP",
+            "SCL_PIXIEBELL_FROG",
+            "SCL_PIXIEBELL_BOAR",
+            "SCL_PIXIEBELL_DEEPROTHE",
+            "GREMISHKA_MAGICALLERGY_PANTHER",
+            "WILDSHAPE_RAT_SECRET",
+            "LOW_LODGE_SPIDER",
+            "HAV_DevilishOX_POLYMORPH_DIREWOLF",
+        }
+        local randomTransformation = transformations[math.random(#transformations)]
+        local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
+        Debug(string.format('Transforming %s using "%s"', displayName, randomTransformation))
+
+        Osi.ApplyStatus(characterGUID, randomTransformation, 3)
+    end
+end
+
+sh.HandleDuplicitousTransformation = HandleDuplicitousTransformation
 sh.HandleAmnesiaRemoved = HandleAmnesiaRemoved
 sh.HandleAmnesiaApplied = HandleAmnesiaApplied
 sh.RemoveSpellFromSpellContainer = RemoveSpellFromSpellContainer

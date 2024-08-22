@@ -152,3 +152,10 @@ new entry "STATUS_ROF_TEMP_AMNESIA_BASE"
 		data "StackId" "ROF_TEMP_AMNESIA"
 		data "StatusPropertyFlags" "InitiateCombat;BringIntoCombat"
 
+new entry "STATUS_ROF_TRANSFORMED"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		data "DisplayName" "h62aa5b1f36464f8aae3e3d8936f20091d54a"
+		data "Description" "h77d44016945f4e74b59cb24908d54768e09a"
+
+

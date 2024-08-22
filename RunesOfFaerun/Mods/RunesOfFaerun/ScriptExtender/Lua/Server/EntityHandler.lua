@@ -66,7 +66,7 @@ local function SetCreatureHostile(creatureTplId)
     --RunesOfFaerun.Info(string.format('Set hostile on %s', creatureTplId))
 end
 
-eh.SpawnHostileSpellSlinger = function()
+eh.SpawnHostileSpellSlinger = function(options)
     local uuid = 'be5650d4-e282-4ddd-aa0d-1b9411740302'
     local x, y, z = Osi.GetPosition(tostring(Osi.GetHostCharacter()))
     x = tonumber(x)
@@ -80,9 +80,11 @@ eh.SpawnHostileSpellSlinger = function()
 
             SetCreatureHostile(spawnUUID)
 
-            local newSpell = "Projectile_ROF_Fireball"
-            Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
-            RunesOfFaerun.Debug('Using ' .. newSpell)
+            if options.castFireball then
+                local newSpell = "Projectile_ROF_Fireball"
+                Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
+                RunesOfFaerun.Debug('Using ' .. newSpell)
+            end
         else
             RunesOfFaerun.Debug('Failed to create ' .. uuid)
         end

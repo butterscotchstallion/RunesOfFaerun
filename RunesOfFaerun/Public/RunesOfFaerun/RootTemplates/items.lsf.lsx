@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+    <version major="4" minor="0" revision="6" build="5" />
+    <region id="Templates">
+        <node id="Templates">
+            <children>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h0fcc56bc83b3445081f8e3c46a5447801377" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h3589e9e7d0b542338ab96265db0accaf0a72" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="371a168b-661b-4aec-ba2c-3566f3f89d91" />
+                    <attribute id="Name" type="LSString" value="ROF_Duplicitous_Bow" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="13236988-83df-4bf2-8005-b4ac31f21ff4" />
+                    <attribute id="Stats" type="FixedString" value="ROF_Duplicitous_Bow" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="23a82a8b-1765-0ebd-bfef-5797963b5359" />
+                    <children>
+                        <node id="StatusList" />
+                        <node id="Tags">
+                            <children> </children>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

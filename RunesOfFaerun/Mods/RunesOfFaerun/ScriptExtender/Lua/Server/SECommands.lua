@@ -44,7 +44,18 @@ local commands = {
         name = 'spawncaster',
         params = '',
         func = function()
-            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger()
+            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
+                castFireball = true
+            })
+        end
+    },
+    {
+        name = 'spawntarget',
+        params = '',
+        func = function()
+            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
+                castFireball = false
+            })
         end
     },
     {
@@ -110,6 +121,13 @@ local commands = {
         params = '',
         func = function()
             Osi.ApplyStatus(Osi.GetHostCharacter(), 'STATUS_ROF_AMNESIA', 10, 1)
+        end
+    },
+    {
+        name = 'spawn',
+        params = 'uuid',
+        func = function(_, uuid)
+            Osi.TemplateAddTo(uuid, Osi.GetHostCharacter(), 1);
         end
     }
 }
