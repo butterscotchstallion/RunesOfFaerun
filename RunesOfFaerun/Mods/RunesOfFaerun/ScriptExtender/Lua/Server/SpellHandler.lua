@@ -10,7 +10,8 @@ local sh = {
     amnesiaSpells = {
 
     },
-    temporaryAmnesiaResolvedDisplayName = nil
+    temporaryAmnesiaResolvedDisplayName = nil,
+    validSpellCache = {}
 }
 
 ---@param entity table
@@ -367,33 +368,35 @@ local function IsSpellInDenyList(spell)
     return false
 end
 
+local function GetValidSpellsFromSpellBook(characterGUID, spellbook)
+    if sh.validSpellCache[characterGUID] then
+        return sh.validSpellCache[characterGUID]
+    else
+        local validSpells = {}
+        for _, spell in pairs(spellbook) do
+            if not IsSpellInDenyList(spell) then
+                table.insert(validSpells, Ext.Types.Serialize(spell))
+            end
+        end
+        sh.validSpellCache[characterGUID] = validSpells
+        return validSpells
+    end
+end
+
 --Finds a random spell in the spell book that isn't in the deny list
 ---@param characterGUID GUIDSTRING
 local function GetRandomSpellFromSpellBook(characterGUID)
     local entity = Ext.Entity.Get(characterGUID)
-
     if entity and entity.SpellBook then
-        local attempts = 0
-        local maxAttempts = 49
-        local randomSpell = nil
-        local isDenied = true
-        while isDenied do
-            randomSpell = entity.SpellBook.Spells[math.random(#entity.SpellBook.Spells)]
-            isDenied = IsSpellInDenyList(randomSpell)
-            attempts = attempts + 1
-
-            --This probably should never happen but let's be safe
-            if attempts >= maxAttempts then
-                return nil
+        local validSpells = GetValidSpellsFromSpellBook(characterGUID, entity.SpellBook.Spells)
+        if #validSpells > 0 then
+            local randomSpell = validSpells[math.random(#validSpells)]
+            if randomSpell then
+                Debug('Found random spell "' ..
+                    randomSpell.Id.Prototype .. '" not in deny list')
             end
+            return randomSpell
         end
-
-        if randomSpell then
-            Debug('Found random spell "' ..
-                randomSpell.Id.Prototype .. '" not in deny list in ' .. attempts .. ' attempts')
-        end
-
-        return randomSpell
     else
         RunesOfFaerun.Critical('Entity has no SpellBook')
     end
@@ -456,11 +459,11 @@ local function HandleAmnesiaApplied(characterTpl)
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
     --Debug('Handling Amnesia on ' .. characterGUID)
 
+    --randomSpell is already serialized
     local randomSpell = GetRandomSpellFromSpellBook(characterGUID)
 
     if randomSpell then
         local entity = Ext.Entity.Get(characterGUID)
-        local spellCopy = Ext.Types.Serialize(randomSpell)
         if entity then
             --[[
             Applies base status and then overwrites it with a more detailed status. If
@@ -469,12 +472,12 @@ local function HandleAmnesiaApplied(characterTpl)
             ]]
             Osi.ApplyStatus(characterGUID, "STATUS_ROF_TEMP_AMNESIA_BASE", 3)
 
-            local spellName = spellCopy.Id.OriginatorPrototype
+            local spellName = randomSpell.Id.OriginatorPrototype
 
-            CreateOrApplyAmnesiaStatus(characterGUID, spellCopy)
-            RemoveSpellFromEntity(characterGUID, entity, spellCopy)
+            CreateOrApplyAmnesiaStatus(characterGUID, randomSpell)
+            RemoveSpellFromEntity(characterGUID, entity, randomSpell)
 
-            sh.amnesiaSpells[characterGUID] = spellCopy
+            sh.amnesiaSpells[characterGUID] = randomSpell
 
             Debug('Set amnesia spell ' .. spellName)
         else
