@@ -13,7 +13,6 @@ local spellStealSuccessCasted = false
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
     --RunesOfFaerun.QuestHandler.Initialize()
-    RunesOfFaerun.CosmeticHandler.UpdateCustomVisualsFromConfig()
 end
 
 local function OnEnteredLevel(templateName, rootGUID, level)
@@ -150,6 +149,10 @@ local function OnStatusRemoved(object, status, _, _)
     end
 end
 
+local function OnLevelGameplayStarted(_, _)
+    RunesOfFaerun.CosmeticHandler.UpdateCustomVisualsFromConfig()
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
@@ -159,4 +162,5 @@ Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
+Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

@@ -76,11 +76,19 @@ new treasuretable "WYR_Circus_KoboldMerchant_Magic"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
 
 new treasuretable "SHA_Orthon_Chest"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
 
 // Scarred rune //
 new treasuretable "PLA_ZhentHideout_Container_Illicit"
@@ -92,6 +100,9 @@ new treasuretable "MOO_MimicReward"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
 
 new treasuretable "UND_Duergar_Raft_Chest"
 CanMerge 1
@@ -122,11 +133,6 @@ new subtable "1,1"
 object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
 
 new treasuretable "UND_KC_ExecutedDrow_Random"
-CanMerge 1
-new subtable "1,1"
-object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
-
-new treasuretable "SHA_Orthon_Chest"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
@@ -171,6 +177,27 @@ object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 // Misc //
 new subtable "-1"
 object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
+
+new treasuretable "MOO_WallTentacleOgress_Treasure"
+CanMerge 1
+// Nurse //
+new subtable "-1"
+object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
+
+new treasuretable "WYR_SmugglerCave_Basement_Treasure"
+CanMerge 1
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
+
+new treasuretable "SCL_Supplies_Fancy"
+CanMerge 1
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
 
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry
