@@ -155,6 +155,9 @@ object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
 // Nurse //
 new subtable "-1"
 object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
+// Mummification Rune //
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_MUMMIFICATION",1,0,0,0,0,0,0,0
 // Slime //
 new subtable "-1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0

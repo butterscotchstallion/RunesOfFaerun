@@ -111,4 +111,10 @@
     <content contentuid="h09b6fc9cc92043438022e961b387b9d895d3" version="1">Transforms the target into something else entirely</content>
     <content contentuid="h62aa5b1f36464f8aae3e3d8936f20091d54a" version="1">Duplicitous Transformation</content>
     <content contentuid="h77d44016945f4e74b59cb24908d54768e09a" version="1">Transformed by Duplicitous Bow</content>
+
+    <!-- Rune of Mummification -->
+    <content contentuid="hd85708658bf244ef96fcde8e20aafce3b9cf" version="1">The rune is wrapped in dirty bandages and smells musty</content>
+    <content contentuid="he6d9ce0d2e614935a6ce2ffbbe7e122281eb" version="1">Rune of Mummification</content>
+    <content contentuid="hc82b8817febc4c6e800c5c1bf60dca342444" version="1">Transforms the Dreadful Nurse into a mummy</content>
+    <content contentuid="h2884f70a7fcc4c4db1bef0b86665056a69e4" version="1">Dreadful Nurse</content>
 </contentList>

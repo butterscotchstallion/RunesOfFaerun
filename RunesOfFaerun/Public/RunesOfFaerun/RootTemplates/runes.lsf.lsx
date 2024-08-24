@@ -315,6 +315,46 @@
                     </children>
                 </node>
 
+                <!-- Rune of Mummification  -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hd85708658bf244ef96fcde8e20aafce3b9cf" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="he6d9ce0d2e614935a6ce2ffbbe7e122281eb" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="a8e01080-3948-4aa1-b1c5-1cc703e2b12d" />
+                    <attribute id="Name" type="LSString" value="ROF_Mummy_Rune" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_RUNE_ROF_MUMMIFICATION" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                                <!--Enhancement Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="4a349b52-43b3-4999-83af-0272b284d0d9" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Target_ROF_Mummy_Transform" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
                 <!-- Rune pouch -->
                 <node id="GameObjects">
                     <attribute id="CastShadow" type="bool" value="False" />

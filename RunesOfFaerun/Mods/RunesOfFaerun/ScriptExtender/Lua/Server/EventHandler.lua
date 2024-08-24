@@ -13,6 +13,7 @@ local spellStealSuccessCasted = false
 local function OnSessionLoaded()
     RunesOfFaerun.Utils.PrintVersionMessage()
     --RunesOfFaerun.QuestHandler.Initialize()
+    RunesOfFaerun.CosmeticHandler.UpdateCustomVisualsFromConfig()
 end
 
 local function OnEnteredLevel(templateName, rootGUID, level)
@@ -135,6 +136,11 @@ local function OnStatusApplied(object, status, _, _)
 
     if status == 'STATUS_ROF_TRANSFORMED' then
         RunesOfFaerun.SpellHandler.HandleDuplicitousTransformation(object)
+    end
+
+    if status == 'STATUS_APPLY_MUMMY_TRANSFORM' then
+        local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(object)
+        RunesOfFaerun.CosmeticHandler.SetMummyVisual(characterGUID)
     end
 end
 

@@ -119,6 +119,12 @@ new entry "STATUS_APPLY_CRUSHING_FLIGHT"
 		data "StatusType" "BOOST"
 		data "Passives" "ROF_CrushingFlight"
 
+new entry "STATUS_APPLY_MUMMY_TRANSFORM"
+	type "StatusData"
+	using "STATUS_UNLOCK_SPELL_BASE"
+		data "StatusType" "BOOST"
+		data "Passives" ""
+
 new entry "STATUS_GHOSTLY_QUEST_GIVER"
 	type "StatusData"
 	using "SHA_JUSTICIAR_BECKONINGDARKNESS"

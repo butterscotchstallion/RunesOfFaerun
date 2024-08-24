@@ -129,6 +129,27 @@ local commands = {
         func = function(_, uuid)
             Osi.TemplateAddTo(uuid, Osi.GetHostCharacter(), 1);
         end
+    },
+    {
+        name = 'updatematerial',
+        params = 'uuid',
+        func = function(_, uuid, preset)
+            Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
+            Osi.ClearCustomMaterialOverrides(uuid)
+            Osi.AddCustomMaterialOverride(uuid, preset)
+            Debug('Updated material')
+        end
+    },
+    {
+        name = 'updatevisual',
+        params = 'uuid',
+        func = function(_, uuid, visual)
+            Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
+            local entity = Ext.Entity.Get(uuid)
+            entity.ServerCharacter.Template.CharacterVisualResourceID = visual
+            entity:Replicate('GameObjectVisual')
+            Debug('Updated visual')
+        end
     }
 }
 

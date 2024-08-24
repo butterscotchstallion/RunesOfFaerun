@@ -225,6 +225,10 @@
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="dabdfa1a-ad14-47dc-aaf2-cc09394138d7" />
                                 </node>
+                                <!--Dreadful Nurse-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="7588d4ba-1dea-419e-b8ca-7a4411d0aedc" />
+                                </node>
                             </children>
                         </node>
                         <node id="EquipmentTypes">
@@ -751,13 +755,13 @@
                 <!-- Enemy caster for testing -->
                 <node id="GameObjects">
                     <attribute id="DisplayName" type="TranslatedString" handle="h5a132a5eeaf74febb94d6c9ae8725a3e8787" version="1" />
-                    <attribute id="CharacterVisualResourceID" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e" />
-                    <attribute id="Icon" type="FixedString" value="7b4c7fa4-1dd2-0c7d-5513-1ddd40cd040e-EQP_Goblin_Scimitar_(Icon_Goblin_Female)" />
+                    <attribute id="CharacterVisualResourceID" type="FixedString" value="02871152-ffff-f766-280a-9f425414b7c1" />
+                    <attribute id="Icon" type="FixedString" value="1c36f857-0a5e-a0e2-66d9-9c5b24daf824-_(Icon_HalfElf_Female)" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="LevelOverride" type="int32" value="1" />
                     <attribute id="MapKey" type="FixedString" value="be5650d4-e282-4ddd-aa0d-1b9411740302" />
                     <attribute id="Name" type="LSString" value="ROF_Wizard_Tester" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="9629600b-2e80-4862-9ddb-1ae8e2ee824c" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="055f12f5-eb99-4893-9913-c22f36d233a8" />
                     <attribute id="Type" type="FixedString" value="character" />
                     <attribute id="Stats" type="FixedString" value="ROF_Wizard_Tester" />
                     <attribute id="Equipment" type="FixedString" value="EQP_ROF_Wizard_Tester" />
