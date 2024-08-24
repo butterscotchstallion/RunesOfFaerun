@@ -27,14 +27,12 @@ end
 
 local function SetMummyVisual(characterGUID)
     UpdateVisual(characterGUID, ch.visuals.MUMMY)
-    --Debug('Set mummy visual on ' .. characterGUID)
     SaveCustomVisual(characterGUID, ch.visuals.MUMMY)
 end
 
 local function UpdateCustomVisualsFromConfig()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     local visuals = GetCustomVisualsFromConfig(config)
-
     for uuid, visualResourceID in pairs(visuals) do
         UpdateVisual(uuid, visualResourceID)
     end
