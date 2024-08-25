@@ -132,17 +132,14 @@ local commands = {
     },
     {
         name = 'updatematerial',
-        params = 'uuid',
-        func = function(_, uuid, preset)
-            Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
-            Osi.ClearCustomMaterialOverrides(uuid)
-            Osi.AddCustomMaterialOverride(uuid, preset)
-            Debug('Updated material')
+        params = 'preset',
+        func = function(_, preset)
+            RunesOfFaerun.CosmeticHandler.ApplyMaterialOverride(Osi.GetHostCharacter(), preset)
         end
     },
     {
         name = 'updatevisual',
-        params = 'uuid',
+        params = 'uuid,visual',
         func = function(_, uuid, visual)
             Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
             local entity = Ext.Entity.Get(uuid)

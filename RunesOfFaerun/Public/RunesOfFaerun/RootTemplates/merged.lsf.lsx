@@ -547,6 +547,7 @@
                     <attribute id="VocalExhaustedResourceID" type="FixedString" value="9b36af33-31e4-e4bb-fda4-b364ef59d1b1" />
                     <attribute id="VocalRelaxedResourceID" type="FixedString" value="fce78e8d-2581-3b70-7f47-71641f480f97" />
                     <attribute id="Scale" type="float" value="1.25" />
+                    <attribute id="LevelOverride" type="int32" value="" />
                     <children>
                         <node id="Tags">
                             <children>
@@ -738,7 +739,9 @@
                     <attribute id="Stats" type="FixedString" value="ROF_Wizard_Tester" />
                     <attribute id="Equipment" type="FixedString" value="EQP_ROF_Wizard_Tester" />
                     <attribute id="ShowEquipmentVisuals" type="bool" value="True" />
+                    <attribute id="SpellSet" type="FixedString" value="PlayerMindFlayerActions" />
                     <children>
+                        <!--
                         <node id="SkillList">
                             <children>
                                 <node id="Skill">
@@ -774,6 +777,7 @@
                                 </node>
                             </children>
                         </node>
+                    -->
                     </children>
                 </node>
 

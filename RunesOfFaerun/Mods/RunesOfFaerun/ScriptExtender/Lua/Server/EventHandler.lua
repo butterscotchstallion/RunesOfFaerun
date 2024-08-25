@@ -114,6 +114,7 @@ local function OnCombatEnded(_)
         RunesOfFaerun.QuestHandler.OnCombatEnded()
     end, nil)
     ]]
+    RunesOfFaerun.SpellHandler.ClearValidSpellCache()
 end
 
 local function OnMessageBoxYesNoClosed(character, message, result)
@@ -141,16 +142,21 @@ local function OnStatusApplied(object, status, _, _)
         local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(object)
         RunesOfFaerun.CosmeticHandler.SetMummyVisual(characterGUID)
     end
+
+    if status == "STATUS_APPLY_PEACHY_RUNE" then
+        local guid = RunesOfFaerun.Utils.GetGUIDFromTpl(object)
+        local bigForeheadTattoo = "b27939ea-dd65-4119-982d-3bc693bd16de"
+        local bigFaceTattoo = "1297c544-792a-4f82-9420-675f4c856012"
+        local eyesTattoo = "1297c544-792a-4f82-9420-675f4c856012"
+        local someTattoo = '15e83d34-ed3b-4979-8cbe-5aa4d4e30a92'
+        RunesOfFaerun.CosmeticHandler.ApplyMaterialOverride(guid, "f4c29886-b544-4b53-817c-37b3cbc59b3f")
+    end
 end
 
 local function OnStatusRemoved(object, status, _, _)
     if status == 'STATUS_ROF_TEMP_AMNESIA_TECHNICAL' then
         RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
     end
-end
-
-local function OnLevelGameplayStarted(_, _)
-    RunesOfFaerun.CosmeticHandler.UpdateCustomVisualsFromConfig()
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
@@ -162,5 +168,4 @@ Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
-Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

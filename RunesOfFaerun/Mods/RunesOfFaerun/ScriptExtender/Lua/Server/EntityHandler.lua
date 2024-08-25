@@ -54,6 +54,11 @@ eh.HandleByGUID = function(rootGUID, instanceGUID)
 
     if companions[rootGUID] then
         eh.SetEntityLevelToHostLevel(instanceGUID)
+
+        --Apply mummy transformation if nurse is here
+        if rootGUID == NURSE_COMPANION_GUID then
+            RunesOfFaerun.CosmeticHandler.ApplyMummyTransformationIfUnlocked(instanceGUID)
+        end
     else
         --RunesOfFaerun.Debug(rootGUID .. ' is not a known entity')
     end

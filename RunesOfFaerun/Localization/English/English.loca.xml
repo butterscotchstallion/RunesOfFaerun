@@ -119,4 +119,9 @@
     <content contentuid="h2884f70a7fcc4c4db1bef0b86665056a69e4" version="1">Dreadful Nurse</content>
     <content contentuid="ha5738cfbb870497d96e1f7bfba89828a567g" version="1">Mummified</content>
     <content contentuid="h55a99a0d197942aeb58368bdbae1fe11b8ea" version="1">Transformed into a mummy, granting new power</content>
+
+    <!--Peachy Rune-->
+    <content contentuid="h554d58ca15d94f929b4e2ebc07448edf7db1" version="1">A curious rune, said to alter the physical appearance of those that dare to use it</content>
+    <content contentuid="heda833ecfd8649d0b1993dde37e429cag6e7" version="1">Rune of Peachy</content>
+    <content contentuid="hceb1be309637409ca921c28691b4d9df99ba" version="1">Forever altered by Peachy magic</content>
 </contentList>

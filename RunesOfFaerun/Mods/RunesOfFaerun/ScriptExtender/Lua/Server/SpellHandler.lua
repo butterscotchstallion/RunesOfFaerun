@@ -344,6 +344,7 @@ local function GetDenySpellMap()
         Shout_Disengage = true,
         Target_DancingLights = true,
         Shout_Dodge = true,
+        --[[
         --Perform spells
         Shout_Bard_Perform_Stargazing_Lyre = true,
         Shout_Bard_Perform_ThePower_Lyre = true,
@@ -357,6 +358,7 @@ local function GetDenySpellMap()
         Shout_Open_Mirror = true,
         Shout_Open_Creation = true,
         Target_Grapple = true,
+        ]]
     }
 end
 
@@ -368,17 +370,41 @@ local function IsSpellInDenyList(spell)
     return false
 end
 
+local function ClearValidSpellCache()
+    sh.validSpellCache = {}
+    Debug('Cleared valid spell cache')
+end
+
 local function GetValidSpellsFromSpellBook(characterGUID, spellbook)
+    local startTime = Ext.Utils.MicrosecTime()
     if sh.validSpellCache[characterGUID] then
+        Debug(string.format('Returning spell cache (%s spells)', #sh.validSpellCache[characterGUID]))
         return sh.validSpellCache[characterGUID]
     else
+        local entity = Ext.Entity.Get(characterGUID)
+
+        Debug(string.format('Building valid spell cache for %s', RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)))
+
         local validSpells = {}
+        local startSpellListTime = Ext.Utils.MicrosecTime()
         for _, spell in pairs(spellbook) do
             if not IsSpellInDenyList(spell) then
                 table.insert(validSpells, Ext.Types.Serialize(spell))
             end
         end
         sh.validSpellCache[characterGUID] = validSpells
+        Debug(string.format("Built spell list in %sms", Ext.Utils.MicrosecTime() - startSpellListTime))
+
+        local elapsedSecs = Ext.Utils.MicrosecTime() - startTime
+        Debug(
+            string.format(
+                "Built spell cache [%s/%s] valid spells. Completed in %sms",
+                #validSpells,
+                #spellbook,
+                elapsedSecs
+            )
+        )
+
         return validSpells
     end
 end
@@ -388,12 +414,14 @@ end
 local function GetRandomSpellFromSpellBook(characterGUID)
     local entity = Ext.Entity.Get(characterGUID)
     if entity and entity.SpellBook then
+        local startTime = Ext.Utils.MicrosecTime()
         local validSpells = GetValidSpellsFromSpellBook(characterGUID, entity.SpellBook.Spells)
         if #validSpells > 0 then
             local randomSpell = validSpells[math.random(#validSpells)]
             if randomSpell then
+                local duration = (Ext.Utils.MicrosecTime() - startTime) .. 'ms'
                 Debug('Found random spell "' ..
-                    randomSpell.Id.Prototype .. '" not in deny list')
+                    randomSpell.Id.Prototype .. '" not in deny list in ' .. duration)
             end
             return randomSpell
         end
@@ -456,6 +484,7 @@ end
 
 ---@param characterTpl string
 local function HandleAmnesiaApplied(characterTpl)
+    local startTime = Ext.Utils.MicrosecTime()
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
     --Debug('Handling Amnesia on ' .. characterGUID)
 
@@ -479,7 +508,7 @@ local function HandleAmnesiaApplied(characterTpl)
 
             sh.amnesiaSpells[characterGUID] = randomSpell
 
-            Debug('Set amnesia spell ' .. spellName)
+            Debug('Set amnesia spell ' .. spellName .. ' in ' .. Ext.Utils.MicrosecTime() - startTime .. 'ms')
         else
             Critical('Could not get entity for ' .. characterGUID)
         end
@@ -528,6 +557,7 @@ local function HandleDuplicitousTransformation(characterTpl)
     end
 end
 
+sh.ClearValidSpellCache = ClearValidSpellCache
 sh.HandleDuplicitousTransformation = HandleDuplicitousTransformation
 sh.HandleAmnesiaRemoved = HandleAmnesiaRemoved
 sh.HandleAmnesiaApplied = HandleAmnesiaApplied

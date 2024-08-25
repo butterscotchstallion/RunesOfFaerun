@@ -33,6 +33,17 @@ new entry "Shout_ROF_Summon_Badger"
 		data "DisplayName" "h99fe28c4bd2d464391bf18d829295d40ee66"
 		data "Description" "hee42ce5b03964c05a282f86b34431e0d9e41"
 
+new entry "Shout_ROF_Peachy_Rune"
+	type "SpellData"
+	using "Shout_AuraOf_Courage"
+		data "SpellType" "Shout"
+		data "DisplayName" "heda833ecfd8649d0b1993dde37e429cag6e7"
+		data "Description" "h554d58ca15d94f929b4e2ebc07448edf7db1"
+		data "SpellProperties" "ApplyStatus(STATUS_APPLY_PEACHY_RUNE, 100, -1)"
+		data "TargetConditions" "Self()"
+		data "TooltipStatusApply" "ApplyStatus(STATUS_APPLY_PEACHY_RUNE, 100, -1)"
+		data "RequirementConditions" ""
+
 
 
 

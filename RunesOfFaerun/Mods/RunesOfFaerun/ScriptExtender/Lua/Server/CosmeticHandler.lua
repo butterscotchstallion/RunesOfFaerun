@@ -2,19 +2,17 @@ local ch = {
     visuals = {
         MUMMY = "0fd9c8b4-7ba5-8d90-e90c-e8ebc01da057"
     },
-    visualUpdates = {
-
-    }
+    MUMMY_UNLOCK_NAME = "mummy"
 }
 
 local function GetCustomVisualsFromConfig(config)
     return config.customVisuals or {}
 end
 
-local function SaveCustomVisual(characterGUID, visualResourceID)
+local function SaveCustomVisual(visualUnlockName)
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     local visuals = GetCustomVisualsFromConfig(config)
-    visuals[characterGUID] = visualResourceID
+    visuals[visualUnlockName] = true
     config.customVisuals = visuals
     RunesOfFaerun.ModVarsHandler.UpdateConfig(config)
 end
@@ -26,36 +24,46 @@ local function UpdateVisual(entity, visual)
     end
 end
 
-local function SetMummyVisual(characterGUID)
-    local entity = Ext.Entity.Get(characterGUID)
-    UpdateVisual(entity, ch.visuals.MUMMY)
-    SaveCustomVisual(characterGUID, ch.visuals.MUMMY)
-end
-
-local function UpdateCustomVisualsFromConfig()
+local function HasMummyVisualUnlocked()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     local visuals = GetCustomVisualsFromConfig(config)
-    for uuid, visualResourceID in pairs(visuals) do
-        local entity = Ext.Entity.Get(uuid)
-
-        if entity and not ch.visualUpdates[uuid] then
-            UpdateVisual(entity, visualResourceID)
-
-            --In case the summon died, and exists, re-apply the status
-            if visualResourceID == ch.visuals.MUMMY then
-                Osi.ApplyStatus(uuid, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
-            end
-
-            ch.visualUpdates[uuid] = true
-
-            Debug('Updated visual for ' .. RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity))
-        else
-            Debug(string.format("Could not find entity with UUID %s", uuid))
-        end
+    if visuals and visuals[ch.MUMMY_UNLOCK_NAME] then
+        return true
     end
 end
 
-ch.UpdateCustomVisualsFromConfig = UpdateCustomVisualsFromConfig
+local function SetMummyVisual(characterGUID)
+    local entity = Ext.Entity.Get(characterGUID)
+    UpdateVisual(entity, ch.visuals.MUMMY)
+    SaveCustomVisual(ch.MUMMY_UNLOCK_NAME)
+end
+
+local function ApplyMummyTransformationIfUnlocked(characterGUID)
+    if HasMummyVisualUnlocked() then
+        RunesOfFaerun.CosmeticHandler.SetMummyVisual(characterGUID)
+        Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
+        Debug("Applied mummy transformation to " .. characterGUID)
+    end
+end
+
+local function ApplyMaterialOverride(uuid, preset)
+    local entity = Ext.Entity.Get(uuid)
+    if entity then
+        local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
+        Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
+
+        Osi.ClearCustomMaterialOverrides(uuid)
+        Osi.RemoveCustomMaterialOverride(uuid, preset)
+        Osi.AddCustomMaterialOverride(uuid, preset)
+
+        Debug(string.format('Updated material on %s to "%s"', displayName, preset))
+    else
+        Critical('Invalid UUID: ' .. uuid)
+    end
+end
+
+ch.ApplyMaterialOverride = ApplyMaterialOverride
+ch.ApplyMummyTransformationIfUnlocked = ApplyMummyTransformationIfUnlocked
 ch.SetMummyVisual = SetMummyVisual
 ch.UpdateVisual = UpdateVisual
 

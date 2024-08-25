@@ -73,6 +73,12 @@ new entry "OBJ_RUNE_ROF_MUMMIFICATION"
 		data "RootTemplate" "a8e01080-3948-4aa1-b1c5-1cc703e2b12d"
 		data "Rarity" "Legendary"
 
+new entry "OBJ_RUNE_ROF_PEACHY"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "b628cd8f-b311-4f9c-a011-1c67988177d5"
+		data "Rarity" "Legendary"
+
 new entry "ROF_Duplicitous_Bow"
 	type "Weapon"
 	using "WPN_Longbow_1"
