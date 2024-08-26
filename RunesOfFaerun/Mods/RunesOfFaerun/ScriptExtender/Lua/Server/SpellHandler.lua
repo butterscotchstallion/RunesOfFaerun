@@ -376,7 +376,7 @@ local function ClearValidSpellCache()
 end
 
 local function GetValidSpellsFromSpellBook(characterGUID, spellbook)
-    local startTime = Ext.Utils.MicrosecTime()
+    local startTime = Ext.Utils.MonotonicTime()
     if sh.validSpellCache[characterGUID] then
         Debug(string.format('Returning spell cache (%s spells)', #sh.validSpellCache[characterGUID]))
         return sh.validSpellCache[characterGUID]
@@ -386,16 +386,16 @@ local function GetValidSpellsFromSpellBook(characterGUID, spellbook)
         Debug(string.format('Building valid spell cache for %s', RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)))
 
         local validSpells = {}
-        local startSpellListTime = Ext.Utils.MicrosecTime()
+        local startSpellListTime = Ext.Utils.MonotonicTime()
         for _, spell in pairs(spellbook) do
             if not IsSpellInDenyList(spell) then
                 table.insert(validSpells, Ext.Types.Serialize(spell))
             end
         end
         sh.validSpellCache[characterGUID] = validSpells
-        Debug(string.format("Built spell list in %sms", Ext.Utils.MicrosecTime() - startSpellListTime))
+        Debug(string.format("Built spell list in %sms", Ext.Utils.MonotonicTime() - startSpellListTime))
 
-        local elapsedSecs = Ext.Utils.MicrosecTime() - startTime
+        local elapsedSecs = Ext.Utils.MonotonicTime() - startTime
         Debug(
             string.format(
                 "Built spell cache [%s/%s] valid spells. Completed in %sms",
@@ -414,12 +414,12 @@ end
 local function GetRandomSpellFromSpellBook(characterGUID)
     local entity = Ext.Entity.Get(characterGUID)
     if entity and entity.SpellBook then
-        local startTime = Ext.Utils.MicrosecTime()
+        local startTime = Ext.Utils.MonotonicTime()
         local validSpells = GetValidSpellsFromSpellBook(characterGUID, entity.SpellBook.Spells)
         if #validSpells > 0 then
             local randomSpell = validSpells[math.random(#validSpells)]
             if randomSpell then
-                local duration = (Ext.Utils.MicrosecTime() - startTime) .. 'ms'
+                local duration = (Ext.Utils.MonotonicTime() - startTime) .. 'ms'
                 Debug('Found random spell "' ..
                     randomSpell.Id.Prototype .. '" not in deny list in ' .. duration)
             end
@@ -449,6 +449,7 @@ end
 ---@param characterGUID GUIDSTRING
 ---@param spell table
 local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
+    local startTime = Ext.Utils.MonotonicTime()
     local spellName = spell.Id.OriginatorPrototype
     local spellStatsEntry = Ext.Stats.Get(spellName, -1, true, true)
     local spellDisplayName = Osi.ResolveTranslatedString(spellStatsEntry.DisplayName)
@@ -480,17 +481,16 @@ local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
     local durationNumTurns = 3
 
     Osi.ApplyStatus(characterGUID, amnesiaStatus, durationNumTurns)
+
+    Debug("Applied status in " .. Ext.Utils.MonotonicTime() - startTime .. "ms")
 end
 
 ---@param characterTpl string
 local function HandleAmnesiaApplied(characterTpl)
-    local startTime = Ext.Utils.MicrosecTime()
+    local startTime = Ext.Utils.MonotonicTime()
     local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
-    --Debug('Handling Amnesia on ' .. characterGUID)
-
     --randomSpell is already serialized
     local randomSpell = GetRandomSpellFromSpellBook(characterGUID)
-
     if randomSpell then
         local entity = Ext.Entity.Get(characterGUID)
         if entity then
@@ -508,7 +508,7 @@ local function HandleAmnesiaApplied(characterTpl)
 
             sh.amnesiaSpells[characterGUID] = randomSpell
 
-            Debug('Set amnesia spell ' .. spellName .. ' in ' .. Ext.Utils.MicrosecTime() - startTime .. 'ms')
+            Debug('Set amnesia spell ' .. spellName .. ' in ' .. Ext.Utils.MonotonicTime() - startTime .. 'ms')
         else
             Critical('Could not get entity for ' .. characterGUID)
         end

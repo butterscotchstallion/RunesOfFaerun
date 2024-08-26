@@ -147,6 +147,13 @@ local commands = {
             entity:Replicate('GameObjectVisual')
             Debug('Updated visual')
         end
+    },
+    {
+        name = 'showvisuals',
+        params = '',
+        func = function(_)
+            _D(RunesOfFaerun.CosmeticHandler.GetUnlockedVisuals())
+        end
     }
 }
 

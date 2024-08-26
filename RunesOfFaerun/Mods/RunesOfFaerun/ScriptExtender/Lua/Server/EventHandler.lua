@@ -17,6 +17,7 @@ end
 
 local function OnEnteredLevel(templateName, rootGUID, level)
     local isKnownEntity = templateName:find('ROF_') == 1
+
     if isKnownEntity then
         local instanceGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(templateName)
         RunesOfFaerun.EntityHandler.HandleByGUID(rootGUID, instanceGUID)
@@ -159,6 +160,16 @@ local function OnStatusRemoved(object, status, _, _)
     end
 end
 
+local function OnLevelGameplayStarted(_, _)
+    local summons = RunesOfFaerun.Utils.GetPlayerSummons()
+
+    if summons and #summons > 0 then
+        for _, characterGUID in pairs(summons) do
+            RunesOfFaerun.CosmeticHandler.ApplyMummyTransformationIfUnlocked(characterGUID)
+        end
+    end
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
@@ -168,4 +179,5 @@ Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
+Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

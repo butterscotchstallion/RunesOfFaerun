@@ -26,6 +26,19 @@ local function PrintVersionMessage()
     end
 end
 
+---@return table table of UUIDs
+local function GetPlayerSummons()
+    --Returns table of template names
+    local rows = Osi.DB_PlayerSummons:Get(nil)
+    local summons = {}
+    if rows and #rows > 0 then
+        for _, row in pairs(rows) do
+            table.insert(summons, RunesOfFaerun.Utils.GetGUIDFromTpl(row[1]))
+        end
+    end
+    return summons
+end
+
 ---@param tplId string Root Template string
 local function GetGUIDFromTpl(tplId)
     return string.sub(tplId, -36)
@@ -73,6 +86,7 @@ local function SummonRunePouch()
     Osi.TemplateAddTo("74477542-5ad9-4907-9c1d-e9ef90b26b06", Osi.GetHostCharacter(), 1, 1)
 end
 
+utils.GetPlayerSummons = GetPlayerSummons
 utils.GetTagMapByTplId = GetTagMapByTplId
 utils.SummonRunePouch = SummonRunePouch
 utils.SaveEntityToFile = SaveEntityToFile

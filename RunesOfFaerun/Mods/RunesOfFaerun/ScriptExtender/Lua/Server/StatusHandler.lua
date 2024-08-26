@@ -24,6 +24,7 @@ end
 ---@param statusBaseName string
 ---@param properties table
 local function CreateStatusIfNotExists(statusName, statusBaseName)
+    local startTime = Ext.Utils.MonotonicTime()
     local isCreateUpdateSuccessful = false
     local persist = false
     local nsemfhuecooifldiimtrofst = true
@@ -47,7 +48,7 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
 
     if updatedStatus and nsemfhuecooifldiimtrofst then
-        Debug(verb .. ' status ' .. statusName .. ' successfully')
+        Debug(verb .. ' status ' .. statusName .. ' successfully in ' .. Ext.Utils.MonotonicTime() - startTime .. "ms")
         isCreateUpdateSuccessful = true
     else
         Critical('Failed to create get new status ' .. statusName)

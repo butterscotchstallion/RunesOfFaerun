@@ -57,6 +57,7 @@ eh.HandleByGUID = function(rootGUID, instanceGUID)
 
         --Apply mummy transformation if nurse is here
         if rootGUID == NURSE_COMPANION_GUID then
+            Debug("Checking if mummy is unlocked for nurse")
             RunesOfFaerun.CosmeticHandler.ApplyMummyTransformationIfUnlocked(instanceGUID)
         end
     else

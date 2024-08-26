@@ -24,9 +24,14 @@ local function UpdateVisual(entity, visual)
     end
 end
 
-local function HasMummyVisualUnlocked()
+local function GetUnlockedVisuals()
     local config = RunesOfFaerun.ModVarsHandler.GetConfig()
     local visuals = GetCustomVisualsFromConfig(config)
+    return visuals
+end
+
+local function HasMummyVisualUnlocked()
+    local visuals = GetUnlockedVisuals()
     if visuals and visuals[ch.MUMMY_UNLOCK_NAME] then
         return true
     end
@@ -38,8 +43,11 @@ local function SetMummyVisual(characterGUID)
     SaveCustomVisual(ch.MUMMY_UNLOCK_NAME)
 end
 
+---@param characterGUID GUIDSTRING
 local function ApplyMummyTransformationIfUnlocked(characterGUID)
-    if HasMummyVisualUnlocked() then
+    local nurseTag = "7588d4ba-1dea-419e-b8ca-7a4411d0aedc"
+    local isNurse = Osi.IsTagged(characterGUID, nurseTag) == 1
+    if HasMummyVisualUnlocked() and isNurse then
         RunesOfFaerun.CosmeticHandler.SetMummyVisual(characterGUID)
         Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
         Debug("Applied mummy transformation to " .. characterGUID)
@@ -66,5 +74,6 @@ ch.ApplyMaterialOverride = ApplyMaterialOverride
 ch.ApplyMummyTransformationIfUnlocked = ApplyMummyTransformationIfUnlocked
 ch.SetMummyVisual = SetMummyVisual
 ch.UpdateVisual = UpdateVisual
+ch.GetUnlockedVisuals = GetUnlockedVisuals
 
 RunesOfFaerun.CosmeticHandler = ch
