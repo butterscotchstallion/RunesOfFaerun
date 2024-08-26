@@ -150,7 +150,7 @@ local function OnStatusApplied(object, status, _, _)
         local bigFaceTattoo = "1297c544-792a-4f82-9420-675f4c856012"
         local eyesTattoo = "1297c544-792a-4f82-9420-675f4c856012"
         local someTattoo = '15e83d34-ed3b-4979-8cbe-5aa4d4e30a92'
-        RunesOfFaerun.CosmeticHandler.ApplyMaterialOverride(guid, "f4c29886-b544-4b53-817c-37b3cbc59b3f")
+        RunesOfFaerun.CosmeticHandler.ApplyMaterialOverride(guid, "e5b7d8df-a595-4e90-906a-7c3372e976f7")
     end
 end
 
