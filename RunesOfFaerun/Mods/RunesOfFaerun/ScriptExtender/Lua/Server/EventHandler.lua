@@ -116,6 +116,7 @@ local function OnCombatEnded(_)
     end, nil)
     ]]
     RunesOfFaerun.SpellHandler.ClearValidSpellCache()
+    RunesOfFaerun.SpellHandler.ClearAmnesiaStatuses()
 end
 
 local function OnMessageBoxYesNoClosed(character, message, result)
@@ -155,7 +156,7 @@ local function OnStatusApplied(object, status, _, _)
 end
 
 local function OnStatusRemoved(object, status, _, _)
-    if status == 'STATUS_ROF_TEMP_AMNESIA_TECHNICAL' then
+    if RunesOfFaerun.SpellHandler.IsAmnesiaStatus(status) then
         RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
     end
 end

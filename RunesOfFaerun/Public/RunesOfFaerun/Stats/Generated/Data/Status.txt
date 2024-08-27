@@ -153,20 +153,23 @@ new entry "STATUS_GHOSTLY_QUEST_GIVER"
 		data "TickFunctors" ""
 		data "StatusEffectOnTurn" ""
 
+// Rune spell //
 new entry "STATUS_ADD_TEMPORARY_AMNESIA"
 	type "StatusData"
 	using "STATUS_UNLOCK_SPELL_BASE"
 		data "StatusType" "BOOST"
 		data "Passives" "ROF_TemporaryAmnesia"
 
+// Use this to apply temp amnesia //
 new entry "STATUS_ROF_TEMP_AMNESIA_TECHNICAL"
 	type "StatusData"
 		data "StatusType" "BOOST"
-		// Empty displayname/description
-		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484"
-		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b"
-		data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+		data "DisplayName" "h497e185a1fd64db4b018c9cb87e0d72036c2"
+		data "Description" "h79a48ba18aae48d09155011cf83e7b6531g4"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 		data "Icon" "GenericIcon_Intent_Control"
+		data "StackId" "ROF_TEMP_AMNESIA"
+		data "StackType" "Overwrite"
 
 new entry "STATUS_ROF_TEMP_AMNESIA_BASE"
 	type "StatusData"
@@ -176,7 +179,6 @@ new entry "STATUS_ROF_TEMP_AMNESIA_BASE"
 		data "Icon" "GenericIcon_Intent_Control"
 		data "StackId" "ROF_TEMP_AMNESIA"
 		data "StackType" "Overwrite"
-		data "StatusPropertyFlags" "InitiateCombat;BringIntoCombat"
 
 new entry "STATUS_ROF_TRANSFORMED"
 	type "StatusData"
@@ -184,6 +186,7 @@ new entry "STATUS_ROF_TRANSFORMED"
 		data "DisplayName" "h62aa5b1f36464f8aae3e3d8936f20091d54a"
 		data "Description" "h77d44016945f4e74b59cb24908d54768e09a"
 		data "Icon" "Spell_Transmutation_Polymorph"
+		data "TickType" "StartTurn"
 
 new entry "STATUS_APPLY_PEACHY_RUNE"
 	type "StatusData"

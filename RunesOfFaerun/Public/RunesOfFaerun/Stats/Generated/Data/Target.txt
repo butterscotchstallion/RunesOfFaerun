@@ -93,7 +93,7 @@ new entry "Target_ROF_Temporary_Amnesia"
 		data "DisplayName" "h135375fadb604b468a2f0a20590fa55026de"
 		data "Description" "h79a48ba18aae48d09155011cf83e7b6531g4"
 		data "DescriptionParams" "DealDamage(1d6,Psychic)"
-		data "SpellProperties" "DealDamage(1d6,Psychic);ApplyStatus(STATUS_ROF_TEMP_AMNESIA_TECHNICAL, 100, 1)"
+		data "SpellProperties" "DealDamage(1d6,Psychic);ApplyStatus(STATUS_ROF_TEMP_AMNESIA_TECHNICAL, 100, 0)"
 		data "TooltipStatusApply" "ApplyStatus(STATUS_ROF_TEMP_AMNESIA_BASE, 100, 3)"
 		data "DescriptionParams" "DealDamage(1d6,Psychic)"
 		// from Target_ParalyzingRay_Spectator

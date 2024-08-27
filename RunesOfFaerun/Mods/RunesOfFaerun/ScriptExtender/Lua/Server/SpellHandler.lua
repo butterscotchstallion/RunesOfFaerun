@@ -10,6 +10,7 @@ local sh = {
     amnesiaSpells = {
 
     },
+    amnesiaStatuses = {},
     temporaryAmnesiaResolvedDisplayName = nil,
     validSpellCache = {}
 }
@@ -443,6 +444,10 @@ local function GetTempAmnesiaResolvedDisplayName()
     ]]
 end
 
+local function IsAmnesiaStatus(status)
+    return sh.amnesiaStatuses[status]
+end
+
 ---If the user is on v19+ then they should be able to use
 ---a dynamically created status. If not, a less detailed
 ---status will be applied.
@@ -475,14 +480,20 @@ local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
 
     if success then
         amnesiaStatus = detailedStatus
+        sh.amnesiaStatuses[amnesiaStatus] = true
         --Debug('Using detailed status')
     end
 
-    local durationNumTurns = 3
+    --Each turn is six seconds, so if we want three turns, that is 18 seconds
+    local durationNumTurns = 18
 
     Osi.ApplyStatus(characterGUID, amnesiaStatus, durationNumTurns)
 
     Debug("Applied status in " .. Ext.Utils.MonotonicTime() - startTime .. "ms")
+end
+
+local function ClearAmnesiaStatuses()
+    sh.amnesiaStatuses = {}
 end
 
 ---@param characterTpl string
@@ -494,13 +505,6 @@ local function HandleAmnesiaApplied(characterTpl)
     if randomSpell then
         local entity = Ext.Entity.Get(characterGUID)
         if entity then
-            --[[
-            Applies base status and then overwrites it with a more detailed status. If
-            the user is on a version of SE where this works, then the detailed status should
-            overwrite this one.
-            ]]
-            Osi.ApplyStatus(characterGUID, "STATUS_ROF_TEMP_AMNESIA_BASE", 3)
-
             local spellName = randomSpell.Id.OriginatorPrototype
 
             CreateOrApplyAmnesiaStatus(characterGUID, randomSpell)
@@ -557,6 +561,8 @@ local function HandleDuplicitousTransformation(characterTpl)
     end
 end
 
+sh.IsAmnesiaStatus = IsAmnesiaStatus
+sh.ClearAmnesiaStatuses = ClearAmnesiaStatuses
 sh.ClearValidSpellCache = ClearValidSpellCache
 sh.HandleDuplicitousTransformation = HandleDuplicitousTransformation
 sh.HandleAmnesiaRemoved = HandleAmnesiaRemoved
