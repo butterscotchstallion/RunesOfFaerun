@@ -179,6 +179,7 @@ new entry "STATUS_ROF_TEMP_AMNESIA_BASE"
 		data "Icon" "GenericIcon_Intent_Control"
 		data "StackId" "ROF_TEMP_AMNESIA"
 		data "StackType" "Overwrite"
+		data "TickType" "StartTurn"
 
 new entry "STATUS_ROF_TRANSFORMED"
 	type "StatusData"

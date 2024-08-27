@@ -46,9 +46,9 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     end
 
     local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
-
+    local duration = Ext.Utils.MonotonicTime() - startTime .. "ms"
     if updatedStatus and nsemfhuecooifldiimtrofst then
-        Debug(verb .. ' status ' .. statusName .. ' successfully in ' .. Ext.Utils.MonotonicTime() - startTime .. "ms")
+        Debug(verb .. ' status ' .. statusName .. ' successfully in ' .. duration)
         isCreateUpdateSuccessful = true
     else
         Critical('Failed to create get new status ' .. statusName)

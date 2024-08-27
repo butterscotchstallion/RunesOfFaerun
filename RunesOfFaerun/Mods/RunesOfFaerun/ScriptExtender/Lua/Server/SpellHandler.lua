@@ -56,6 +56,7 @@ end
 ---@return spell The spell that was removed
 local function RemoveSpellFromSpellBook(entity, spellName)
     if entity.SpellBook then
+        local startTime = Ext.Utils.MonotonicTime()
         local foundSpell = nil
         for i, spell in pairs(entity.SpellBook.Spells) do
             if spell.Id.OriginatorPrototype == spellName then
@@ -67,7 +68,8 @@ local function RemoveSpellFromSpellBook(entity, spellName)
 
         if foundSpell then
             entity:Replicate('SpellBook')
-            RunesOfFaerun.Debug('RemoveFromSpellBook: Found spell "' .. spellName .. '" and replicated!')
+            local duration = Ext.Utils.MonotonicTime() - startTime .. 'ms'
+            RunesOfFaerun.Debug('RemoveFromSpellBook: Removed spell "' .. spellName .. '" and replicated in ' .. duration)
             return foundSpell
         else
             RunesOfFaerun.Critical('RemoveFromSpellBook: Spell "' .. spellName .. '" does not exist in SpellBook')
@@ -494,6 +496,7 @@ end
 
 local function ClearAmnesiaStatuses()
     sh.amnesiaStatuses = {}
+    Debug('Cleared Amnesia statuses')
 end
 
 ---@param characterTpl string
