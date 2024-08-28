@@ -117,10 +117,6 @@ local function HealRunicSummonsToFull()
     if summons and #summons > 0 then
         for _, characterGUID in pairs(summons) do
             if Osi.IsTagged(characterGUID, summonTag) == 1 then
-                --[[local summonEntity = Ext.Entity.Get(characterGUID)
-                if summonEntity then
-                    SetEntityHPToFull(characterGUID)
-                end]]
                 Ext.OnNextTick(function()
                     Osi.ApplyStatus(characterGUID, "STATUS_ROF_RUNIC_INVIGORATION", 1, 1)
                 end)
