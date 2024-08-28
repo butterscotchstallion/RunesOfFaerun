@@ -79,6 +79,12 @@ new entry "OBJ_RUNE_ROF_PEACHY"
 		data "RootTemplate" "b628cd8f-b311-4f9c-a011-1c67988177d5"
 		data "Rarity" "Legendary"
 
+new entry "OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "9e8bf364-25aa-4d56-800c-11d3ceef8d73"
+		data "Rarity" "Legendary"
+
 new entry "ROF_Duplicitous_Bow"
 	type "Weapon"
 	using "WPN_Longbow_1"

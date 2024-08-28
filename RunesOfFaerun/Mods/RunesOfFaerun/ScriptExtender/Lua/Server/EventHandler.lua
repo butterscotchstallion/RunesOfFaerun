@@ -163,11 +163,20 @@ end
 
 local function OnLevelGameplayStarted(_, _)
     local summons = RunesOfFaerun.Utils.GetPlayerSummons()
-
     if summons and #summons > 0 then
         for _, characterGUID in pairs(summons) do
             RunesOfFaerun.CosmeticHandler.ApplyMummyTransformationIfUnlocked(characterGUID)
         end
+    end
+end
+
+local function OnShortRest()
+    --[[
+    Check for Runic Invigoration and if any party member has it,
+    then heal all ROF summons to full.
+    ]]
+    if RunesOfFaerun.EntityHandler.HasRunicInvigoration() then
+        RunesOfFaerun.EntityHandler.HealRunicSummonsToFull()
     end
 end
 
@@ -181,4 +190,5 @@ Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
 Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
+Ext.Osiris.RegisterListener("ShortRested", 1, "after", OnShortRest)
 Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)

@@ -154,6 +154,13 @@ local commands = {
         func = function(_)
             _D(RunesOfFaerun.CosmeticHandler.GetUnlockedVisuals())
         end
+    },
+    {
+        name = 'healsummons',
+        params = '',
+        func = function(_)
+            RunesOfFaerun.EntityHandler.HealRunicSummonsToFull()
+        end
     }
 }
 

@@ -60,7 +60,7 @@ local function ApplyMaterialOverride(uuid, preset)
         local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
         Osi.ApplyStatus(uuid, "ASTARION_HAPPY", 10, 1)
 
-        --Osi.ClearCustomMaterialOverrides(uuid)
+        Osi.ClearCustomMaterialOverrides(uuid)
         --Osi.RemoveCustomMaterialOverride(uuid, preset)
         Ext.OnNextTick(function()
             Osi.AddCustomMaterialOverride(uuid, preset)

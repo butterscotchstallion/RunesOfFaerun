@@ -131,4 +131,8 @@
     <!--Arrow of Maddening Whispers-->
     <content contentuid="h1e08ed8637f741209cb56e923e6bb65bc200" version="1">Arrow of Maddening Whispers</content>
     <content contentuid="hb808824402c94942beae51c93b046c3c7299" version="1">On hit, the target must succeed on a saving throw or become &lt;LSTag Type="Status" Tooltip="MADNESS"&gt;Mad&lt;/LSTag&gt; for 3 turns. If they fail, they are &lt;LSTag Type="Status" Tooltip="CONFUSION"&gt;Confused&lt;/LSTag&gt; for 1 turn</content>
+
+    <!--Rune of Runic Reinvigoration-->
+    <content contentuid="hdee3ebec5ce842c3904836adf162ef6565gc" version="1">Rune of Runic Reinvigoration</content>
+    <content contentuid="h4cc02705ba384a429f8925fe2b50540dca19" version="1">Fully heals your runic summons when you take a Short Rest</content>
 </contentList>

@@ -16,10 +16,11 @@ end
 eh.SetEntityHP = function(guid, hpValue)
     local entity = Ext.Entity.Get(guid)
     if entity and entity.Health then
-        entity.Health.MaxHp = hpValue
-        entity.Health.Hp = hpValue
+        local healAmount = hpValue or entity.Health.MaxHp
+        entity.Health.MaxHp = healAmount
+        entity.Health.Hp = healAmount
         entity:Replicate('Health')
-        RunesOfFaerun.Info('Set ' .. guid .. ' HP to ' .. hpValue)
+        RunesOfFaerun.Info('Set ' .. guid .. ' HP to ' .. healAmount)
     else
         RunesOfFaerun.Critical('Could not set HP of ' .. guid)
     end
@@ -105,5 +106,48 @@ eh.GetPartyMembersMap = function()
     end
     return members
 end
+
+local function SetEntityHPToFull(characterGUID)
+    eh.SetEntityHP(characterGUID, nil)
+end
+
+local function HealRunicSummonsToFull()
+    local summons = RunesOfFaerun.Utils.GetPlayerSummons()
+    local summonTag = "dabdfa1a-ad14-47dc-aaf2-cc09394138d7"
+    if summons and #summons > 0 then
+        for _, characterGUID in pairs(summons) do
+            if Osi.IsTagged(characterGUID, summonTag) == 1 then
+                --[[local summonEntity = Ext.Entity.Get(characterGUID)
+                if summonEntity then
+                    SetEntityHPToFull(characterGUID)
+                end]]
+                Ext.OnNextTick(function()
+                    Osi.ApplyStatus(characterGUID, "STATUS_ROF_RUNIC_INVIGORATION", 1, 1)
+                end)
+            end
+        end
+    else
+        Debug("No ROF summons present")
+    end
+end
+
+--Checks if anyone in the party has Runic Invigoration
+local function HasRunicInvigoration()
+    local partyMembers = RunesOfFaerun.EntityHandler.GetPartyMembersMap()
+    local hasRunicInvigoration = false
+    for pmTpl, _ in pairs(partyMembers) do
+        local guid = RunesOfFaerun.Utils.GetGUIDFromTpl(pmTpl)
+        local hasPassive = Osi.HasPassive(guid, "ROF_Runic_Invigoration") == 1
+        if hasPassive then
+            hasRunicInvigoration = true
+            break
+        end
+    end
+    return hasRunicInvigoration
+end
+
+eh.HasRunicInvigoration = HasRunicInvigoration
+eh.HealRunicSummonsToFull = HealRunicSummonsToFull
+eh.SetEntityHPToFull = SetEntityHPToFull
 
 RunesOfFaerun.EntityHandler = eh

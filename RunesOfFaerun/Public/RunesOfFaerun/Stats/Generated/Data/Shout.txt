@@ -44,6 +44,10 @@ new entry "Shout_ROF_Peachy_Rune"
 		data "TooltipStatusApply" "ApplyStatus(STATUS_APPLY_PEACHY_RUNE, 100, -1)"
 		data "RequirementConditions" ""
 
-
-
-
+new entry "Shout_ROF_Apply_Runic_Invigoration_Passive"
+	type "SpellData"
+		data "SpellType" "Shout"
+	using "Shout__WildMagic"
+		data "SpellProperties" "ApplyStatus(STATUS_ROF_APPLY_RI, 100, -1)"
+		data "DisplayName" "h4cc02705ba384a429f8925fe2b50540dca19"
+		data "Description" "hdee3ebec5ce842c3904836adf162ef6565gc"
