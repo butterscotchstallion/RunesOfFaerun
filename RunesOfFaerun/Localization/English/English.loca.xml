@@ -128,4 +128,7 @@
     <content contentuid="hceb1be309637409ca921c28691b4d9df99ba" version="1">Forever altered by Peachy magic</content>
     <content contentuid="h9ab1516226a5403e93f3cdb27f30e789e6gg" version="1">Arrow of Temporary Amnesia</content>
 
+    <!--Arrow of Maddening Whispers-->
+    <content contentuid="h1e08ed8637f741209cb56e923e6bb65bc200" version="1">Arrow of Maddening Whispers</content>
+    <content contentuid="hb808824402c94942beae51c93b046c3c7299" version="1">On hit, the target must succeed on a saving throw or become &lt;LSTag Type="Status" Tooltip="MADNESS"&gt;Mad&lt;/LSTag&gt; for 3 turns. If they fail, they are &lt;LSTag Type="Status" Tooltip="CONFUSION"&gt;Confused&lt;/LSTag&gt; for 1 turn</content>
 </contentList>
