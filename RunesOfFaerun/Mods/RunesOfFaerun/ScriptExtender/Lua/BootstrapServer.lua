@@ -12,7 +12,7 @@ RunesOfFaerun = {
 Ext.Require('Server/Tags.lua')
 Ext.Require('Server/MuffinLogger.lua')
 Ext.Require('Server/Utils.lua')
-Ext.Require('Server/CosmeticHandler.lua')
+Ext.Require('Server/Upgrader.lua')
 Ext.Require('Server/EventHandler.lua')
 Ext.Require('Server/EntityHandler.lua')
 Ext.Require('Server/SpellHandler.lua')

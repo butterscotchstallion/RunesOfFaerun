@@ -64,8 +64,12 @@ eh.HandleByGUID = function(rootGUID, instanceGUID)
             ]]
             Ext.Timer.WaitFor(3000, function()
                 Debug("Checking if mummy is unlocked for nurse")
-                RunesOfFaerun.CosmeticHandler.ApplyMummyTransformationIfUnlocked(instanceGUID)
+                RunesOfFaerun.Upgrader.ApplyMummyTransformationIfUnlocked(instanceGUID)
             end, nil)
+        end
+
+        if rootGUID == GIANT_BADGER_GUID then
+            RunesOfFaerun.Upgrader.ApplyBadgerUpgradesIfUnlocked(instanceGUID)
         end
     else
         --RunesOfFaerun.Debug(rootGUID .. ' is not a known entity')
