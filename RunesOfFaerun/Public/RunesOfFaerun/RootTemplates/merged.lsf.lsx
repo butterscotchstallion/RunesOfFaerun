@@ -22,6 +22,27 @@
                     <attribute id="SoundMovementStartEvent" type="FixedString" value="" />
                     <attribute id="SoundMovementStopEvent" type="FixedString" value="" />
                     <children>
+                        <node id="OnDeathActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="10" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="ApplyDeathTypeBloodCheck" type="bool" value="True" />
+                                            <attribute id="CellAtGrow" type="int32" value="10" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="ExternalCauseAsSurfaceOwner" type="bool" value="True" />
+                                            <attribute id="GrowTimer" type="float" value="0.02" />
+                                            <attribute id="LifeTime" type="float" value="60" />
+                                            <attribute id="SurfaceType" type="FixedString" value="SurfaceNone" />
+                                            <attribute id="Timeout" type="float" value="0" />
+                                            <attribute id="TotalCells" type="int32" value="15" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
                         <node id="Tags">
                             <children>
                                 <node id="Tag">
@@ -202,6 +223,27 @@
                     <attribute id="VisualTemplate" type="FixedString" value="4b8ff439-0a98-6e6c-ad48-c695c1c29b27" />
                     <attribute id="Equipment" type="FixedString" value="EQP_ROF_Dreadful_Nurse" />
                     <children>
+                        <node id="OnDeathActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="10" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="ApplyDeathTypeBloodCheck" type="bool" value="True" />
+                                            <attribute id="CellAtGrow" type="int32" value="10" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="ExternalCauseAsSurfaceOwner" type="bool" value="True" />
+                                            <attribute id="GrowTimer" type="float" value="0.02" />
+                                            <attribute id="LifeTime" type="float" value="60" />
+                                            <attribute id="SurfaceType" type="FixedString" value="SurfaceNone" />
+                                            <attribute id="Timeout" type="float" value="0" />
+                                            <attribute id="TotalCells" type="int32" value="15" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
                         <node id="StatusList">
                             <children>
                                 <node id="Status">
@@ -551,6 +593,27 @@
                     <attribute id="Scale" type="float" value="1.25" />
                     <attribute id="LevelOverride" type="int32" value="" />
                     <children>
+                        <node id="OnDeathActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="10" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="ApplyDeathTypeBloodCheck" type="bool" value="True" />
+                                            <attribute id="CellAtGrow" type="int32" value="10" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="ExternalCauseAsSurfaceOwner" type="bool" value="True" />
+                                            <attribute id="GrowTimer" type="float" value="0.02" />
+                                            <attribute id="LifeTime" type="float" value="60" />
+                                            <attribute id="SurfaceType" type="FixedString" value="SurfaceNone" />
+                                            <attribute id="Timeout" type="float" value="0" />
+                                            <attribute id="TotalCells" type="int32" value="15" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
                         <node id="Tags">
                             <children>
                                 <!--Giant Badger - used for enhancement rune -->

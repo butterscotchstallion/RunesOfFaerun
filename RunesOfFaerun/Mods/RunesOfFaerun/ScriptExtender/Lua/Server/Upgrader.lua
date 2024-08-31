@@ -55,13 +55,46 @@ local function HasNurseTag(characterGUID)
     return tagMap[RunesOfFaerun.Tags.NURSE] ~= nil
 end
 
+local function ChangeRaceToMummy(characterGUID)
+    local entity = Ext.Entity.Get(characterGUID)
+    local mummyRaceUUID = "3c066deb-eaaf-4bbf-b021-61ad0acc51a2"
+    entity.Race.Race = mummyRaceUUID
+    entity:Replicate('Race')
+    Debug("Changed race to MUMMY")
+end
+
+local function UpdateDisplayName(characterGUID, newHandle)
+    local newDisplayName = Ext.Loca.GetTranslatedString(newHandle)
+    Osi.SetStoryDisplayName(characterGUID, newDisplayName)
+    --Apparently I should use this?
+    --Ext.Loca.UpdateTranslatedString()
+    Debug("Updated display name")
+end
+
+local function UpdateIcon(characterGUID, iconName, generatePortrait)
+    local entity = Ext.Entity.Get(characterGUID)
+    entity.ServerCharacter.Template.Icon = iconName
+    entity.ServerCharacter.Template.GeneratePortrait = generatePortrait
+    entity:Replicate("ServerCharacter")
+    Debug("Updated icon")
+end
+
 ---@param characterGUID GUIDSTRING
 local function ApplyMummyTransformationIfUnlocked(characterGUID)
     local isNurse = HasNurseTag(characterGUID)
     local mummyUnlocked = HasMummyVisualUnlocked()
     if mummyUnlocked and isNurse then
+        --Visual
         RunesOfFaerun.Upgrader.SetMummyVisual(characterGUID)
+        --Status granting new abilities
         Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
+        --Race change
+        ChangeRaceToMummy(characterGUID)
+        --Display Name
+        UpdateDisplayName(characterGUID, "h0432b904952f485fb1e2b85c598f50e89fc1")
+        --Icon
+        UpdateIcon(characterGUID, "0fd9c8b4-7ba5-8d90-e90c-e8ebc01da057-_(Icon_Mummy)", "Icon_Mummy")
+
         Debug("Applied mummy transformation to " .. characterGUID)
     else
         Debug(string.format("Mummy unlocked: %s; isNurse: %s", mummyUnlocked, isNurse))

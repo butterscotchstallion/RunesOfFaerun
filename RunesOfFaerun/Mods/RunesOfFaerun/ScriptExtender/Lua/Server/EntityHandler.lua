@@ -39,7 +39,7 @@ eh.SetEntityLevelToHostLevel = function(entityGUID)
     if hostLevel then
         Ext.OnNextTick(function()
             Osi.SetLevel(entityGUID, hostLevel)
-            RunesOfFaerun.Info('Set ' .. entityGUID .. ' level to ' .. hostLevel)
+            RunesOfFaerun.Debug('Set ' .. entityGUID .. ' level to ' .. hostLevel)
         end)
     end
 end
