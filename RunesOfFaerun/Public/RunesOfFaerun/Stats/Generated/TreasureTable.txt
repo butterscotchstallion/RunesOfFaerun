@@ -193,6 +193,8 @@ new subtable "-1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "-1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
 // Misc //
 // Rune of Unsummoning //
 new subtable "-1"

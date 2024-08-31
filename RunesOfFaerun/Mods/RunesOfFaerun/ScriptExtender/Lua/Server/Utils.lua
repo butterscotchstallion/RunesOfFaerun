@@ -54,21 +54,22 @@ local function GetEntityFromTpl(tplId)
     end
 end
 
-local function GetTagMapByTplId(tplId)
-    local entity = GetEntityFromTpl(tplId)
-
+local function GetTagMapFromEntity(entity)
+    local tagMap = {}
     if entity and entity.Tag then
         local tags = entity.Tag.Tags
-        local tagMap = {}
-
         for _, tagUUID in pairs(tags) do
             tagMap[tagUUID] = true
         end
-
-        return tagMap
     else
-        Critical('Could not get entity tags from tpl ' .. tplId)
+        Critical('Could not get entity tags')
     end
+    return tagMap
+end
+
+local function GetTagMapByTplId(tplId)
+    local entity = GetEntityFromTpl(tplId)
+    return GetTagMapFromEntity(entity)
 end
 
 local function GetDisplayNameFromEntity(entity)
@@ -86,6 +87,7 @@ local function SummonRunePouch()
     Osi.TemplateAddTo("74477542-5ad9-4907-9c1d-e9ef90b26b06", Osi.GetHostCharacter(), 1, 1)
 end
 
+utils.GetTagMapFromEntity = GetTagMapFromEntity
 utils.GetPlayerSummons = GetPlayerSummons
 utils.GetTagMapByTplId = GetTagMapByTplId
 utils.SummonRunePouch = SummonRunePouch

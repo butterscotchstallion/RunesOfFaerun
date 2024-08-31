@@ -43,14 +43,24 @@ local function SetMummyVisual(characterGUID)
     SaveCustomVisual(ch.MUMMY_UNLOCK_NAME)
 end
 
+local function HasNurseTag(characterGUID)
+    local entity = Ext.Entity.Get(characterGUID)
+    local tagMap = RunesOfFaerun.Utils.GetTagMapFromEntity(entity)
+    _D(tagMap)
+
+    return tagMap[RunesOfFaerun.Tags.NURSE] ~= nil
+end
+
 ---@param characterGUID GUIDSTRING
 local function ApplyMummyTransformationIfUnlocked(characterGUID)
-    local nurseTag = "7588d4ba-1dea-419e-b8ca-7a4411d0aedc"
-    local isNurse = Osi.IsTagged(characterGUID, nurseTag) == 1
-    if HasMummyVisualUnlocked() and isNurse then
+    local isNurse = HasNurseTag(characterGUID)
+    local mummyUnlocked = HasMummyVisualUnlocked()
+    if mummyUnlocked and isNurse then
         RunesOfFaerun.CosmeticHandler.SetMummyVisual(characterGUID)
         Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
         Debug("Applied mummy transformation to " .. characterGUID)
+    else
+        Debug(string.format("Mummy unlocked: %s; isNurse: %s", mummyUnlocked, isNurse))
     end
 end
 

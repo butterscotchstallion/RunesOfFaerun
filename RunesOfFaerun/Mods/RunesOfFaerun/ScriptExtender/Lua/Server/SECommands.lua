@@ -161,6 +161,14 @@ local commands = {
         func = function(_)
             RunesOfFaerun.EntityHandler.HealRunicSummonsToFull()
         end
+    },
+    {
+        name = 'rollportents',
+        params = '',
+        func = function(_)
+            _D(Ext.Entity.GetAllEntitiesWithComponent("RequestedRoll"))
+            --Osi.RequestActiveRoll(Osi.GetHostCharacter(), Osi.GetHostCharacter(), "")
+        end
     }
 }
 

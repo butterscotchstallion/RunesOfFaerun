@@ -1,6 +1,4 @@
 local hdh = {
-    RUNE_TAG = '659f6688-8b4c-42f2-97c4-3485962f4a9c',
-    ENHANCEMENT_RUNE_TAG = '4a349b52-43b3-4999-83af-0272b284d0d9',
     RUNE_HELP_HANDLE = 'h36d9c75c51b04a74a311479f87fa04b3c802',
     ENHANCEMENT_RUNE_HELP_HANDLE = 'h0e7339d361b64bd299f1c63f4909bd07006f',
     hasDiscoveredRune = false,
@@ -28,15 +26,14 @@ end
 local function IsRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then
-        return tagMap[hdh.RUNE_TAG]
+        return tagMap[RunesOfFaerun.Tags.RUNE]
     end
 end
 
---Bugged? Seems to be triggering a lot incorrectly
 local function IsEnhancementRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then
-        return tagMap[hdh.ENHANCEMENT_RUNE_TAG]
+        return tagMap[RunesOfFaerun.Tag.ENHANCEMENT_RUNE]
     end
 end
 

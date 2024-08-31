@@ -9,6 +9,7 @@ RunesOfFaerun = {
     Quests = {}
 }
 
+Ext.Require('Server/Tags.lua')
 Ext.Require('Server/MuffinLogger.lua')
 Ext.Require('Server/Utils.lua')
 Ext.Require('Server/CosmeticHandler.lua')

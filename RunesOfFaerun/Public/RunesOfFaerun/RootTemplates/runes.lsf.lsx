@@ -427,6 +427,42 @@
                     </children>
                 </node>
 
+                <!-- Rune of Embiggening -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h5d2479bc380046ce9b7692160fb1be190b48" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h07e23d59c6b9455ba4cbe649682e0b02e1b8" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="f5e6c3ff-798d-481a-8983-8b9937ab1255" />
+                    <attribute id="Name" type="LSString" value="ROF_Rune_of_Embiggening" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_RUNE_ROF_OF_EMBIGGENING" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Target_ROF_Apply_Embiggening" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
                 <!-- Rune pouch -->
                 <node id="GameObjects">
                     <attribute id="CastShadow" type="bool" value="False" />

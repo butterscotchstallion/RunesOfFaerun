@@ -19,6 +19,8 @@
                     <attribute id="SpellSet" type="FixedString" value="CommonBeastActions" />
                     <attribute id="Stats" type="FixedString" value="ROF_Slime_Companion" />
                     <attribute id="Type" type="FixedString" value="character" />
+                    <attribute id="SoundMovementStartEvent" type="FixedString" value="" />
+                    <attribute id="SoundMovementStopEvent" type="FixedString" value="" />
                     <children>
                         <node id="Tags">
                             <children>
