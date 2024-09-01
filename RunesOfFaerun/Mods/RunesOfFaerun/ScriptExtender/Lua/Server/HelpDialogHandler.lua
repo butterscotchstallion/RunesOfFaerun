@@ -33,7 +33,7 @@ end
 local function IsEnhancementRune(tplId)
     local tagMap = RunesOfFaerun.Utils.GetTagMapByTplId(tplId)
     if tagMap then
-        return tagMap[RunesOfFaerun.Tag.ENHANCEMENT_RUNE]
+        return tagMap[RunesOfFaerun.Tags.ENHANCEMENT_RUNE]
     end
 end
 

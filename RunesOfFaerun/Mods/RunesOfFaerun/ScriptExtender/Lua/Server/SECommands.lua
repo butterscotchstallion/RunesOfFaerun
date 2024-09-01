@@ -45,7 +45,18 @@ local commands = {
         params = '',
         func = function()
             RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
-                castFireball = true
+                castFireball = true,
+                hostile = true
+            })
+        end
+    },
+    {
+        name = 'spawnhostile',
+        params = '',
+        func = function()
+            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
+                castFireball = false,
+                hostile = true
             })
         end
     },
@@ -134,7 +145,7 @@ local commands = {
         name = 'updatematerial',
         params = 'preset',
         func = function(_, preset)
-            RunesOfFaerun.CosmeticHandler.ApplyMaterialOverride(Osi.GetHostCharacter(), preset)
+            RunesOfFaerun.Upgrader.ApplyMaterialOverride(Osi.GetHostCharacter(), preset)
         end
     },
     {
@@ -152,7 +163,7 @@ local commands = {
         name = 'showvisuals',
         params = '',
         func = function(_)
-            _D(RunesOfFaerun.CosmeticHandler.GetUnlockedVisuals())
+            _D(RunesOfFaerun.Upgrader.GetUnlockedVisuals())
         end
     },
     {
@@ -163,11 +174,11 @@ local commands = {
         end
     },
     {
-        name = 'rollportents',
+        name = 'debugmode',
         params = '',
         func = function(_)
-            _D(Ext.Entity.GetAllEntitiesWithComponent("RequestedRoll"))
-            --Osi.RequestActiveRoll(Osi.GetHostCharacter(), Osi.GetHostCharacter(), "")
+            RunesOfFaerun.logLevel = "DEBUG"
+            Info("Debug mode activated!")
         end
     }
 }

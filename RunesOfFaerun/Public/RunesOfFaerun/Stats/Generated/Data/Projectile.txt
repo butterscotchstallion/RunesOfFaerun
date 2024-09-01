@@ -16,6 +16,7 @@ new entry "Projectile_ROF_Arrow_of_Maddening_Whispers"
 		data "CastTextEvent" "Cast"
 		data "SpellContainerID" "Projectile_ROF_Duplicitous_Arrows"
 		data "ContainerSpells" ""
+		data "UseCosts" "ActionPoint:1"
 
 // Arrow of Transformation //
 new entry "Projectile_ROF_Arrow_of_Transformation"
@@ -32,6 +33,7 @@ new entry "Projectile_ROF_Arrow_of_Transformation"
 		data "CastTextEvent" "Cast"
 		data "SpellContainerID" "Projectile_ROF_Duplicitous_Arrows"
 		data "ContainerSpells" ""
+		data "UseCosts" "ActionPoint:1"
 
 // Arrow of Temporary Amnesia //
 new entry "Projectile_ROF_Arrow_of_Temporary_Amnesia"
@@ -48,6 +50,7 @@ new entry "Projectile_ROF_Arrow_of_Temporary_Amnesia"
 		data "CastTextEvent" "Cast"
 		data "SpellContainerID" "Projectile_ROF_Duplicitous_Arrows"
 		data "ContainerSpells" ""
+		data "UseCosts" "ActionPoint:1"
 
 // Container //
 new entry "Projectile_ROF_Duplicitous_Arrows"

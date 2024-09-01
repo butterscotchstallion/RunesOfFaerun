@@ -77,7 +77,6 @@ new entry "STATUS_ROF_BONE_ARMOR"
 		data "StackId" "STATUS_ROF_BONE_ARMOR"
 		data "RemoveConditions" "HasStatus('SG_Incapacitated')"
 		data "RemoveEvents" "OnStatusApplied"
-		data "StatusGroups" "SG_RemoveOnRespec"
 		data "AuraRadius" "20"
 
 new entry "STATUS_ROF_STOLEN_SPELL_UNLOCK_BASE"

@@ -95,7 +95,9 @@ eh.SpawnHostileSpellSlinger = function(options)
             RunesOfFaerun.Debug('Create successful: UUID = ' .. spawnUUID)
             Osi.RequestPing(x, y, z, spawnUUID, Osi.GetHostCharacter())
 
-            SetCreatureHostile(spawnUUID)
+            if options.hostile then
+                SetCreatureHostile(spawnUUID)
+            end
 
             if options.castFireball then
                 local newSpell = "Projectile_ROF_Fireball"

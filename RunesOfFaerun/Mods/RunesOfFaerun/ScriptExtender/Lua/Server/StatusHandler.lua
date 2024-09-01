@@ -28,7 +28,8 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     local isCreateUpdateSuccessful = false
     local persist = false
     local nsemfhuecooifldiimtrofst = true
-    local status = Ext.Stats.Get(statusName, -1, true, persist)
+    local warnOnError = false
+    local status = Ext.Stats.Get(statusName, nil, warnOnError, persist)
     local verb = "Created"
 
     if status then
@@ -45,7 +46,7 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
         RunesOfFaerun.Critical('Error creating status ' .. statusName)
     end
 
-    local updatedStatus = Ext.Stats.Get(statusName, -1, true, persist)
+    local updatedStatus = Ext.Stats.Get(statusName, nil, warnOnError, persist)
     local duration = Ext.Utils.MonotonicTime() - startTime .. "ms"
     if updatedStatus and nsemfhuecooifldiimtrofst then
         Debug(verb .. ' status ' .. statusName .. ' successfully in ' .. duration)

@@ -458,7 +458,8 @@ end
 local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
     local startTime = Ext.Utils.MonotonicTime()
     local spellName = spell.Id.OriginatorPrototype
-    local spellStatsEntry = Ext.Stats.Get(spellName, -1, true, true)
+    local warnOnError = false
+    local spellStatsEntry = Ext.Stats.Get(spellName, -1, nil, warnOnError)
     local spellDisplayName = Osi.ResolveTranslatedString(spellStatsEntry.DisplayName)
     local amnesiaStatus = 'STATUS_ROF_TEMP_AMNESIA_BASE'
     --Temporary Amnesia

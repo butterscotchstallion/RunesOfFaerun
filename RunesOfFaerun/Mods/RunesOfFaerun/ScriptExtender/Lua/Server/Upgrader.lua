@@ -75,7 +75,9 @@ local function UpdateIcon(characterGUID, iconName, generatePortrait)
     local entity = Ext.Entity.Get(characterGUID)
     entity.ServerCharacter.Template.Icon = iconName
     entity.ServerCharacter.Template.GeneratePortrait = generatePortrait
-    entity:Replicate("ServerCharacter")
+    pcall(function()
+        entity:Replicate()
+    end)
     Debug("Updated icon")
 end
 
@@ -93,7 +95,7 @@ local function ApplyMummyTransformationIfUnlocked(characterGUID)
         --Display Name
         UpdateDisplayName(characterGUID, "h0432b904952f485fb1e2b85c598f50e89fc1")
         --Icon
-        UpdateIcon(characterGUID, "0fd9c8b4-7ba5-8d90-e90c-e8ebc01da057-_(Icon_Mummy)", "Icon_Mummy")
+        UpdateIcon(characterGUID, "c79a0357-1c90-de1e-9f41-c5b5e59aa47c-_(Icon_Mummy)", "Icon_Mummy")
 
         Debug("Applied mummy transformation to " .. characterGUID)
     else
