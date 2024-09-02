@@ -565,6 +565,105 @@ local function HandleDuplicitousTransformation(characterTpl)
     end
 end
 
+local function CreateAndApplyGRStatus(characterGUID, spellSlotLevel)
+    local status = Ext.Stats.Get("STATUS_ROF_GR_Base", nil, false, false)
+    if status then
+        status.Boosts = string.format("RestoreResource(SpellSlot, 100%, %s)", spellSlotLevel)
+        status:Sync()
+    end
+end
+
+local function GetEntitySpellSlots(characterGUID, displayName)
+    local entity = Ext.Entity.Get(characterGUID)
+    local spellSlotResourceUUID = "d136c5d9-0ff0-43da-acce-a74a07f8d6bf"
+    local actionResources = entity.ActionResources
+    local slots = {}
+    if entity and actionResources then
+        local resources = actionResources.Resources
+        local spellSlots = resources[spellSlotResourceUUID]
+
+        if spellSlots then
+            for _, slot in pairs(spellSlots) do
+                table.insert(slots, slot.Level)
+            end
+        else
+            Debug(displayName .. " has no spell slots :(")
+        end
+    end
+    return slots
+end
+
+local function GetRandomSpellSlotFromEntity(characterGUID, displayName)
+    local slots = GetEntitySpellSlots(characterGUID, displayName)
+    local randomSlot = nil
+    if slots and #slots > 0 then
+        randomSlot = slots[math.random(#slots)]
+    end
+    return randomSlot
+end
+
+local function GetRandomGRStatusName(characterGUID, displayName)
+    local spellSlotLevel = GetRandomSpellSlotFromEntity(characterGUID, displayName)
+    if spellSlotLevel then
+        return string.format("STATUS_ROF_GR_%s", spellSlotLevel)
+    end
+end
+
+local function HandleGrimRenewalApplied(characterGUID)
+    --local spellSlotResourceUUID = "d136c5d9-0ff0-43da-acce-a74a07f8d6bf"
+    local entity = Ext.Entity.Get(characterGUID)
+    local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
+    local statusName = GetRandomGRStatusName(characterGUID, displayName)
+
+    if statusName then
+        Osi.ApplyStatus(characterGUID, statusName, -1, 1)
+        Debug(string.format("Applied %s to %s", statusName, displayName))
+    else
+        Critical("Could not get random GR status!")
+    end
+
+    local tagMap = RunesOfFaerun.Utils.GetTagMapFromEntity(entity)
+    local isROFSummon = tagMap[RunesOfFaerun.Tags.ROF_SUMMON]
+
+    if isROFSummon then
+        Debug("Applying Bloodthirsty to ROF summon " .. displayName)
+        Ext.OnNextTick(function()
+            Osi.ApplyStatus(characterGUID, "STATUS_ROF_Bloodthirsty", 0, 1)
+        end)
+    else
+        Debug("Not a ROF summon?")
+        _D(tagMap)
+    end
+    --[[
+    if entity and entity.ActionResources then
+        local resources = entity.ActionResources.Resources
+
+        if resources and resources[spellSlotResourceUUID] then
+            local spellSlots = resources[spellSlotResourceUUID]
+            local randomSpellSlot = spellSlots[math.random(#spellSlots)]
+            randomSpellSlot.Amount = randomSpellSlot.Amount + 1
+            entity:Replicate("ActionResources")
+
+            CreateAndApplyGRStatus(characterGUID)
+
+            Debug(
+                string.format(
+                    "Added level %s spell slot to %s. Amount: %s",
+                    randomSpellSlot.Level,
+                    displayName,
+                    randomSpellSlot.Amount
+                )
+            )
+        else
+            Debug("Entity has no spell slots!")
+        end
+    else
+        Debug("Could not get action resources for " .. displayName)
+    end
+    --]]
+end
+
+sh.HandleGrimRenewalApplied = HandleGrimRenewalApplied
 sh.IsAmnesiaStatus = IsAmnesiaStatus
 sh.ClearAmnesiaStatuses = ClearAmnesiaStatuses
 sh.ClearValidSpellCache = ClearValidSpellCache

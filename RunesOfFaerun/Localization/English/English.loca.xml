@@ -143,4 +143,12 @@
     <content contentuid="h9c330a5a882b4bea85837b079667bba4cca1" version="1">Embiggened by runic magic</content>
 
     <content contentuid="h0432b904952f485fb1e2b85c598f50e89fc1" version="1">Dreadful Mummy</content>
+
+    <content contentuid="hbcec26b645e2475b846b79ed248118072c28" version="1">Grim Renewal</content>
+    <content contentuid="h2c7de098545c42bebbc76d6f11e0a258bdac" version="1">Renewed by the spiritual energy of the dead</content>
+    <content contentuid="h2b179b43412e4175ac136b8e5d7a6b751gc9" version="1">Bloodthirsty</content>
+    <content contentuid="hb4171b8d5ef94fc3847ae5001fcc6fe75385" version="1">Gain [1] hit points upon striking a killing blow</content>
+    <content contentuid="h491d6729686e407198e41807417170e25dg0" version="1">Rune of Grim Renewal</content>
+    <content contentuid="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1">Restores a random spell slot to your summons when they strike a killing blow. Runic summons are healed for 3d6 as well</content>
+    <content contentuid="h2b497590880e4f0aa211888052e81e740d1c" version="1">Rune of Grim Renewal</content>
 </contentList>

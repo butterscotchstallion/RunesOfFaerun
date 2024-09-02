@@ -158,6 +158,10 @@ local function OnStatusApplied(object, status, _, _)
         local someTattoo = '15e83d34-ed3b-4979-8cbe-5aa4d4e30a92'
         RunesOfFaerun.Upgrader.ApplyMaterialOverride(guid, "e5b7d8df-a595-4e90-906a-7c3372e976f7")
     end
+
+    if status == 'STATUS_ROF_GR_TECHNICAL' then
+        RunesOfFaerun.SpellHandler.HandleGrimRenewalApplied(characterGUID)
+    end
 end
 
 local function OnStatusRemoved(object, status, _, _)

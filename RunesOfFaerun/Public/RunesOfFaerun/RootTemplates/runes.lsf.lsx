@@ -463,6 +463,42 @@
                     </children>
                 </node>
 
+                <!-- Rune of Grim Renewal -->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h491d6729686e407198e41807417170e25dg0" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="c73abcd4-9ea2-4fb0-a3a8-68c7f372185c" />
+                    <attribute id="Name" type="LSString" value="" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2874eaa0-dcc7-48c0-9d96-dc50c5149aa2" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_RUNE_ROF_OF_GR" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="Tags">
+                            <children>
+                                <!--Rune-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="659f6688-8b4c-42f2-97c4-3485962f4a9c" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="12" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="SkillID" type="FixedString" value="Target_ROF_Apply_Grim_Renewal" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+
                 <!-- Rune pouch -->
                 <node id="GameObjects">
                     <attribute id="CastShadow" type="bool" value="False" />

@@ -219,3 +219,85 @@ new entry "STATUS_ROF_EMBIGGENED"
 		data "DisplayName" "h556e7dfb00eb480a811e5af550e055ee4ge4"
 		data "Description" "h9c330a5a882b4bea85837b079667bba4cca1"
 		data "StatusPropertyFlags" "IgnoreResting"
+
+
+//
+// Grim Renewal
+//
+
+new entry "STATUS_ROF_GR_TECHNICAL"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		// Empty displayname/description
+		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484"
+		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "STATUS_ROF_GR_Base"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		data "DisplayName" "hbcec26b645e2475b846b79ed248118072c28"
+		data "Description" "h2c7de098545c42bebbc76d6f11e0a258bdac"
+		data "Icon" "GenericIcon_Intent_Healing"
+		data "StackId" "ROFGrimRenewal"
+		data "StackType" "Ignore"
+
+new entry "STATUS_ROF_GR_1"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 1)"
+
+new entry "STATUS_ROF_GR_2"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 2)"
+
+new entry "STATUS_ROF_GR_3"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 3)"
+
+new entry "STATUS_ROF_GR_4"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 4)"
+
+new entry "STATUS_ROF_GR_5"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 5)"
+
+new entry "STATUS_ROF_GR_6"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 6)"
+
+new entry "STATUS_ROF_GR_7"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_ROF_GR_Base"
+		data "Boosts" "ActionResource(SpellSlot, 1, 7)"
+
+new entry "STATUS_ROF_Bloodthirsty"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		data "DisplayName" "h2b179b43412e4175ac136b8e5d7a6b751gc9"
+		data "Description" "hb4171b8d5ef94fc3847ae5001fcc6fe75385"
+		data "DescriptionParams" "RegainHitPoints(SELF,3d6)"
+		data "Icon" "GenericIcon_Intent_Healing"
+		data "Boosts" "RegainHitPoints(SELF,3d6)"
+
+new entry "STATUS_APPLY_GRIM_RENEWAL"
+	type "StatusData"
+		data "StatusType" "BOOST"
+	using "STATUS_UNLOCK_SPELL_BASE"
+		data "Passives" "ROF_Grim_Renewal"
+
+
+

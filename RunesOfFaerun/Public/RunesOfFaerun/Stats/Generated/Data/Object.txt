@@ -91,6 +91,12 @@ new entry "OBJ_RUNE_ROF_OF_EMBIGGENING"
 		data "RootTemplate" "f5e6c3ff-798d-481a-8983-8b9937ab1255"
 		data "Rarity" "Legendary"
 
+new entry "OBJ_RUNE_ROF_OF_GR"
+	type "Object"
+	using "OBJ_RUNE_ROF_TPL_RUNE"
+		data "RootTemplate" "c73abcd4-9ea2-4fb0-a3a8-68c7f372185c"
+		data "Rarity" "Legendary"
+
 new entry "ROF_Duplicitous_Bow"
 	type "Weapon"
 	using "WPN_Longbow_1"
