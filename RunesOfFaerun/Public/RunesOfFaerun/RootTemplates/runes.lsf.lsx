@@ -465,8 +465,10 @@
 
                 <!-- Rune of Grim Renewal -->
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h3e2ff20217014d809707aa8efcae46d54e40" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h491d6729686e407198e41807417170e25dg0" version="1" />
+                    <attribute id="TechnicalDescription" type="TranslatedString" handle="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1" />
+                    <attribute id="TechnicalDescriptionParams" type="LSString" value="3d6" />
                     <attribute id="Icon" type="FixedString" value="Item_LOOT_MF_Rune_Tablet_A" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="c73abcd4-9ea2-4fb0-a3a8-68c7f372185c" />

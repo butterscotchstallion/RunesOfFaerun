@@ -87,6 +87,7 @@ local function ApplyMummyTransformationIfUnlocked(characterGUID)
     Need to wait a little bit for tags to be populated because...
     I dunno. It just works (tm)
     ]]
+    local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(Ext.Entity.Get(characterGUID))
     Ext.Timer.WaitFor(3000, function()
         local isNurse = HasNurseTag(characterGUID)
         local mummyUnlocked = HasMummyVisualUnlocked()
@@ -104,7 +105,14 @@ local function ApplyMummyTransformationIfUnlocked(characterGUID)
 
             Debug("Applied mummy transformation to " .. characterGUID)
         else
-            Debug(string.format("Mummy unlocked: %s; isNurse: %s", mummyUnlocked, isNurse))
+            Debug(
+                string.format(
+                    "[%s] Mummy unlocked: %s; isNurse: %s",
+                    displayName,
+                    mummyUnlocked,
+                    isNurse
+                )
+            )
         end
     end, nil)
 end
