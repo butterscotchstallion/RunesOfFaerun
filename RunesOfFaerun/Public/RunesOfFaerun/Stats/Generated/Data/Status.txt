@@ -241,6 +241,7 @@ new entry "STATUS_ROF_GR_Base"
 		data "Icon" "GenericIcon_Intent_Healing"
 		data "StackId" "ROFGrimRenewal"
 		data "StackType" "Ignore"
+		data "ApplyEffect" "4019eeae-d4e3-449b-ba4a-6d7422ec6807"
 
 new entry "STATUS_ROF_GR_1"
 	type "StatusData"

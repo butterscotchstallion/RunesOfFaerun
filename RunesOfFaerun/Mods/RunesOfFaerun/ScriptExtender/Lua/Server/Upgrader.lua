@@ -83,24 +83,30 @@ end
 
 ---@param characterGUID GUIDSTRING
 local function ApplyMummyTransformationIfUnlocked(characterGUID)
-    local isNurse = HasNurseTag(characterGUID)
-    local mummyUnlocked = HasMummyVisualUnlocked()
-    if mummyUnlocked and isNurse then
-        --Visual
-        RunesOfFaerun.Upgrader.SetMummyVisual(characterGUID)
-        --Status granting new abilities
-        Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
-        --Race change
-        ChangeRaceToMummy(characterGUID)
-        --Display Name
-        UpdateDisplayName(characterGUID, "h0432b904952f485fb1e2b85c598f50e89fc1")
-        --Icon
-        UpdateIcon(characterGUID, "c79a0357-1c90-de1e-9f41-c5b5e59aa47c-_(Icon_Mummy)", "Icon_Mummy")
+    --[[
+    Need to wait a little bit for tags to be populated because...
+    I dunno. It just works (tm)
+    ]]
+    Ext.Timer.WaitFor(3000, function()
+        local isNurse = HasNurseTag(characterGUID)
+        local mummyUnlocked = HasMummyVisualUnlocked()
+        if mummyUnlocked and isNurse then
+            --Visual
+            RunesOfFaerun.Upgrader.SetMummyVisual(characterGUID)
+            --Status granting new abilities
+            Osi.ApplyStatus(characterGUID, "STATUS_APPLY_MUMMY_TRANSFORM", -1, 1)
+            --Race change
+            ChangeRaceToMummy(characterGUID)
+            --Display Name
+            UpdateDisplayName(characterGUID, "h0432b904952f485fb1e2b85c598f50e89fc1")
+            --Icon
+            UpdateIcon(characterGUID, "c79a0357-1c90-de1e-9f41-c5b5e59aa47c-_(Icon_Mummy)", "Icon_Mummy")
 
-        Debug("Applied mummy transformation to " .. characterGUID)
-    else
-        Debug(string.format("Mummy unlocked: %s; isNurse: %s", mummyUnlocked, isNurse))
-    end
+            Debug("Applied mummy transformation to " .. characterGUID)
+        else
+            Debug(string.format("Mummy unlocked: %s; isNurse: %s", mummyUnlocked, isNurse))
+        end
+    end, nil)
 end
 
 local function ApplyMaterialOverride(uuid, preset)

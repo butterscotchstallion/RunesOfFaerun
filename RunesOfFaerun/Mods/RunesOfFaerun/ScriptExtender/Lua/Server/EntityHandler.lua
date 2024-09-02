@@ -58,14 +58,8 @@ eh.HandleByGUID = function(rootGUID, instanceGUID)
 
         --Apply mummy transformation if nurse is here
         if rootGUID == NURSE_COMPANION_GUID then
-            --[[
-            Need to wait a little bit for tags to be populated because...
-            I dunno. It just works (tm)
-            ]]
-            Ext.Timer.WaitFor(3000, function()
-                Debug("Checking if mummy is unlocked for nurse")
-                RunesOfFaerun.Upgrader.ApplyMummyTransformationIfUnlocked(instanceGUID)
-            end, nil)
+            Debug("Checking if mummy is unlocked for nurse")
+            RunesOfFaerun.Upgrader.ApplyMummyTransformationIfUnlocked(instanceGUID)
         end
 
         if rootGUID == GIANT_BADGER_GUID then
