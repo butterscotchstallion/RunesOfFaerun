@@ -64,7 +64,7 @@ local function ChangeRaceToMummy(characterGUID)
 end
 
 local function UpdateDisplayName(characterGUID, newHandle)
-    local newDisplayName = Ext.Loca.GetTranslatedString(newHandle)
+    local newDisplayName = Ext.Loca.GetTranslatedString(newHandle, nil)
     Osi.SetStoryDisplayName(characterGUID, newDisplayName)
     --Apparently I should use this?
     --Ext.Loca.UpdateTranslatedString()
