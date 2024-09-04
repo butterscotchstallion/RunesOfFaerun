@@ -5,7 +5,7 @@ local function SaveEntityToFile(targetName, entity)
         --%localappdata%\Larian Studios\Baldur's Gate 3\Script Extender
         local filename = targetName .. ".json"
         Ext.IO.SaveFile(filename, Ext.DumpExport(entity:GetAllComponents()))
-        RunesOfFaerun.Info('Saved target entity to %localappdata%\\Larian Studios\\Baldur\'s Gate 3\\Script Extender\\' ..
+        Debug('Saved target entity to %localappdata%\\Larian Studios\\Baldur\'s Gate 3\\Script Extender\\' ..
             filename)
     else
         Critical('Attempted to save entity file for nil entity!')
@@ -62,7 +62,10 @@ local function GetTagMapFromEntity(entity)
             tagMap[tagUUID] = true
         end
     else
-        Critical('Could not get entity tags')
+        Debug(
+            string.format('Could not get entity tags from %s', RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
+            )
+        )
     end
     return tagMap
 end

@@ -215,7 +215,7 @@ local function SpawnQuestGiver(npcUUID)
     local spawnUUID = Osi.CreateAt(npcUUID, x, y, z, 0, 1, '')
 
     if spawnUUID then
-        Info('Quest giver spawned')
+        Debug('Quest giver spawned')
 
         qh.state.questGiversActive[spawnUUID] = true
 

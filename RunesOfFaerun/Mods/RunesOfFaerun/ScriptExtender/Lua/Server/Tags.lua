@@ -4,4 +4,5 @@ RunesOfFaerun.Tags = {
     NURSE = "7588d4ba-1dea-419e-b8ca-7a4411d0aedc",
     RUNE = "659f6688-8b4c-42f2-97c4-3485962f4a9c",
     ENHANCEMENT_RUNE = "4a349b52-43b3-4999-83af-0272b284d0d9",
+    RUNE_POUCH = "3d942aee-430d-4204-85e4-3ca0a1e0e7ac",
 }

@@ -503,6 +503,8 @@
 
                 <!-- Rune pouch -->
                 <node id="GameObjects">
+                    <attribute id="ContainerAutoAddOnPickup" type="bool" value="True" />
+                    <attribute id="ContainerContentFilterCondition" type="LSString" value="Tagged('ROF_RUNE')" />
                     <attribute id="CastShadow" type="bool" value="False" />
                     <attribute id="Description" type="TranslatedString" handle="h02b65302bbf640a6a43dabd65cba1c4b8372" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hec70078fbe224315b3353c0c607c3805488e" version="1" />
@@ -574,6 +576,9 @@
                             <children>
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="9b6f9531-c2d3-47b2-9153-861425152eb3" />
+                                </node>
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="3d942aee-430d-4204-85e4-3ca0a1e0e7ac" />
                                 </node>
                             </children>
                         </node>

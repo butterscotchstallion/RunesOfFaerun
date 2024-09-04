@@ -35,8 +35,7 @@ local function RemoveSpellFromAddedSpells(entity, spellName)
             end
 
             if spellExists then
-                RunesOfFaerun.Info('Found spell "' .. spellName .. '"!')
-                RunesOfFaerun.Info('Setting filtered spells and replicating: ')
+                Debug('Found spell "' .. spellName .. '"!')
 
                 entity.addedSpells.Spells = filteredSpells
                 entity:Replicate('AddedSpells')

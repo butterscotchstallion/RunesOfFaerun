@@ -20,9 +20,9 @@ eh.SetEntityHP = function(guid, hpValue)
         entity.Health.MaxHp = healAmount
         entity.Health.Hp = healAmount
         entity:Replicate('Health')
-        RunesOfFaerun.Info('Set ' .. guid .. ' HP to ' .. healAmount)
+        Debug('Set ' .. guid .. ' HP to ' .. healAmount)
     else
-        RunesOfFaerun.Critical('Could not set HP of ' .. guid)
+        Critical('Could not set HP of ' .. guid)
     end
 end
 

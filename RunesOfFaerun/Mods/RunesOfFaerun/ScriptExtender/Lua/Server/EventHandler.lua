@@ -123,11 +123,17 @@ local function OnMessageBoxYesNoClosed(character, message, result)
     Debug(string.format('Message box closed: %s %s %s', character, message, result))
 end
 
-local function OnTemplateAddedTo(objectTemplate, object2, inventoryHolder, addType)
-    local isRune = RunesOfFaerun.HelpDialogHandler.IsRune(object2)
+local function OnTemplateAddedTo(objectTemplate, templateId, inventoryHolder, addType)
+    local isRune = RunesOfFaerun.HelpDialogHandler.IsRune(templateId)
 
     if isRune then
-        RunesOfFaerun.HelpDialogHandler.OnRuneDiscovered(object2, inventoryHolder)
+        RunesOfFaerun.HelpDialogHandler.OnRuneDiscovered(templateId, inventoryHolder)
+    end
+
+    if RunesOfFaerun.HelpDialogHandler.IsRunePouch(templateId) then
+        RunesOfFaerun.HelpDialogHandler.OnRunePouchDiscovered(templateId, inventoryHolder)
+    else
+        Debug("This is not a rune pouch")
     end
 end
 

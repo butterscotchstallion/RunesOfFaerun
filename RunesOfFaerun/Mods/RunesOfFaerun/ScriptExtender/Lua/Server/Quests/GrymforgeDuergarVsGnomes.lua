@@ -39,13 +39,13 @@ end
 
 --Least likely, but maybe they did this in stealth or something
 local function HandleGnomeDead()
-    Info('Handling Gnome dead quest')
+    Debug('Handling Gnome dead quest')
 end
 
 --Most common path
 --It is possible to kill only one of the duegar
 local function HandleDuegarDead()
-    Info('Handling Duegar dead quest')
+    Debug('Handling Duegar dead quest')
 
     local spawnUUID = RunesOfFaerun.QuestHandler.SpawnQuestGiver(handler.QUEST_GIVER_UUID)
 
@@ -56,7 +56,7 @@ end
 
 --Damn, is this person a Dark Urge or what?
 local function HandleAllDead()
-    Info('Handling all dead quest')
+    Debug('Handling all dead quest')
 end
 
 --[[

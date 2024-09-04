@@ -104,7 +104,7 @@
 
     <!--Duplicitous Bow-->
     <content contentuid="h3589e9e7d0b542338ab96265db0accaf0a72" version="1">Duplicitous Bow</content>
-    <content contentuid="h0fcc56bc83b3445081f8e3c46a5447801377" version="1">The exquistely crafted bow thrums with power</content>
+    <content contentuid="h0fcc56bc83b3445081f8e3c46a5447801377" version="1">This exquistely crafted bow thrums with power</content>
     <content contentuid="h17ae60b4452847159d629358b526c42b622a" version="1">Duplicity</content>
     <content contentuid="h0b84d62c94ba4b04ad5b1cde8d6fbef5d7ee" version="1">The unique enchantments of the bow grant you access to various new techniques</content>
     <content contentuid="h379b07c1cef943298e7f702889fd81ab64ff" version="1">Duplicitous Trick Shots</content>
@@ -153,4 +153,6 @@
     <content contentuid="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1">Restores a random spell slot to your summons when they strike a killing blow. Runic summons are healed for [1] as well</content>
     <content contentuid="h2b497590880e4f0aa211888052e81e740d1c" version="1">Rune of Grim Renewal</content>
     <content contentuid="h3e2ff20217014d809707aa8efcae46d54e40" version="1">The rune is stained with blood and glows ominously</content>
+    <content contentuid="h6458ed27081f4fabb3203d2198f5efd835g4" version="1">Pouch of Many Runes</content>
+    <content contentuid="hc46d22f307d04c68b19c4aa7550d92856937" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You&apos;ve discovered the Pouch of Many Runes! All newly acquired runes will be automatically stored in this pouch. Previously acquired runes will not be moved into the pouch.</content>
 </contentList>

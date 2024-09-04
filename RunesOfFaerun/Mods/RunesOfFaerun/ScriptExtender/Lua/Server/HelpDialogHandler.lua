@@ -1,8 +1,10 @@
 local hdh = {
     RUNE_HELP_HANDLE = 'h36d9c75c51b04a74a311479f87fa04b3c802',
     ENHANCEMENT_RUNE_HELP_HANDLE = 'h0e7339d361b64bd299f1c63f4909bd07006f',
+    RUNE_POUCH_HELP_HANDLE = "hc46d22f307d04c68b19c4aa7550d92856937",
     hasDiscoveredRune = false,
-    hasDiscoveredEnhancementRune = false
+    hasDiscoveredEnhancementRune = false,
+    hasDiscoveredRunePouch = false,
 }
 
 ---@param optionName string
@@ -17,6 +19,7 @@ local function SaveDiscoveryFlags()
     if config then
         updatedConfig.hasDiscoveredEnhancementRune = hdh.hasDiscoveredEnhancementRune
         updatedConfig.hasDiscoveredRune = hdh.hasDiscoveredRune
+        updatedConfig.hasDiscoveredRunePouch = hdh.hasDiscoveredRunePouch
 
         RunesOfFaerun.ModVarsHandler.UpdateConfig(updatedConfig)
         Debug('Saved rune discovery flags')
@@ -95,9 +98,44 @@ end
 local function ResetRuneDiscoveries()
     hdh.hasDiscoveredEnhancementRune = false
     hdh.hasDiscoveredRune = false
+    hdh.hasDiscoveredRunePouch = false
     SaveDiscoveryFlags()
 end
 
+local function ShowRunePouchHelp(characterGUID)
+    ShowHelpNotification(hdh.RUNE_POUCH_HELP_HANDLE, characterGUID)
+end
+
+local function HasDiscoveredRunePouch()
+    if hdh.hasDiscoveredRunePouch then
+        return true
+    end
+
+    if GetConfigOption('hasDiscoveredRunePouch') ~= nil then
+        return GetConfigOption('hasDiscoveredRunePouch')
+    end
+
+    return false
+end
+
+local function OnRunePouchDiscovered(tplId, characterGUID)
+    if not HasDiscoveredRunePouch() then
+        Debug("Showing rune pouch help")
+        ShowRunePouchHelp(characterGUID)
+        hdh.hasDiscoveredRunePouch = true
+        SaveDiscoveryFlags()
+    else
+        Debug("Is rune pouch but already discovered")
+    end
+end
+
+local function IsRunePouch(tplId)
+    local itemUUID = RunesOfFaerun.Utils.GetGUIDFromTpl(tplId)
+    return Osi.IsTagged(itemUUID, RunesOfFaerun.Tags.RUNE_POUCH) == 1
+end
+
+hdh.OnRunePouchDiscovered = OnRunePouchDiscovered
+hdh.IsRunePouch = IsRunePouch
 hdh.ResetRuneDiscoveries = ResetRuneDiscoveries
 hdh.IsRune = IsRune
 hdh.OnRuneDiscovered = OnRuneDiscovered
