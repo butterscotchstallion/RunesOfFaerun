@@ -124,8 +124,6 @@ local function OnRunePouchDiscovered(tplId, characterGUID)
         ShowRunePouchHelp(characterGUID)
         hdh.hasDiscoveredRunePouch = true
         SaveDiscoveryFlags()
-    else
-        Debug("Is rune pouch but already discovered")
     end
 end
 

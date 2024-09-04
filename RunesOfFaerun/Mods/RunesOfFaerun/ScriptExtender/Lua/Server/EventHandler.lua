@@ -132,8 +132,6 @@ local function OnTemplateAddedTo(objectTemplate, templateId, inventoryHolder, ad
 
     if RunesOfFaerun.HelpDialogHandler.IsRunePouch(templateId) then
         RunesOfFaerun.HelpDialogHandler.OnRunePouchDiscovered(templateId, inventoryHolder)
-    else
-        Debug("This is not a rune pouch")
     end
 end
 
