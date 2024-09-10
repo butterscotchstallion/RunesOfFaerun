@@ -3,6 +3,7 @@
 Event Handler
 
 --]]
+local thrownObjCounter = 0
 local spellStealInfo = {
     spell = nil,
     enemy = nil,
@@ -133,6 +134,10 @@ local function OnTemplateAddedTo(objectTemplate, templateId, inventoryHolder, ad
     if RunesOfFaerun.HelpDialogHandler.IsRunePouch(templateId) then
         RunesOfFaerun.HelpDialogHandler.OnRunePouchDiscovered(templateId, inventoryHolder)
     end
+
+    if RunesOfFaerun.ItemSpawned then
+        Debug(string.format('%s [%s] spawned', templateId, RunesOfFaerun.Utils.GetGUIDFromTpl(templateId)))
+    end
 end
 
 local function OnStatusApplied(object, status, _, _)
@@ -166,11 +171,21 @@ local function OnStatusApplied(object, status, _, _)
     if status == 'STATUS_ROF_GR_TECHNICAL' then
         RunesOfFaerun.SpellHandler.HandleGrimRenewalApplied(characterGUID)
     end
+
+    if RunesOfFaerun.StackTracker.IsStackableStatus(status) then
+        RunesOfFaerun.StackTracker.IncrementStacks(characterGUID, status)
+    end
 end
 
 local function OnStatusRemoved(object, status, _, _)
+    local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(object)
+
     if RunesOfFaerun.SpellHandler.IsAmnesiaStatus(status) then
-        RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(object)
+        RunesOfFaerun.SpellHandler.HandleAmnesiaRemoved(characterGUID)
+    end
+
+    if RunesOfFaerun.StackTracker.IsStackableStatus(status) then
+        RunesOfFaerun.StackTracker.DecrementStacks(characterGUID, status)
     end
 end
 
@@ -193,6 +208,41 @@ local function OnShortRest()
     end
 end
 
+local function OnHitThrownObjectCreated(entity)
+    thrownObjCounter = thrownObjCounter + 1
+    local thrownObjComponent = entity:GetAllComponents()
+    _D(thrownObjComponent)
+    local hitThrownObj = thrownObjComponent.HitThrownObject.ThrownObject
+
+    RunesOfFaerun.Utils.SaveEntityToFile('thrown-obj-' .. thrownObjCounter, hitThrownObj)
+
+    if thrownObjCounter == 3 then
+        local thrownObjComponents = hitThrownObj:GetAllComponents()
+        local deathComponent = thrownObjComponents.Death
+        --_D(deathComponent.Target:GetAllComponents())
+        RunesOfFaerun.Utils.SaveEntityToFile('death', deathComponent.Target)
+    end
+end
+
+local function OnSpellCastStateDestroyed(spellEntity)
+    if spellEntity.SpellCastState.SpellId.Prototype == "Throw_Throw" then
+        local thrower = spellEntity.SpellCastState.Caster
+        local primaryTarget = nil
+        local thrownObject = nil
+        local targets = spellEntity.SpellCastState.Targets
+        if targets and targets[1] then
+            if targets[1] and targets[1].Target then
+                primaryTarget = targets[1].Target
+            end
+            if targets[1].Target2 then
+                thrownObject = targets[1].Target2.Target
+            end
+        end
+
+        RunesOfFaerun.ThrownHandler.OnThrown(thrownObject, primaryTarget, thrower)
+    end
+end
+
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
 Ext.Osiris.RegisterListener("EnteredLevel", 3, "after", OnEnteredLevel)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", OnCastedSpell)
@@ -204,4 +254,5 @@ Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYes
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
 Ext.Osiris.RegisterListener("ShortRested", 1, "after", OnShortRest)
-Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil)
+Ext.Entity.OnCreate("InterruptActionState", OnInterruptActionStateCreated, nil, nil, nil)
+Ext.Entity.OnDestroy("SpellCastState", OnSpellCastStateDestroyed, nil, nil, nil)

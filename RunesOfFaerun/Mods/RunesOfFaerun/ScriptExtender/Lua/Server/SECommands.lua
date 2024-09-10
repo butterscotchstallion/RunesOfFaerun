@@ -136,9 +136,11 @@ local commands = {
     },
     {
         name = 'spawn',
-        params = 'uuid',
-        func = function(_, uuid)
-            Osi.TemplateAddTo(uuid, Osi.GetHostCharacter(), 1);
+        params = 'uuid, quantity',
+        func = function(_, uuid, quantity)
+            local qty = tonumber(quantity) or 1
+            Osi.TemplateAddTo(uuid, Osi.GetHostCharacter(), qty, 1);
+            RunesOfFaerun.ItemSpawned = true
         end
     },
     {
@@ -179,6 +181,13 @@ local commands = {
         func = function(_)
             RunesOfFaerun.logLevel = "DEBUG"
             Info("Debug mode activated!")
+        end
+    },
+    {
+        name = 'addconsume',
+        params = 'uuid',
+        func = function(_, uuid)
+            RunesOfFaerun.ActionModifier.AddConsumeAction(uuid)
         end
     }
 }

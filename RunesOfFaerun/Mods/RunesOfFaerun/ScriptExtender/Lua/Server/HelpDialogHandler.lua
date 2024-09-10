@@ -41,7 +41,12 @@ local function IsEnhancementRune(tplId)
 end
 
 local function ShowHelpNotification(handle, inventoryHolder)
-    Osi.OpenMessageBox(inventoryHolder, Osi.ResolveTranslatedString(handle))
+    local message = Osi.ResolveTranslatedString(handle)
+    if string.len(message) >= 255 then
+        message = "MESSAGE TOO LONG! FIX IT OR CRASHES WILL ENSUE"
+        Critical("Message that is too long detected!")
+    end
+    Osi.OpenMessageBox(inventoryHolder, message)
 end
 
 local function ShowRuneHelp(inventoryHolder)

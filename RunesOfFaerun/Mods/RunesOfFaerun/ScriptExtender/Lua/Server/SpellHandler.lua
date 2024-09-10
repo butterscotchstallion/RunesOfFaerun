@@ -346,21 +346,6 @@ local function GetDenySpellMap()
         Shout_Disengage = true,
         Target_DancingLights = true,
         Shout_Dodge = true,
-        --[[
-        --Perform spells
-        Shout_Bard_Perform_Stargazing_Lyre = true,
-        Shout_Bard_Perform_ThePower_Lyre = true,
-        Shout_Bard_Perform_Lyre = true,
-        Shout_SCL_SpiderLyre_Perform = true,
-        Shout_Bard_Perform_BardDance_Lyre = true,
-        --Mod spells
-        FOCUSDYES_CreatePledge = true,
-        Teleport_All = true,
-        AE_Spell_Container = true,
-        Shout_Open_Mirror = true,
-        Shout_Open_Creation = true,
-        Target_Grapple = true,
-        ]]
     }
 end
 
@@ -449,9 +434,6 @@ local function IsAmnesiaStatus(status)
     return sh.amnesiaStatuses[status]
 end
 
----If the user is on v19+ then they should be able to use
----a dynamically created status. If not, a less detailed
----status will be applied.
 ---@param characterGUID GUIDSTRING
 ---@param spell table
 local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
@@ -483,7 +465,6 @@ local function CreateOrApplyAmnesiaStatus(characterGUID, spell)
     if success then
         amnesiaStatus = detailedStatus
         sh.amnesiaStatuses[amnesiaStatus] = true
-        --Debug('Using detailed status')
     end
 
     --Each turn is six seconds, so if we want three turns, that is 18 seconds
@@ -515,28 +496,26 @@ local function HandleAmnesiaApplied(characterTpl)
 
             sh.amnesiaSpells[characterGUID] = randomSpell
 
-            Debug('Set amnesia spell ' .. spellName .. ' in ' .. Ext.Utils.MonotonicTime() - startTime .. 'ms')
+            Debug('HandleAmnesiaApplied: Set amnesia spell ' ..
+                spellName .. ' in ' .. Ext.Utils.MonotonicTime() - startTime .. 'ms')
         else
-            Critical('Could not get entity for ' .. characterGUID)
+            Critical('HandleAmnesiaApplied: Could not get entity for ' .. characterGUID)
         end
     else
-        Critical('Error getting random spell')
+        Critical('HandleAmnesiaApplied: Error getting random spell')
     end
 end
 
 --Add spells that were removed to the entity
 ---@param characterTpl string
-local function HandleAmnesiaRemoved(characterTpl)
-    local characterGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(characterTpl)
-
+local function HandleAmnesiaRemoved(characterGUID)
     --Debug('Handling Amnesia removed on ' .. characterGUID)
-
     local spell = sh.amnesiaSpells[characterGUID]
     local entity = Ext.Entity.Get(characterGUID)
     if spell and entity then
         AddSpellToEntity(characterGUID, entity, spell)
     else
-        Critical('Could not find spell to remove for ' .. characterGUID)
+        Critical('HandleAmnesiaRemoved: Could not find spell to remove for ' .. characterGUID)
     end
 end
 
@@ -561,14 +540,6 @@ local function HandleDuplicitousTransformation(characterTpl)
         Debug(string.format('Transforming %s using "%s"', displayName, randomTransformation))
 
         Osi.ApplyStatus(characterGUID, randomTransformation, 3)
-    end
-end
-
-local function CreateAndApplyGRStatus(characterGUID, spellSlotLevel)
-    local status = Ext.Stats.Get("STATUS_ROF_GR_Base", nil, false, false)
-    if status then
-        status.Boosts = string.format("RestoreResource(SpellSlot, 100%, %s)", spellSlotLevel)
-        status:Sync()
     end
 end
 
@@ -609,7 +580,6 @@ local function GetRandomGRStatusName(characterGUID, displayName)
 end
 
 local function HandleGrimRenewalApplied(characterGUID)
-    --local spellSlotResourceUUID = "d136c5d9-0ff0-43da-acce-a74a07f8d6bf"
     local entity = Ext.Entity.Get(characterGUID)
     local displayName = RunesOfFaerun.Utils.GetDisplayNameFromEntity(entity)
     local statusName = GetRandomGRStatusName(characterGUID, displayName)
@@ -633,33 +603,6 @@ local function HandleGrimRenewalApplied(characterGUID)
         Debug("Not a ROF summon?")
         _D(tagMap)
     end
-    --[[
-    if entity and entity.ActionResources then
-        local resources = entity.ActionResources.Resources
-
-        if resources and resources[spellSlotResourceUUID] then
-            local spellSlots = resources[spellSlotResourceUUID]
-            local randomSpellSlot = spellSlots[math.random(#spellSlots)]
-            randomSpellSlot.Amount = randomSpellSlot.Amount + 1
-            entity:Replicate("ActionResources")
-
-            CreateAndApplyGRStatus(characterGUID)
-
-            Debug(
-                string.format(
-                    "Added level %s spell slot to %s. Amount: %s",
-                    randomSpellSlot.Level,
-                    displayName,
-                    randomSpellSlot.Amount
-                )
-            )
-        else
-            Debug("Entity has no spell slots!")
-        end
-    else
-        Debug("Could not get action resources for " .. displayName)
-    end
-    --]]
 end
 
 sh.HandleGrimRenewalApplied = HandleGrimRenewalApplied

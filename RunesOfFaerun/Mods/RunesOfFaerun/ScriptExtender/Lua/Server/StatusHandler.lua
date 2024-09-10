@@ -58,9 +58,6 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     return isCreateUpdateSuccessful
 end
 
-local function UpdateStatusAndReplicate(entity, updatedStatusName)
-end
-
 ---@param spellName string
 local function GetUpdatedStatusName(statusName, spellName)
     return string.format('%s: %s', statusName, spellName)

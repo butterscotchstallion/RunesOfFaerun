@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+	<content contentuid="h027eef5bddf04810ab3453b01c1aba1a51fa" version="1">Ancient Rune</content>
+	<content contentuid="h339303faca4d483f970a0f16c082aef5869b" version="1">A stone rune, intricately carved and humming with magical energy</content>
+	<content contentuid="h4b89ac99578d49218d3bc273f15a0bdf5065" version="1">Rune of Bone Armor</content>
+	<content contentuid="h50c615750ee344f6bb28c3fcbb6adac2786c" version="1">The inscribed rune details a ritual to bolster the defenses of undead allies</content>
+	<content contentuid="h74d4758600c749d98b9c36b4b30c09401f01" version="1">Increases the AC of Undead summons by 1 when they are not incapacitated</content>
+	<content contentuid="h9346bc2ee24745aca6324263d72ec7b4f17f" version="1">Optimus Slime</content>
+	<content contentuid="hf14ed597340d408899dd611007e8487685da" version="1">Summon Optimus Slime</content>
+	<content contentuid="he59464dd806e4135bb096f0b87b735fda04c" version="1">Spawns a slimy cube, loyal to you alone</content>
+	<content contentuid="h734eec9431f24026adeca0836a4e3f85fe56" version="1">Rune of Optimus Slime</content>
+	<content contentuid="h8c39eb22a79249b098d82edb0269df6fa498" version="1">The rune feels slick and slimy to the touch</content>
+	<content contentuid="h408c900e8c8a4c3eb46f1f4f70d12b9e0fef" version="1">Under AI Control</content>
+	<content contentuid="hf86e272f0bd64dcb99f28354c5947537ff74" version="1">The rune is stained a deep red with blood</content>
+	<content contentuid="hce3c88f9860e430b93d0f5f9ed41aebe087f" version="1">Blood-Stained Rune</content>
+	<content contentuid="h39e131095bbb4f798c4148ef1933b5b05gcd" version="1">Dreadful Nurse</content>
+	<content contentuid="h9917a7a4ff2f40538f68255de074496f8205" version="1">Summons a dreadful nurse, but at what cost?</content>
+	<content contentuid="h38d5c061048a41049088b5985ed20c300g6b" version="1">Summon Dreadful Nurse</content>
+	<content contentuid="h4ef8e19c9d904c65a219b3f43aec83089bcb" version="1">Giant Badger</content>
+	<content contentuid="h3d21d126113e4d57a6a35407938d284e15c5" version="1">Scarred Rune</content>
+	<content contentuid="he4537cd0bf1a4744ba3b4ca2632b3b5f033d" version="1">The rune is heavily scarred by a massive claw</content>
+	<content contentuid="h99fe28c4bd2d464391bf18d829295d40ee66" version="1">Summon Giant Badger</content>
+	<content contentuid="hee42ce5b03964c05a282f86b34431e0d9e41" version="1">Summons a giant badger to defend you</content>
+	<content contentuid="hfa092a45fa9b4fb2a03cd358afe70d1208fg" version="1">Aura of Ferocity</content>
+	<content contentuid="h5408e4d4becc4badb4e874cf4bbbe13a7a47" version="1">Applies Aura of Devotion and Aura of Protection</content>
+	<content contentuid="he93a366158be4c5fbff0cd73f42fb9630b9e" version="1">Spell Steal</content>
+	<content contentuid="hcf76b83dcc544fe0b3dbb466862018b13ga2" version="1">If a creature is casting a spell, you may use your reaction to redirect and siphon the spell. Spell slots required for the spell are consumed from the creature casting it and that creature loses a spell slot like normal. If you have stolen a spell, you can cast it on your next turn without requiring materials, without having known the spell, and without using a spell slot. You lose access to the spell after one turn.</content>
+	<content contentuid="h5a132a5eeaf74febb94d6c9ae8725a3e8787" version="1">Test Enemy Caster</content>
+	<content contentuid="hefd6523c4aa2423db7bf5f0ed57de82079b7" version="1">Stolen Spell</content>
+	<content contentuid="h14128bd9e57d460da839fa6a78e2e4f55781" version="1">You have temporarily gained access to an enemy's spell</content>
+	<content contentuid="hae8e8216290c4e3e96ea4bbf069e70d44669" version="1">Stolen Spell Unlock Test</content>
+	<content contentuid="h9bff298bdddc4befb82b3ca350cef40bgce0" version="1">Spell Stealer</content>
+	<content contentuid="h8f1a3759a1cd44268e89efdb3330298885gf" version="1">You can grasp The Weave itself, and harness it as your own</content>
+	<content contentuid="he23d08ef976541abafa58f7e4e5720e8a939" version="1">Rune of Harnessed Weave</content>
+	<content contentuid="h9548784d0aad49639bf8fa17bcc6b244cgbe" version="1">The rune is warm to the touch, and pulsates with arcane power</content>
+	<content contentuid="ha134dfb317d841a2ba7ad44e5a3eb08c2380" version="1">Grants the Giant Badger the ability Crushing Flight</content>
+	<content contentuid="h133a5e3c113144de859c349aa83551cccd56" version="1">Rune of Crushing Flight</content>
+	<content contentuid="h3b0bc5cdd628431aaaba8dee2ca2666309f3" version="1">This is a Giant Badger</content>
+	<content contentuid="h5d87a101a3cb468ab8b8e29dbe0cf48789af" version="1">Giant Badger</content>
+	<content contentuid="h02b65302bbf640a6a43dabd65cba1c4b8372" version="1">The pouch is bulging with magical runes, and radiating arcane power</content>
+	<content contentuid="hec70078fbe224315b3353c0c607c3805488e" version="1">Pouch of Many Runes</content>
+	<content contentuid="he49cd8020b7f4261860e7805548cb408d77e" version="1">Mysterious Departed</content>
+	<content contentuid="hef1011d5fc1d49a8b87f349e297570cee8e7" version="1">Haunted by darkness</content>
+	<content contentuid="hb0111faeg00cfg471fg8df3g8b16427eb06c" version="1">Hi there</content>
+	<content contentuid="h60cc08b275b94ca0a0a6bb35ff5b7e29gbb2" version="1">A magical rune from Runes of Faerun</content>
+	<content contentuid="hfa827b3ed5c54ad6b45819c023ae51dbcbca" version="1">A magical rune</content>
+	<content contentuid="he36cf237998248a18dab80566b8cdbfdfgg5" version="1">Enhancement Rune</content>
+	<content contentuid="h32111b11af4e46eba28ed27a111692329ec4" version="1">A powerful rune that augments other rune spells</content>
+	<content contentuid="h36d9c75c51b04a74a311479f87fa04b3c802" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered a Rune! Right click on it to unlock its power.</content>
+	<content contentuid="h0e7339d361b64bd299f1c63f4909bd07006f" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered an Enhancement Rune. Enhancement runes improve other runes. Right click on it to unlock its power.</content>
+	<content contentuid="h0d14f277b0e043d1b44e86676052cf17afd1" version="1">Runes of Faerun summoned creature</content>
+	<content contentuid="hcf26b005d384472c8131f971c263a60c6g5b" version="1">Dismiss targeted summon</content>
+	<content contentuid="hc64bd8cc7fdd46eca61c1acf58536f098d3d" version="1">Grants the ability to dismiss runic summons</content>
+	<content contentuid="h3d7503f4776f4dca8c19686d433eccdc189e" version="1">Rune of Unsummoning</content>
+	<content contentuid="h7669884ba01e48239bb6e5c5dfb5969e7d1e" version="1">Temporary Amnesia</content>
+	<content contentuid="h79a48ba18aae48d09155011cf83e7b6531g4" version="1">Assaults the target's mind, dealing [1] damage and causing them to forget an ability or spell temporarily</content>
+	<content contentuid="he0b8c9d169284df4bfeb7bceda0f89c0e8a7" version="1">The rune feels light in your hand, almost ethereal</content>
+	<content contentuid="h9b36a091869d40809d40f8c040c4db7cg0f0" version="1">Rune of Temporary Amnesia</content>
+	<content contentuid="h64c8a1a665d742358877b171bef307c25884" version="1">Grants the spell Temporary Amnesia</content>
+	<content contentuid="h135375fadb604b468a2f0a20590fa55026de" version="1">Temporary Amnesia</content>
+	<content contentuid="h497e185a1fd64db4b018c9cb87e0d72036c2" version="1">Temporary Amnesia</content>
+	<content contentuid="h3589e9e7d0b542338ab96265db0accaf0a72" version="1">Duplicitous Bow</content>
+	<content contentuid="h0fcc56bc83b3445081f8e3c46a5447801377" version="1">This exquistely crafted bow thrums with power</content>
+	<content contentuid="h17ae60b4452847159d629358b526c42b622a" version="1">Duplicity</content>
+	<content contentuid="h0b84d62c94ba4b04ad5b1cde8d6fbef5d7ee" version="1">The unique enchantments of the bow grant you access to various new techniques</content>
+	<content contentuid="h379b07c1cef943298e7f702889fd81ab64ff" version="1">Duplicitous Trick Shots</content>
+	<content contentuid="h740a0702af57434ca3dc6d02a604de17gf83" version="1">A series of techniques learned from the Duplicitous Bow</content>
+	<content contentuid="h9a39795c7a744e5d9ea95f930de07816g333" version="1">Arrow of Transformation</content>
+	<content contentuid="h09b6fc9cc92043438022e961b387b9d895d3" version="1">Transforms the target into something else entirely</content>
+	<content contentuid="h62aa5b1f36464f8aae3e3d8936f20091d54a" version="1">Duplicitous Transformation</content>
+	<content contentuid="h77d44016945f4e74b59cb24908d54768e09a" version="1">Transformed by Duplicitous Bow</content>
+	<content contentuid="hd85708658bf244ef96fcde8e20aafce3b9cf" version="1">The rune is wrapped in dirty bandages and smells musty</content>
+	<content contentuid="he6d9ce0d2e614935a6ce2ffbbe7e122281eb" version="1">Rune of Mummification</content>
+	<content contentuid="hc82b8817febc4c6e800c5c1bf60dca342444" version="1">Transforms the Dreadful Nurse into a mummy</content>
+	<content contentuid="h2884f70a7fcc4c4db1bef0b86665056a69e4" version="1">Dreadful Nurse</content>
+	<content contentuid="ha5738cfbb870497d96e1f7bfba89828a567g" version="1">Mummified</content>
+	<content contentuid="h55a99a0d197942aeb58368bdbae1fe11b8ea" version="1">Transformed into a mummy, granting new power</content>
+	<content contentuid="h554d58ca15d94f929b4e2ebc07448edf7db1" version="1">A curious rune, said to alter the physical appearance of those that dare to use it</content>
+	<content contentuid="heda833ecfd8649d0b1993dde37e429cag6e7" version="1">Rune of Peachy</content>
+	<content contentuid="hceb1be309637409ca921c28691b4d9df99ba" version="1">Forever altered by Peachy magic</content>
+	<content contentuid="h9ab1516226a5403e93f3cdb27f30e789e6gg" version="1">Arrow of Temporary Amnesia</content>
+	<content contentuid="h1e08ed8637f741209cb56e923e6bb65bc200" version="1">Arrow of Maddening Whispers</content>
+	<content contentuid="hb808824402c94942beae51c93b046c3c7299" version="1">On hit, the target must succeed on a saving throw or become &lt;LSTag Type="Status" Tooltip="MADNESS"&gt;Mad&lt;/LSTag&gt; for 3 turns. If they fail, they are &lt;LSTag Type="Status" Tooltip="CONFUSION"&gt;Confused&lt;/LSTag&gt; for 1 turn</content>
+	<content contentuid="hdee3ebec5ce842c3904836adf162ef6565gc" version="1">Rune of Runic Reinvigoration</content>
+	<content contentuid="h4cc02705ba384a429f8925fe2b50540dca19" version="1">Fully heals your runic summons when you take a Short Rest</content>
+	<content contentuid="h07e23d59c6b9455ba4cbe649682e0b02e1b8" version="1">Rune of Embiggening</content>
+	<content contentuid="h5d2479bc380046ce9b7692160fb1be190b48" version="1">Embiggens a runic summon</content>
+	<content contentuid="h556e7dfb00eb480a811e5af550e055ee4ge4" version="1">Embiggened</content>
+	<content contentuid="h9c330a5a882b4bea85837b079667bba4cca1" version="1">Embiggened by runic magic</content>
+	<content contentuid="h0432b904952f485fb1e2b85c598f50e89fc1" version="1">Dreadful Mummy</content>
+	<content contentuid="hbcec26b645e2475b846b79ed248118072c28" version="1">Grim Renewal</content>
+	<content contentuid="h2c7de098545c42bebbc76d6f11e0a258bdac" version="1">Renewed by the spiritual energy of the dead</content>
+	<content contentuid="h2b179b43412e4175ac136b8e5d7a6b751gc9" version="1">Bloodthirsty</content>
+	<content contentuid="hb4171b8d5ef94fc3847ae5001fcc6fe75385" version="1">Gain [1] hit points upon striking a killing blow</content>
+	<content contentuid="h491d6729686e407198e41807417170e25dg0" version="1">Rune of Grim Renewal</content>
+	<content contentuid="h0f314e576f524aeaa6eca2dbb0d595318g2a" version="1">Restores a random spell slot to your summons when they strike a killing blow. Runic summons are healed for [1] as well</content>
+	<content contentuid="h2b497590880e4f0aa211888052e81e740d1c" version="1">Rune of Grim Renewal</content>
+	<content contentuid="h3e2ff20217014d809707aa8efcae46d54e40" version="1">The rune is stained with blood and glows ominously</content>
+	<content contentuid="h6458ed27081f4fabb3203d2198f5efd835g4" version="1">Pouch of Many Runes</content>
+	<content contentuid="hc46d22f307d04c68b19c4aa7550d92856937" version="1">Runes of Faerun&lt;br&gt;&lt;br&gt;You've discovered the Pouch of Many Runes! All newly acquired runes will be automatically stored in this pouch. Previously acquired runes will not be moved into the pouch.</content>
+	<content contentuid="hfaf7106fc1444660ae8f61f08d5886b9cc6f" version="1">Splattered</content>
+	<content contentuid="h3ecb48b46ab943efac526d530ef8c84dc6c4" version="1">Covered in rotten food</content>
+	<content contentuid="h379d07321093420a9a4a28849032379b82d5" version="1">Contaminated</content>
+	<content contentuid="h936fe70bb89d4eef8077d00e518dafeea10g" version="1">The filth has infiltrated your pores, and drenched you in spoiled food. You are vulnerable to Poison.</content>
+	<content contentuid="hf3d78d6a05514a80899b4a9547f5e5f532cb" version="1">Infected</content>
+	<content contentuid="h1c9a495c984f4af19b9801953240868ccg3c" version="1">The spoiled food has infected your wounds, making you vulnerable to Poison, and creating a Stinking Cloud around you</content>
+</contentList>
