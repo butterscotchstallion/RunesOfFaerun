@@ -7,8 +7,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_OF_SLIMY_COMPANIONSHIP",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "_Valuables_Generic"
 CanMerge 1
@@ -22,8 +20,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "CHA_Container_Abandoned"
 CanMerge 1
@@ -76,8 +72,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_MagicItems_Unique"
 CanMerge 1
@@ -88,11 +82,13 @@ object category "I_OBJ_RUNE_ROF_BONE_ARMOR",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
@@ -105,8 +101,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "GOB_ZhentQuarters_Chest_Gold"
 CanMerge 1
@@ -116,8 +110,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "HAG_AbandonedCamp_Backpack_Wizard"
 CanMerge 1
@@ -126,7 +118,9 @@ object category "I_OBJ_BLOODSTAINED_RUNE",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
+object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 
 new treasuretable "WYR_Circus_KoboldMerchant_Magic"
 CanMerge 1
@@ -141,8 +135,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "SHA_Orthon_Chest"
 CanMerge 1
@@ -167,8 +159,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "MOO_MimicReward"
 CanMerge 1
@@ -183,8 +173,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "SHA_MerregonTrader"
 CanMerge 1
@@ -204,8 +192,6 @@ object category "I_OBJ_SCARRED_RUNE",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_OBJ_HARNESSED_WEAVE_RUNE",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
@@ -219,8 +205,6 @@ new subtable "1,1"
 object category "I_OBJ_CRUSHING_FLIGHT_RUNE",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "UND_KC_LavaElemental"
 CanMerge 1
@@ -230,8 +214,6 @@ new subtable "1,1"
 object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "UND_Spectator_Reward"
 CanMerge 1
@@ -250,8 +232,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "PLA_Corpse_Skeleton_River"
 CanMerge 1
@@ -261,22 +241,6 @@ new subtable "1,1"
 object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
-
-// Rune of Unsummoning //
-new treasuretable "ST_MagicItems_Unique"
-CanMerge 1
-new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_UNSUMMONING",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_OF_EMBIGGENING",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 // Rune pouch //
 new treasuretable "OBJ_ROF_RUNE_POUCH_TT"
@@ -329,8 +293,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_RUNIC_INVIGORATION",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "MOO_WallTentacleOgress_Treasure"
 CanMerge 1
@@ -361,21 +323,14 @@ object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
 
-new treasuretable "HAG_AbandonedCamp_Backpack_Wizard"
-CanMerge 1
-new subtable "1,1"
-object category "I_ROF_Duplicitous_Bow",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
-
 new treasuretable "HAG_Swamp_Chest"
 CanMerge 1
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "WYR_Refugee_Belongings"
 CanMerge 1
@@ -383,6 +338,8 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_OBJ_ROF_RUNE_POUCH",1,0,0,0,0,0,0,0
 
 new treasuretable "UND_ZhentPort_LockedCargo"
 CanMerge 1
@@ -390,7 +347,6 @@ new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_TEMPORARY_AMNESIA",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_RUNE_ROF_OF_GR",1,0,0,0,0,0,0,0
-
 
 // ST_MagicItems_Unique
 // ST_CHA_Treasure_Jewelry

@@ -24,10 +24,8 @@ end
 ---@param statusBaseName string
 ---@param properties table
 local function CreateStatusIfNotExists(statusName, statusBaseName)
-    local startTime = Ext.Utils.MonotonicTime()
     local isCreateUpdateSuccessful = false
     local persist = false
-    local nsemfhuecooifldiimtrofst = true
     local warnOnError = false
     local status = Ext.Stats.Get(statusName, nil, warnOnError, persist)
     local verb = "Created"
@@ -47,9 +45,7 @@ local function CreateStatusIfNotExists(statusName, statusBaseName)
     end
 
     local updatedStatus = Ext.Stats.Get(statusName, nil, warnOnError, persist)
-    local duration = Ext.Utils.MonotonicTime() - startTime .. "ms"
-    if updatedStatus and nsemfhuecooifldiimtrofst then
-        Debug(verb .. ' status ' .. statusName .. ' successfully in ' .. duration)
+    if updatedStatus then
         isCreateUpdateSuccessful = true
     else
         Critical('Failed to create get new status ' .. statusName)

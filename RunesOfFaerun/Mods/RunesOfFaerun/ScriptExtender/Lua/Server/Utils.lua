@@ -17,10 +17,11 @@ local function PrintVersionMessage()
     if mod then
         local version    = mod.Info.ModVersion
         local versionMsg = string.format(
-            MOD_NAME .. ' v%s.%s.%s loaded!',
+            MOD_NAME .. ' v%s.%s.%s.%s loaded!',
             version[1],
             version[2],
-            version[3]
+            version[3],
+            version[4]
         )
         RunesOfFaerun.Info(versionMsg)
     end

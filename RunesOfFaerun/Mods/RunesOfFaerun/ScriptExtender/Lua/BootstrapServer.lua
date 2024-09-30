@@ -5,10 +5,14 @@
 --]]
 MOD_NAME = "RunesOfFaerun"
 RunesOfFaerun = {
-    logLevel = 'DEBUG',
+    logLevel = "INFO",
     Quests = {},
     ItemSpawned = false,
 }
+
+if Ext.Debug.IsDeveloperMode() then
+    RunesOfFaerun.logLevel = "DEBUG"
+end
 
 Ext.Require('Server/Tags.lua')
 Ext.Require('Server/MuffinLogger.lua')

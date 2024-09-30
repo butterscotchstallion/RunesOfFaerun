@@ -62,10 +62,12 @@ local commands = {
     },
     {
         name = 'spawntarget',
-        params = '',
-        func = function()
+        params = 'uuid',
+        func = function(_, uuid)
             RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
-                castFireball = false
+                castFireball = false,
+                hostile = true,
+                uuid = uuid
             })
         end
     },
@@ -188,6 +190,15 @@ local commands = {
         params = 'uuid',
         func = function(_, uuid)
             RunesOfFaerun.ActionModifier.AddConsumeAction(uuid)
+        end
+    },
+    {
+        name = 'spawnghost',
+        params = 'uuid',
+        func = function(_, uuid)
+            RunesOfFaerun.EntityHandler.SpawnAlliedSpecter({
+                uuid = uuid
+            })
         end
     }
 }

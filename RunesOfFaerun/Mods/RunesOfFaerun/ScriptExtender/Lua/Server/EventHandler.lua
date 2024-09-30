@@ -18,7 +18,6 @@ end
 
 local function OnEnteredLevel(templateName, rootGUID, level)
     local isKnownEntity = templateName:find('ROF_') == 1
-
     if isKnownEntity then
         local instanceGUID = RunesOfFaerun.Utils.GetGUIDFromTpl(templateName)
         RunesOfFaerun.EntityHandler.HandleByGUID(rootGUID, instanceGUID)
@@ -175,6 +174,12 @@ local function OnStatusApplied(object, status, _, _)
     if RunesOfFaerun.StackTracker.IsStackableStatus(status) then
         RunesOfFaerun.StackTracker.IncrementStacks(characterGUID, status)
     end
+
+    if status == "STATUS_ROF_DEATH_KNELL_SUMMON" then
+        RunesOfFaerun.EntityHandler.SpawnAlliedSpecter({
+            uuid = object
+        })
+    end
 end
 
 local function OnStatusRemoved(object, status, _, _)
@@ -250,7 +255,7 @@ Ext.Osiris.RegisterListener("Dying", 1, "after", OnDying)
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", OnCombatEnded)
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", OnStatusApplied)
 Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", OnStatusRemoved)
-Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
+--Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", OnMessageBoxYesNoClosed)
 Ext.Osiris.RegisterListener("TemplateAddedTo", 4, "after", OnTemplateAddedTo)
 Ext.Osiris.RegisterListener("LevelGameplayStarted", 2, "after", OnLevelGameplayStarted)
 Ext.Osiris.RegisterListener("ShortRested", 1, "after", OnShortRest)

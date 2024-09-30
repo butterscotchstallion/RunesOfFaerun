@@ -4,6 +4,16 @@ SLIMY_COMPANION_GUID = '6e831db4-2531-48a8-ab87-445c5b0032a8'
 NURSE_COMPANION_GUID = '027611f4-16bf-45f2-a782-ed5606bd676d'
 GIANT_BADGER_GUID = 'c0369b2e-f495-4831-8e10-9e16ac7b2261'
 
+GHOST_NURSE = "76597e52-d1b4-43dd-99e9-d06d551f61a5"
+GHOST_DOG = "834f22b8-e28d-44b6-b6f2-1f7f7cf5149b"
+VAMPIRE_GHOST = "3335c504-3da5-4036-a483-d937bab16314"
+
+specters = {
+    GHOST_DOG,
+    GHOST_NURSE,
+    VAMPIRE_GHOST,
+}
+
 eh.GetHostEntityMaxHP = function()
     local entity = Ext.Entity.Get(Osi.GetHostCharacter())
     if entity then
@@ -47,13 +57,9 @@ end
 ---@param rootGUID guid
 ---@param instanceGUID guid
 eh.HandleByGUID = function(rootGUID, instanceGUID)
-    local companions = {
-        [SLIMY_COMPANION_GUID] = true,
-        [NURSE_COMPANION_GUID] = true,
-        [GIANT_BADGER_GUID] = true
-    }
+    local isKnownEntity = Osi.IsTagged(instanceGUID, RunesOfFaerun.Tags.ROF_SUMMON)
 
-    if companions[rootGUID] then
+    if isKnownEntity then
         eh.SetEntityLevelToHostLevel(instanceGUID)
 
         --Apply mummy transformation if nurse is here
@@ -77,10 +83,23 @@ local function SetCreatureHostile(creatureTplId)
     --RunesOfFaerun.Info(string.format('Set hostile on %s', creatureTplId))
 end
 
+--[[
+options: {
+  hostile = false,
+  castFireball = false,
+  uuid = nil
+}
+]]
 eh.SpawnHostileSpellSlinger = function(options)
-    local uuid = 'be5650d4-e282-4ddd-aa0d-1b9411740302'
-    local x, y, z = Osi.GetPosition(tostring(Osi.GetHostCharacter()))
-    x = tonumber(x)
+    local uuid = options.uuid or 'be5650d4-e282-4ddd-aa0d-1b9411740302'
+    local getPositionFromThisTarget = Osi.GetHostCharacter()
+
+    --Used for specters to summon at the position of the corpse with Death Knell
+    --if options.createAtUUIDPosition then
+    --    getPositionFromThisTarget = uuid
+    --end
+
+    local x, y, z = Osi.GetPosition(getPositionFromThisTarget)
 
     if x and y and z then
         RunesOfFaerun.Debug(string.format('Creating %s at position %s %s %s', uuid, x, y, z))
@@ -98,10 +117,36 @@ eh.SpawnHostileSpellSlinger = function(options)
                 Osi.UseSpell(spawnUUID, newSpell, Osi.GetHostCharacter())
                 RunesOfFaerun.Debug('Using ' .. newSpell)
             end
+
+            if options.addAsPartyFollower then
+                Osi.AddPartyFollower(spawnUUID, Osi.GetHostCharacter())
+            end
         else
             RunesOfFaerun.Debug('Failed to create ' .. uuid)
         end
     end
+end
+
+eh.IsAlliedSpecter = function(originalUUID)
+    for uuid in pairs(specters) do
+        if uuid == originalUUID then
+            return true
+        end
+    end
+end
+
+eh.SpawnAlliedSpecter = function(options)
+    local specterUUID = options.uuid or specters[math.random(#specters)]
+
+    Debug("Spawning ghost " .. specterUUID)
+
+    eh.SpawnHostileSpellSlinger({
+        hostile = false,
+        castFireball = false,
+        uuid = specterUUID,
+        addAsPartyFollower = true,
+        createAtUUIDPosition = true,
+    })
 end
 
 eh.GetPartyMembersMap = function()
