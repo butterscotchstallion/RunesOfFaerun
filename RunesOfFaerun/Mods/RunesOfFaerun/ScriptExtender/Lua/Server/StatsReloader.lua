@@ -9,28 +9,34 @@ local filesToReload = {
     'Target.txt',
 }
 
---Needs a symlink leading to your localization XML file
---in the BG3 Data folder
----@param files string[]
-local function LoadLoca(files)
-    for _, file in ipairs(files) do
-        local fileName = string.format("Localization/English/%s.xml", file)
-        local contents = Ext.IO.LoadFile(fileName, "data")
+local function UnescapeXML(str)
+    str = string.gsub(str, '&lt;', '<')
+    str = string.gsub(str, '&gt;', '>')
+    str = string.gsub(str, '&quot;', '"')
+    str = string.gsub(str, '&apos;', "'")
+    str = string.gsub(str, '&#(%d+);', function(n) return string.char(n) end)
+    str = string.gsub(str, '&#x(%d+);', function(n) return string.char(tonumber(n, 16)) end)
+    str = string.gsub(str, '&amp;', '&') -- Be sure to do this after all others
+    return str
+end
 
-        if contents then
-            for line in string.gmatch(contents, "([^\r\n]+)\r*\n") do
-                local handle, value = string.match(line, '<content contentuid="(%w+)".->(.+)</content>')
-                if handle ~= nil and value ~= nil then
-                    value = value:gsub("&[lg]t;", {
-                        ['&lt;'] = "<",
-                        ['&gt;'] = ">"
-                    })
-                    Ext.Loca.UpdateTranslatedString(handle, value)
-                end
+local function ReloadLocale()
+    local anyReloaded = false
+    local folder = Ext.Mod.GetMod(ModuleUUID).Info.Directory
+    local filePath = ("Mods/%s/Localization/English/%s-English.xml"):format(folder, folder)
+    local locale = Ext.IO.LoadFile(filePath, "data")
+    if locale ~= nil and locale ~= "" then
+        for handle, version, content in string.gmatch(locale, '%s*<content contentuid="([^\r\n]+)" version="([^\r\n]+)">([^\r\n]+)</content>') do
+            content = UnescapeXML(content)
+            if Ext.Loca.UpdateTranslatedString(handle, content) then
+                anyReloaded = true
+            else
+                Ext.Utils.PrintError(("Failed to update tstring handle(%s) content(%s)"):format(handle, content))
             end
-        else
-            Debug(string.format("%s does not exist in the Data folder", fileName))
         end
+    end
+    if anyReloaded then
+        Ext.Utils.Print(("Reloaded %s"):format(filePath))
     end
 end
 
@@ -49,7 +55,7 @@ local function OnReset()
         end
     end
 
-    LoadLoca({ "RunesOfFaerun" })
+    ReloadLocale()
 end
 
 Ext.Events.ResetCompleted:Subscribe(OnReset)
