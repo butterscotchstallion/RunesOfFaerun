@@ -200,6 +200,17 @@ local commands = {
                 uuid = uuid
             })
         end
+    },
+    {
+        name = 'spawnrunebearer',
+        params = '',
+        func = function(_)
+            RunesOfFaerun.EntityHandler.SpawnHostileSpellSlinger({
+                castFireball = false,
+                hostile = true,
+                uuid = "a794c250-b9b4-4a09-903a-03706d4cd275",
+            })
+        end
     }
 }
 
