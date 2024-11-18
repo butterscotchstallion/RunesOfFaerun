@@ -6,17 +6,6 @@ new entry "STATUS_ROF_AI_CONTROLLED"
 		data "Description" "h408c900e8c8a4c3eb46f1f4f70d12b9e0fef"
 		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;LoseControl;LoseControlFriendly;IgnoreResting"
 
-new entry "STATUS_ROF_EVIL"
-	type "StatusData"
-		data "StatusType" "BOOST"
-		// %%% EMPTY
-		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484;1"
-		// %%% EMPTY
-		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b;1"
-		// Evil NPC
-		data "Boosts" "FactionOverride(64321d50-d516-b1b2-cfac-2eb773de1ff6)"
-		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
-
 // Permanent slime buffs
 new entry "STATUS_ROF_RELENTLESS"
 	type "StatusData"
@@ -380,3 +369,12 @@ new entry "STATUS_ROF_DEATH_KNELL"
 		data "Boosts" "ActionResource(Movement,-3,0)"
 		data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Death)):ApplyStatus(STATUS_ROF_DEATH_KNELL_SUMMON,100,0)"
 		data "StatusEffect" "3d4ba218-2406-4e92-9213-4cc8040c5fb3"
+
+new entry "STATUS_ROF_HORN_ON_COOLDOWN"
+	type "StatusData"
+		data "StatusType" "BOOST"
+		// %%% EMPTY
+		data "DisplayName" "h4f9fb90cgb9f3g4ae7gafe1g0addbf620484;1"
+		// %%% EMPTY
+		data "Description" "h4dc40b40gf1fbg4da4g9a0fg1ce71af1992b;1"
+		data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;LoseControl;LoseControlFriendly;IgnoreResting"

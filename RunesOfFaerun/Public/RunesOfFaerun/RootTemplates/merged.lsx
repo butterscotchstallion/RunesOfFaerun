@@ -1048,9 +1048,11 @@
                     <children>
                         <node id="StatusList">
                             <children>
+                                <!--
                                 <node id="Status">
                                     <attribute id="Object" type="FixedString" value="STATUS_ROF_EVIL" />
                                 </node>
+                            -->
                             </children>
                         </node>
                         <node id="Bounds">
@@ -1272,6 +1274,10 @@
                             <children>
                                 <node id="Tag">
                                     <attribute id="Object" type="guid" value="9c79bbd4-c01c-4894-a2cf-51e1aae09a90" />
+                                </node>
+                                <!--ALWAYS_PERMANENTLY_HOSTILE_TO_ALL_PLAYERS-->
+                                <node id="Tag">
+                                    <attribute id="Object" type="guid" value="6115eeaa-0a4c-46b1-6d8a-832ad6fb075e" />
                                 </node>
                             </children>
                         </node>

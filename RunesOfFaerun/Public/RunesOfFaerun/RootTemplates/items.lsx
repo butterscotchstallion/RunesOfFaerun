@@ -4,6 +4,7 @@
     <region id="Templates">
         <node id="Templates">
             <children>
+                <!--Duplicitous Bow-->
                 <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h0fcc56bc83b3445081f8e3c46a5447801377" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h3589e9e7d0b542338ab96265db0accaf0a72" version="1" />
@@ -18,6 +19,72 @@
                         <node id="StatusList" />
                         <node id="Tags">
                             <children> </children>
+                        </node>
+                    </children>
+                </node>
+
+                <!--Horn of The Runebearer-->
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h45206ac1e58f460198067e0f1cad6aecd209" version="2" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0e7935bcb1e04b9fbf84480997052a7ed563" version="1" />
+                    <attribute id="ExamineRotation" type="fvec3" value="80 0 0" />
+                    <attribute id="Icon" type="FixedString" value="Item_UNI_Horn_Ogres" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="fffed42d-f849-47ad-9931-3f7fe72e364c" />
+                    <attribute id="Name" type="LSString" value="ROF_Horn_of_The_RuneBearer" />
+                    <attribute id="OnUseDescription" type="TranslatedString" handle="h3a39659cg5984g4ae8gbdc8gca52c85014ea" version="1" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="c9e45e5a-f089-480b-ab3a-7f5f76dccc3b" />
+                    <attribute id="PhysicsTemplate" type="FixedString" value="13b3281b-a078-cd53-92bf-d9ef3e8a278f" />
+                    <attribute id="Stats" type="FixedString" value="OBJ_Music_Horn" />
+                    <attribute id="TechnicalDescription" type="TranslatedString" handle="h3d229e4f11824b4984629d3a8661d02e32d9" version="1" />
+                    <attribute id="Tooltip" type="uint8" value="2" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="e2cd9e12-374d-5874-3886-bef58e461402" />
+                    <children>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="7" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="IsHiddenStatus" type="bool" value="False" />
+                                            <attribute id="StatsId" type="FixedString" value="Shout_ROF_Summon_Runebearer" />
+                                            <attribute id="StatusDuration" type="int32" value="0" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="Bounds">
+                            <children>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.18894641" />
+                                    <attribute id="Max" type="fvec3" value="0.4430236 0.2740303 0.1599235" />
+                                    <attribute id="Min" type="fvec3" value="-0.48945948 0.0012006462 -0.15827012" />
+                                    <attribute id="Radius" type="float" value="0.33596787" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="1" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.18894641" />
+                                    <attribute id="Max" type="fvec3" value="0.2215118 0.2740303 0.07996175" />
+                                    <attribute id="Min" type="fvec3" value="-0.24472974 0.0012006462 -0.07913506" />
+                                    <attribute id="Radius" type="float" value="0.16798393" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="0" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.18894641" />
+                                    <attribute id="Max" type="fvec3" value="0.4430236 0.2740303 0.1599235" />
+                                    <attribute id="Min" type="fvec3" value="-0.48945948 0.0012006462 -0.15827012" />
+                                    <attribute id="Radius" type="float" value="0.33596787" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="2" />
+                                </node>
+                            </children>
                         </node>
                     </children>
                 </node>

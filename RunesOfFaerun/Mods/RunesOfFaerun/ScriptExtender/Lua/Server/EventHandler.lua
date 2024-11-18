@@ -12,6 +12,9 @@ local spellStealInfo = {
 local spellStealSuccessCasted = false
 
 local function OnSessionLoaded()
+    --Seed RNG with random :5head:
+    math.randomseed(Ext.Math.Random())
+
     RunesOfFaerun.Utils.PrintVersionMessage()
     --RunesOfFaerun.QuestHandler.Initialize()
 end
